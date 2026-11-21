@@ -903,4 +903,47 @@ height: 240px;
   }
 }
 
+@media (min-width: 992px) {
+  /* ۱. ایجاد پس‌زمینه روشن‌تر و کادر دور منوی اصلی هنگام بردن موس (شبیه سایت اصلی) */
+  .header-ünten__links {
+    transition: background-color 0.25s ease;
+  }
+
+  .header-ünten__links:hover {
+    background-color: rgba(255, 255, 255, 0.15) !important; /* کادر روشن نیمه‌شفاف روی منو */
+  }
+
+  /* خط سفید زیر متن منوی اصلی هنگام هاور (اختیاری - مثل عکس سایت اصلی) */
+  .header-ünten__links:hover > .header-ünten__links1 {
+    text-decoration: underline;
+    text-underline-offset: 6px;
+  }
+
+  /* ۲. تیره‌تر کردن پس‌زمینه زیرمنوها برای تمایز بیشتر با هدر */
+  .sub-menu,
+  .menu-link__akt {
+    background-color: #005b8f !important; /* آبی تیره و شیک (تیره‌تر از رنگ هدر) */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2) !important;
+  }
+
+  /* خط جداکننده بین آیتم‌های زیرمنو */
+  .menu-link__akt1 {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+  }
+
+  /* تغییر رنگ آیتم‌های زیرمنو هنگام بردن موس روی آن‌ها */
+  .menu-link__akt1:hover {
+    background-color: #004670 !important; /* آبی تیره‌تر هنگام هاور روی زیرمنو */
+  }
+
+  /* رنگ پس‌زمینه زیرمنوهای سطح سوم (مثل Kollegium و...) */
+  .contorolle, .contorolle1, .contorolle2,
+  .kontroler, .kontroler1, .kontroler2 {
+    background-color: #004670 !important;
+  }
+
+  .kontroler li:hover, .kontroler1 li:hover, .kontroler2 li:hover {
+    background-color: #003554 !important;
+  }
+}
 
