@@ -27,10 +27,10 @@ padding-bottom: 1rem;
 
 .ganzüben-title {
 margin: 0;
-padding: 0.8rem 5rem;
+padding: 0.8rem 0;
 color: #fff;
 border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-font-size: 14px;
+font-size: 13px;
 font-weight: normal;
 }
 
@@ -54,8 +54,9 @@ margin-top: 1rem;
 display: flex;
 align-items: center;
 justify-content: flex-start;
-gap: 1.3rem; /* فاصله کمی جمع‌وجورتر تا ذره‌بین هم در همین خط جا شود */
-padding: 0 0 0 4.5rem; /* این تورفتگی باعث می‌شود Aktuelles دقیقاً زیر نوشته Don-Bosco قرار بگیرد */
+flex-wrap: wrap;
+gap: 1.6rem;
+padding: 0 0 0 4.8rem;
 margin: 0;
 list-style: none;
 }
@@ -71,12 +72,16 @@ align-items: center;
 display: flex;
 align-items: center;
 gap: 0.4rem;
-color: #fff;
+color: rgba(255, 255, 255, 0.9);
 text-decoration: none;
 padding: 0.6rem 0.2rem;
 position: relative;
 white-space: nowrap;
-font-size: 15px;
+font-size: 14.5px;
+}
+
+.header-ünten__links1:hover {
+color: #ffffff;
 }
 
 /* خط زیر متحرک هنگام هاور */
@@ -97,18 +102,13 @@ width: 100%;
 
 /* چرخش آیکون فلش */
 .Flash, .flash {
+font-size: 12px;
 transition: transform 0.3s ease;
 }
 
 .header-ünten__links:hover .Flash,
 .header-ünten__links:hover .flash {
 transform: rotate(180deg);
-}
-
-.menu-ünten__suchenicon {
-width: 1.3rem;
-height: 1.3rem;
-cursor: pointer;
 }
 
 /* منوی کشویی سطح اول */
@@ -125,7 +125,6 @@ transform: translateY(10px);
 transition: all 0.25s ease-in-out;
 z-index: 1000;
 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-border-top: 2px solid #fff;
 }
 
 .header-ünten__links:hover > .sub-menu {
@@ -177,7 +176,7 @@ height: 1rem;
 /* منوی کشویی سطح دوم */
 .contorolle, .contorolle1, .contorolle2 {
 position: absolute;
-top: -2px;
+top: 0;
 left: 100%;
 min-width: 14rem;
 background-color: rgb(0, 119, 182);
@@ -185,7 +184,6 @@ visibility: hidden;
 opacity: 0;
 transition: all 0.25s ease-in-out;
 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-border-top: 2px solid #fff;
 }
 
 .menu-link__akt1:hover .contorolle,
@@ -203,7 +201,6 @@ transform: none;
 margin: 0;
 padding: 0;
 list-style: none;
-border-top: none;
 box-shadow: none;
 }
 
@@ -234,7 +231,8 @@ color: #000000;
 .header__icon {
 display: none;
 }
-/* بخش محتوای اصلی */
+
+/* بخش محتوای اصلی و اسلایدر */
 .main-content {
 background-color: #f7f7f7;
 padding: 3rem 0;
@@ -248,7 +246,6 @@ font-weight: normal;
 margin-bottom: 2.5rem;
 }
 
-/* اسلایدر عکس */
 .slider-container {
 position: relative;
 max-width: 100%;
@@ -283,9 +280,9 @@ background-color: rgba(0, 119, 182, 0.8);
 .prev { left: 10px; }
 .next { right: 10px; }
 
-/* پنجره جستجوی تمام صفحه */
+/* پنجره جستجو */
 .search-overlay {
-display: none; /* در حالت عادی مخفی است */
+display: none;
 position: fixed;
 top: 0;
 left: 0;
@@ -295,30 +292,6 @@ background-color: rgba(0, 119, 182, 0.95);
 z-index: 2000;
 justify-content: center;
 align-items: center;
-}
-
-.search-box {
-display: flex;
-gap: 1rem;
-width: 60%;
-max-width: 600px;
-}
-
-.search-box input {
-width: 100%;
-padding: 1rem;
-font-size: 18px;
-border: none;
-border-radius: 4px;
-}
-
-.search-box button {
-padding: 0 1.5rem;
-background-color: #333;
-color: white;
-border: none;
-border-radius: 4px;
-cursor: pointer;
 }
 
 .search-wrapper {
@@ -340,6 +313,15 @@ padding: 1rem;
 font-size: 16px;
 border: none;
 border-radius: 4px;
+}
+
+.search-box button {
+padding: 0 1.5rem;
+background-color: #333;
+color: white;
+border: none;
+border-radius: 4px;
+cursor: pointer;
 }
 
 .search-results {
@@ -399,7 +381,7 @@ flex-wrap: wrap;
 background-color: #ffffff;
 border-radius: 6px;
 padding: 1.5rem;
-flex: 1; /* باعث می‌شود هر سه کارت عرض کاملاً مساوی داشته باشند */
+flex: 1;
 min-width: 280px;
 box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 display: flex;
@@ -409,7 +391,7 @@ transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .news-card:hover {
-transform: translateY(-5px); /* حرکت ظریف به بالا هنگام رفتن موس */
+transform: translateY(-5px);
 box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
 
@@ -506,6 +488,7 @@ padding: 1rem;
 font-size: 13px;
 }
 
+/* نوار قوانین کوکی پایین صفحه */
 .cookie-banner {
 position: fixed;
 bottom: 0;
@@ -516,7 +499,7 @@ color: #ffffff;
 padding: 1rem 0;
 z-index: 3000;
 box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
-display: none; /* جاوااسکریپت تصمیم می‌گیرد نمایش داده شود یا نه */
+display: none;
 }
 
 .cookie-content {
@@ -550,6 +533,7 @@ transition: background-color 0.2s;
 background-color: rgb(0, 95, 145);
 }
 
+/* پنجره بازشو اخبار (Modal) */
 .modal-overlay {
 display: none;
 position: fixed;
@@ -568,186 +552,4 @@ background-color: #ffffff;
 width: 90%;
 max-width: 550px;
 padding: 2rem;
-border-radius: 8px;
-position: relative;
-box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-animation: fadeIn 0.25s ease;
-}
-
-@keyframes fadeIn {
-from { opacity: 0; transform: scale(0.95); }
-to { opacity: 1; transform: scale(1); }
-}
-
-.modal-close {
-position: absolute;
-top: 1rem;
-right: 1rem;
-background: none;
-border: none;
-font-size: 20px;
-cursor: pointer;
-color: #666;
-}
-
-.modal-close:hover {
-color: #000;
-}
-
-.modal-box h2 {
-color: rgb(0, 119, 182);
-margin: 0.5rem 0 1rem 0;
-}
-
-.modal-box p {
-color: #444;
-line-height: 1.7;
-font-size: 15px;
-}
-
-@media only screen and (max-width: 992px) {
-.ganzüben-title {
-font-size: 11px;
-text-align: center;
-}
-@media only screen and (max-width: 992px) {
-.header-ünten__links1 {
-width: 100%;
-justify-content: space-between; /* متن سمت چپ و فلش سمت راست قرار می‌گیرد */
-background-color: transparent !important;
-padding: 0.6rem 0;
-}
-@media only screen and (max-width: 992px) {
-/* غیرفعال کردن خط زیر متحرک دسکتاپ در حالت موبایل */
-.header-ünten__links1::after {
-display: none !important;
-}
-
-/* حذف خط‌های سفید اضافی زیر آیتم‌های منو در موبایل */
-.header-ünten__links {
-border-bottom: none !important;
-}
-}
-
-
-
-.sub-menu {
-position: static !important;
-width: 100% !important;
-background-color: rgba(0, 0, 0, 0.12) !important; /* کمی تیره‌تر تا از منوی اصلی متمایز شود */
-box-shadow: none !important;
-border-top: none !important;
-padding: 0.3rem 0 0.3rem 1rem !important;
-margin-top: 0.4rem;
-border-radius: 4px;
-}
-
-.menu-link__akt1 {
-flex-direction: column;
-align-items: flex-start !important;
-justify-content: flex-start !important;
-padding: 0.6rem 0.5rem !important;
-border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
-}
-
-.menu-link__akt1 > a {
-text-align: left !important;
-width: 100%;
-display: flex;
-justify-content: space-between;
-}
-
-/* تنظیم زیرمنوهای سطح دوم در موبایل */
-.contorolle, .contorolle1, .contorolle2 {
-position: static !important;
-width: 100% !important;
-background-color: rgba(0, 0, 0, 0.15) !important;
-padding-left: 1rem !important;
-margin-top: 0.5rem;
-}
-}
-
-
-
-/* نمایش دکمه همبرگری در موبایل */
-.header__icon {
-display: block;
-color: #ffffff;
-font-size: 26px;
-cursor: pointer;
-position: absolute;
-right: 5%;
-top: 3.5rem;
-}
-
-/* مخفی کردن منو در حالت عادی در موبایل */
-.header-ünten__menu {
-display: none;
-flex-direction: column;
-align-items: flex-start;
-background-color: rgb(0, 105, 160);
-padding: 1rem;
-margin-top: 1rem;
-border-radius: 6px;
-gap: 0.5rem;
-}
-
-/* این کلاس توسط جاوااسکریپت اضافه می‌شود تا منو باز شود */
-.header-ünten__menu.active {
-display: flex;
-}
-
-.header-ünten__links {
-width: 100%;
-height: auto;
-flex-direction: column;
-align-items: flex-start;
-border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-padding-bottom: 0.5rem;
-}
-
-.header-ünten__links:last-child {
-border-bottom: none;
-}
-
-/* تنظیم زیرمنوها در موبایل تا از صفحه بیرون نزنند */
-.sub-menu {
-position: static;
-width: 100%;
-box-shadow: none;
-border-top: none;
-padding-left: 1rem;
-display: none;
-opacity: 1;
-visibility: visible;
-transform: none;
-}
-
-.header-ünten__links:hover > .sub-menu {
-display: block;
-}
-
-.contorolle, .contorolle1, .contorolle2 {
-position: static;
-width: 100%;
-box-shadow: none;
-border-top: none;
-padding-left: 1rem;
-display: none;
-opacity: 1;
-visibility: visible;
-}
-
-.menu-link__akt1:hover .contorolle,
-.menu-link__akt1:hover .contorolle1,
-.menu-link__akt1:hover .contorolle2 {
-display: block;
-}
-
-.slider-container {
-height: 240px;
-}
-}
-
-
 
