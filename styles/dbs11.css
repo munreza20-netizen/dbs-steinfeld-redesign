@@ -748,5 +748,49 @@ display: block;
 height: 240px;
 }
 }
+@media (max-width: 991px) {
+  /* تنظیم فلش کنار آیتم‌های دارای زیرمنو در موبایل */
+  .menu-link__akt1 {
+    position: relative;
+  }
+
+  .menu-link__akt1 .iconreight,
+  .menu-link__akt1 .iconreight1 {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    transform: rotate(90deg); /* چرخش فلش به سمت پایین */
+    transition: transform 0.3s ease;
+  }
+
+  /* مخفی کردن زیرمنوهای سطح سوم در حالت عادی موبایل */
+  .contorolle, .contorolle1, .contorolle2 {
+    display: none;
+    position: static !important;
+    width: 100% !important;
+    box-shadow: none !important;
+    background-color: rgba(0, 0, 0, 0.15); /* کمی تیره‌تر برای تشخیص بهتر */
+    padding-left: 15px;
+  }
+
+  /* نمایش زیرمنو وقتی کلاس active با کلیک اضافه شد */
+  .menu-link__akt1.open-sub .contorolle,
+  .menu-link__akt1.open-sub .contorolle1,
+  .menu-link__akt1.open-sub .contorolle2 {
+    display: block !important;
+  }
+
+  .menu-link__akt1.open-sub .iconreight,
+  .menu-link__akt1.open-sub .iconreight1 {
+    transform: rotate(270deg); /* چرخش فلش به بالا هنگام باز شدن */
+  }
+
+  /* اصلاح قرارگیری زیرمنوی داخلی */
+  .kontroler, .kontroler1, .kontroler2 {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+  }
+}
 
 
