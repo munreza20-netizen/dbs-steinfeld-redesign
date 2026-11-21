@@ -894,5 +894,13 @@ height: 240px;
   }
 }
 
+@media (max-width: 991px) {
+  .header-ünten__links:hover > .sub-menu,
+  .menu-link__akt1:hover > .contorolle,
+  .menu-link__akt1:hover > .contorolle1,
+  .menu-link__akt1:hover > .contorolle2 {
+    display: none; /* غیرفعال کردن هاور در موبایل تا فقط با کلیک باز و بسته شود */
+  }
+}
 
 
