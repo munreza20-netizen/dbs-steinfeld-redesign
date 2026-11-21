@@ -142,5 +142,24 @@ icon.classList.remove("fa-times");
 icon.classList.add("fa-bars");
 }
 }
+document.addEventListener("DOMContentLoaded", function () {
+  // انتخاب تمام آیتم‌هایی که زیرمنوی سطح سوم دارند
+  const subItems = document.querySelectorAll(".menu-link__akt1");
+
+  subItems.forEach(function (item) {
+    const nestedMenu = item.querySelector(".contorolle, .contorolle1, .contorolle2");
+    
+    if (nestedMenu) {
+      const link = item.querySelector("a");
+      link.addEventListener("click", function (e) {
+        // فقط در سایز موبایل اجرا شود
+        if (window.innerWidth <= 991) {
+          e.preventDefault(); // جلوگیری از پرش صفحه به بالا
+          item.classList.toggle("open-sub"); // باز و بسته کردن زیرمنو
+        }
+      });
+    }
+  });
+});
 
 
