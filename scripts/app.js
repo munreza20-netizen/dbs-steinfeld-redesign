@@ -143,23 +143,34 @@ icon.classList.add("fa-bars");
 }
 }
 document.addEventListener("DOMContentLoaded", function () {
-  // انتخاب تمام آیتم‌هایی که زیرمنوی سطح سوم دارند
-  const subItems = document.querySelectorAll(".menu-link__akt1");
+  // انتخاب تمام آیتم‌های منوی سطح اول و دوم در موبایل
+  const allMenuItems = document.querySelectorAll(".header-ünten__links, .menu-link__akt1");
 
-  subItems.forEach(function (item) {
-    const nestedMenu = item.querySelector(".contorolle, .contorolle1, .contorolle2");
-    
-    if (nestedMenu) {
-      const link = item.querySelector("a");
+  allMenuItems.forEach(function (item) {
+    // پیدا کردن زیرمنوی داخل این آیتم (چه سطح دوم و چه سطح سوم)
+    const subMenu = item.querySelector(":scope > .sub-menu, :scope > .contorolle, :scope > .contorolle1, :scope > .contorolle2");
+    const link = item.querySelector(":scope > a");
+
+    if (subMenu && link) {
       link.addEventListener("click", function (e) {
-        // فقط در سایز موبایل اجرا شود
         if (window.innerWidth <= 991) {
-          e.preventDefault(); // جلوگیری از پرش صفحه به بالا
-          item.classList.toggle("open-sub"); // باز و بسته کردن زیرمنو
+          e.preventDefault();      // جلوگیری از رفرش یا پرش صفحه
+          e.stopPropagation();     // جلوگیری از تداخل کلیک با منوهای والد
+
+          // بررسی اینکه آیا این زیرمنو الان باز است یا نه
+          const isOpen = item.classList.contains("open-sub") || subMenu.style.display === "block";
+
+          if (isOpen) {
+            // اگر باز است، ببند
+            item.classList.remove("open-sub");
+            subMenu.style.display = "none";
+          } else {
+            // اگر بسته است، باز کن
+            item.classList.add("open-sub");
+            subMenu.style.display = "block";
+          }
         }
       });
     }
   });
 });
-
-
