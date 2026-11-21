@@ -792,5 +792,107 @@ height: 240px;
     width: 100% !important;
   }
 }
+@media (max-width: 991px) {
+  /* ۱. سفید کردن کل کادر منوی موبایل */
+  .header-ünten,
+  .header-ünten__menu {
+    background-color: #ffffff !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  /* ۲. استایل لینک‌های اصلی منو (سطح اول) */
+  .header-ünten__links {
+    border-bottom: 1px solid #eeeeee !important;
+    background-color: #ffffff !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .header-ünten__links1 {
+    color: #333333 !important;
+    background-color: #ffffff !important;
+    padding: 15px 20px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    font-weight: 500 !important;
+  }
+
+  /* تغییر رنگ آیتم فعال یا هاور شده شبیه سایت اصلی */
+  .header-ünten__links1:hover,
+  .header-ünten__links1:focus {
+    background-color: #f8f9fa !important;
+    color: #0073aa !important;
+  }
+
+  /* ۳. اصلاح زیرمنوی سطح دوم (مثل Schulleitung, Mitarbeiter) */
+  .sub-menu,
+  .menu-link__akt {
+    position: static !important;
+    background-color: #fafafa !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  .menu-link__akt1 {
+    border-top: 1px solid #eeeeee !important;
+    background-color: #fafafa !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .menu-link__akt1 > a {
+    color: #444444 !important;
+    background-color: transparent !important;
+    padding: 13px 20px 13px 30px !important; /* کمی تورفتگی از چپ */
+    display: block !important;
+  }
+
+  .menu-link__akt1 > a:hover {
+    color: #0073aa !important;
+    background-color: #f0f0f0 !important;
+  }
+
+  /* ۴. اصلاح زیرمنوی سطح سوم (مثل Kollegium و...) و رفع مشکل ناخوانا بودن متن */
+  .contorolle, .contorolle1, .contorolle2,
+  .kontroler, .kontroler1, .kontroler2 {
+    position: static !important;
+    background-color: #f2f2f2 !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .kontroler li, .kontroler1 li, .kontroler2 li {
+    border-top: 1px solid #e5e5e5 !important;
+    background-color: #f2f2f2 !important;
+  }
+
+  .kontroler li a, .kontroler1 li a, .kontroler2 li a {
+    color: #555555 !important; /* رنگ تیره برای خوانایی کامل روی پس‌زمینه روشن */
+    background-color: transparent !important;
+    padding: 12px 20px 12px 45px !important; /* تورفتگی بیشتر برای سطح سوم */
+    display: block !important;
+  }
+
+  .kontroler li a:hover, .kontroler1 li a:hover, .kontroler2 li a:hover {
+    color: #0073aa !important;
+    background-color: #e9e9e9 !important;
+  }
+
+  /* ۵. تنظیم رنگ آیکون‌های فلش */
+  .Flash, .iconreight, .iconreight1 {
+    color: #666666 !important;
+    filter: brightness(0.4); /* تیره کردن آیکون‌های SVG سفید */
+  }
+}
+
 
 
