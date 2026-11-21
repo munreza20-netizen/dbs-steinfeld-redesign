@@ -11,12 +11,11 @@ body { margin: 0; font-family: "TTNorms", sans-serif; }
 
 /* نوار منو */
 .header-ünten__ünten { margin-top: 1rem; }
-.header-ünten__menu { display: flex; align-items: center; justify-content: flex-start; flex-wrap: wrap; gap: 1.6rem; padding: 0 0 0 4.8rem; margin: 0; list-style: none; }
+.header-ünten__menu { display: flex; align-items: center; justify-content: flex-start; flex-wrap: nowrap; gap: .9rem; padding: 0 0 0 4.8rem; margin: 0; list-style: none; }
 .header-ünten__links { position: relative; height: 3.2rem; display: flex; align-items: center; }
 .header-ünten__links1 { display: flex; align-items: center; gap: 0.4rem; color: rgba(255, 255, 255, 0.9); text-decoration: none; padding: 0.6rem 0.2rem; position: relative; white-space: nowrap; font-size: 14.5px; }
 .header-ünten__links1:hover { color: #ffffff; }
-.header-ünten__links1::after { content: ""; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: #ffffff; transition: width 0.3s ease-in-out; }
-.header-ünten__links:hover .header-ünten__links1::after { width: 100%; }
+
 .Flash, .flash { font-size: 12px; transition: transform 0.3s ease; }
 .header-ünten__links:hover .Flash, .header-ünten__links:hover .flash { transform: rotate(180deg); }
 
