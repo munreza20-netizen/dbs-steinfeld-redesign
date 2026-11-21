@@ -10,27 +10,28 @@ body { margin: 0; font-family: "TTNorms", sans-serif; }
 .ganzüben-bild__Logo2 { width: 20rem; height: auto; }
 
 /* نوار منو */
-.header-ünten__ünten { margin-top: 1rem; }
-.header-ünten__menu { display: flex; align-items: center; justify-content: flex-start; flex-wrap: nowrap; gap: .9rem; padding: 0 0 0 4.8rem; margin: 0; list-style: none; }
-.header-unten_links { position: relative; height: 3.2rem; display: flex; align-items: center; padding: 0 0.8rem; transition: background-color 0.3s ease; }
+.header-unten_unten { margin-top: 1rem; }
+.header-unten_menu { display: flex; align-items: center; justify-content: flex-start; flex-wrap: nowrap; gap: 0.5rem; padding: 0; margin: 0; list-style: none; }
+.header-unten_links { position: relative; height: 3.2rem; display: flex; align-items: center; padding: 0 0.7rem; transition: background-color 0.3s ease; }
 .header-unten_links:hover { background-color: rgba(255, 255, 255, 0.15); }
+.header-unten_links1 { display: flex; align-items: center; gap: 0.4rem; color: rgba(255, 255, 255, 0.9); text-decoration: none; position: relative; height: 100%; }
+.header-unten_links1:hover { color: #ffffff; }
 .header-unten_links1::after { content: ""; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: #ffffff; transition: width 0.3s ease; }
 .header-unten_links:hover .header-unten_links1::after { width: 100%; }
-.header-ünten__links1 { display: flex; align-items: center; gap: 0.4rem; color: rgba(255, 255, 255, 0.9); text-decoration: none; padding: 0.6rem 0.2rem; position: relative; white-space: nowrap; font-size: 14.5px; }
-.header-ünten__links1:hover { color: #ffffff; }
-
 .Flash, .flash { font-size: 12px; transition: transform 0.3s ease; }
-.header-ünten__links:hover .Flash, .header-ünten__links:hover .flash { transform: rotate(180deg); }
+.header-unten_links:hover .Flash, .header-unten_links:hover .flash { transform: rotate(180deg); }
 
 /* منوی کشویی سطح اول و دوم */
-.sub-menu { position: absolute; top: 100%; left: 0; min-width: 14rem; background-color: rgb(0, 119, 182); color: #fff; visibility: hidden; opacity: 0; transform: translateY(10px); transition: all 0.25s ease-in-out; z-index: 1000; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); }
-.header-ünten__links:hover > .sub-menu { visibility: visible; opacity: 1; transform: translateY(0); }
-.menu-link__akt { padding: 0 !important; margin: 0 !important; list-style: none; }
-.menu-link__akt1 { position: relative; display: flex !important; align-items: center; justify-content: flex-start !important; text-align: left !important; border-bottom: 1px solid rgba(255, 255, 255, 0.3); padding: 0.7rem 1rem !important; transition: background-color 0.2s ease; }
-.menu-link__akt1:last-child { border-bottom: none; }
-.menu-link__akt1 > a { color: #fff; text-decoration: none; width: 100%; font-size: 14px; padding: 0 !important; margin: 0 !important; }
-.menu-link__akt1:hover { background-color: #ffffff; }
-.menu-link__akt1:hover > a { color: #000000; }
+.sub-menu { position: absolute; top: 100%; left: 0; min-width: 14rem; background-color: rgb(0, 119, 182); color: #fff; visibility: hidden; opacity: 0; transform: translateY(10px); transition: all 0.3s ease; z-index: 9999; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+.header-unten_links:hover > .sub-menu { visibility: visible; opacity: 1; transform: translateY(0); }
+.sub-menu ul, .menu-link_akt { padding: 0 !important; margin: 0 !important; list-style: none !important; }
+.menu-link_akt1 { position: relative; display: flex !important; align-items: center; justify-content: flex-start !important; border-bottom: 1px solid rgba(255, 255, 255, 0.3); padding: 0.7rem 1rem !important; }
+.menu-link_akt1:last-child { border-bottom: none; }
+.menu-link_akt1 > a { color: #fff; text-decoration: none; width: 100%; font-size: 14px; padding: 0 !important; margin: 0 !important; }
+.menu-link_akt1:hover { background-color: #ffffff; }
+.menu-link_akt1:hover > a { color: #000000; }
+
+
 .iconreight, .iconreight1 { width: 1rem; height: 1rem; margin-left: auto; }
 
 .contorolle, .contorolle1, .contorolle2 { position: absolute; top: 0; left: 100%; min-width: 14rem; background-color: rgb(0, 119, 182); visibility: hidden; opacity: 0; transition: all 0.25s ease-in-out; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); }
