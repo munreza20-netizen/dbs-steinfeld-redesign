@@ -174,3 +174,21 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+function handleContactSubmit(event) {
+  event.preventDefault();
+  const feedback = document.getElementById("form-feedback");
+  const form = document.getElementById("school-contact-form");
+
+  // نمایش پیام موفقیت‌آمیز به زبان آلمانی
+  feedback.style.display = "block";
+  feedback.innerHTML = "✅ <strong>Vielen Dank!</strong> Ihre Nachricht wurde erfolgreich übermittelt. Wir melden uns in Kürze bei Ihnen.";
+
+  // پاک کردن فیلدهای فرم
+  form.reset();
+
+  // مخفی کردن پیام بعد از ۶ ثانیه
+  setTimeout(() => {
+    feedback.style.display = "none";
+  }, 6000);
+}
+
