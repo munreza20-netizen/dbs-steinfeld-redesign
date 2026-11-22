@@ -291,6 +291,95 @@
 
 </div> <!-- پایان container -->
 </main>
+    <!-- بخش تماس با مدرسه (Kontaktformular) -->
+<section id="kontakt" class="contact-section">
+  <div class="container">
+    <h2 class="section-title">Kontakt & Anfahrt</h2>
+    <p class="contact-subtitle">Haben Sie Fragen oder möchten Sie uns eine Nachricht senden? Nutzen Sie gerne unser Kontaktformular.</p>
+
+    <div class="contact-wrapper">
+      <!-- ستون سمت چپ: اطلاعات تماس مستقیم -->
+      <div class="contact-info-box">
+        <h3>Sekretariat & Schulleitung</h3>
+        <div class="info-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <div>
+            <strong>Adresse:</strong>
+            <p>Don-Bosco-Schule Steinfeld<br>Große Straße 38<br>49439 Steinfeld</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-phone-alt"></i>
+          <div>
+            <strong>Telefon:</strong>
+            <p>05492 - 981215</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-envelope"></i>
+          <div>
+            <strong>E-Mail:</strong>
+            <p>dbs-steinfeld@t-online.de</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-clock"></i>
+          <div>
+            <strong>Öffnungszeiten Sekretariat:</strong>
+            <p>Mo. – Fr.: 07:30 – 13:00 Uhr</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ستون سمت راست: فرم ارسال پیام -->
+      <div class="contact-form-box">
+        <form id="school-contact-form" onsubmit="handleContactSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="sender-name">Ihr Name *</label>
+              <input type="text" id="sender-name" name="name" required placeholder="Vor- und Nachname">
+            </div>
+            <div class="form-group">
+              <label for="sender-email">Ihre E-Mail-Adresse *</label>
+              <input type="email" id="sender-email" name="email" required placeholder="beispiel@mail.de">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="sender-subject">Anliegen / Betreff *</label>
+            <select id="sender-subject" name="subject" required>
+              <option value="Allgemeine Anfrage">Allgemeine Anfrage</option>
+              <option value="Schulanmeldung">Schulanmeldung</option>
+              <option value="Krankmeldung / Beurlaubung">Krankmeldung / Beurlaubung</option>
+              <option value="Terminvereinbarung">Terminvereinbarung</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="sender-message">Ihre Nachricht *</label>
+            <textarea id="sender-message" name="message" rows="5" required placeholder="Schreiben Sie hier Ihre Nachricht an uns..."></textarea>
+          </div>
+
+          <!-- تیک اجباری قوانین حریم خصوصی آلمان (DSGVO) -->
+          <div class="form-checkbox">
+            <input type="checkbox" id="dsgvo-check" required>
+            <label for="dsgvo-check">
+              Ich habe die Datenschutzerklärung zur Kenntnis genommen und bin damit einverstanden, dass meine Angaben zur Bearbeitung meiner Anfrage gespeichert werden. *
+            </label>
+          </div>
+
+          <button type="submit" class="contact-submit-btn">
+            <i class="fas fa-paper-plane"></i> Nachricht absenden
+          </button>
+
+          <!-- پیام تایید ارسال (مخفی در حالت عادی) -->
+          <div id="form-feedback" class="form-feedback" style="display: none;"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+    
 <!-- فوتر (پاورقی) سایت -->
 <footer class="site-footer">
 <div class="container footer-content">
