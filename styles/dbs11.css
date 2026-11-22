@@ -241,12 +241,13 @@ padding: 3rem 0;
 }
 
 .welcome-title {
-text-align: center;
-color: #555555;
-font-size: 26px;
-font-weight: normal;
-margin-bottom: 2.5rem;
+  text-align: center;
+  color: #555555;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #0073aa;
+  margin-bottom: 25px;
 }
+
 
 /* اسلایدر عکس */
 .slider-container {
