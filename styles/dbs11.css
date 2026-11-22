@@ -954,3 +954,60 @@ height: 240px;
     background-color: #003554 !important;
   }
 }
+/* استایل بخش دسترسی سریع (Quick Links) */
+.quick-links-section {
+  margin: 30px 0 40px 0;
+}
+
+.quick-links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.quick-card {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid #e0e6ed;
+  border-left: 5px solid #0073aa; /* نوار رنگی سمت چپ برای زیبایی بیشتر */
+  border-radius: 10px;
+  padding: 18px 20px;
+  text-decoration: none !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+/* افکت نرم هنگام رفتن موس روی کارت */
+.quick-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 115, 170, 0.15);
+  border-left-color: #004670;
+}
+
+.quick-icon {
+  font-size: 28px;
+  color: #0073aa;
+  margin-right: 16px;
+  width: 45px;
+  text-align: center;
+  transition: transform 0.25s ease;
+}
+
+.quick-card:hover .quick-icon {
+  transform: scale(1.1);
+}
+
+.quick-info h3 {
+  margin: 0 0 4px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #222222;
+}
+
+.quick-info p {
+  margin: 0;
+  font-size: 13px;
+  color: #666666;
+}
+
