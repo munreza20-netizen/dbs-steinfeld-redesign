@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
-<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8" />
@@ -11,7 +9,6 @@
     <link rel="stylesheet" href="./styles/dbs11.css?v=3">
 
     <style>
-        /* --- استایل‌های قبلی منوی شما --- */
         .header-ünten__links .sub-menu,
         .header-ünten__links .menu-link__akt {
             overflow: visible !important;
@@ -60,7 +57,7 @@
             }
         }
 
-        /* --- ۱. استایل نوار هشدار اضطراری (Schulausfall Banner) --- */
+        /* ۱. نوار هشدار اضطراری */
         .emergency-banner {
             background-color: #dc2626;
             color: #ffffff;
@@ -68,14 +65,13 @@
             padding: 10px 16px;
             font-size: 14px;
             font-weight: 600;
-            display: flex; /* برای مخفی کردن در روزهای عادی، این خط را به display: none; تغییر دهید */
+            display: flex;
             justify-content: center;
             align-items: center;
             gap: 10px;
             position: relative;
             z-index: 100000;
         }
-        .emergency-banner i { font-size: 16px; }
         .emergency-close {
             background: rgba(255,255,255,0.2);
             border: none;
@@ -86,7 +82,7 @@
             margin-left: 12px;
         }
 
-        /* --- ۲. دکمه اعلام غیبت آنلاین در هدر --- */
+        /* ۲. نوار بالایی و دکمه اعلام غیبت */
         .top-bar-wrapper {
             display: flex;
             justify-content: space-between;
@@ -122,7 +118,7 @@
             transform: translateY(-1px);
         }
 
-        /* --- ۳. استایل پنجره بازشو (Modal) فرم غیبت --- */
+        /* ۳. استایل مودال فرم غیبت */
         .dbs-modal-overlay {
             display: none;
             position: fixed;
@@ -143,11 +139,6 @@
             padding: 24px;
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
             position: relative;
-            animation: modalFadeIn 0.25s ease-out;
-        }
-        @keyframes modalFadeIn {
-            from { opacity: 0; transform: translateY(-15px); }
-            to { opacity: 1; transform: translateY(0); }
         }
         .dbs-modal-header {
             display: flex;
@@ -157,41 +148,17 @@
             padding-bottom: 12px;
             margin-bottom: 16px;
         }
-        .dbs-modal-header h2 {
-            margin: 0;
-            font-size: 19px;
-            color: #1e293b;
-        }
-        .dbs-modal-close {
-            background: none;
-            border: none;
-            font-size: 22px;
-            color: #64748b;
-            cursor: pointer;
-        }
+        .dbs-modal-header h2 { margin: 0; font-size: 19px; color: #1e293b; }
+        .dbs-modal-close { background: none; border: none; font-size: 22px; color: #64748b; cursor: pointer; }
         .dbs-form-group { margin-bottom: 14px; }
-        .dbs-form-group label {
-            display: block;
-            font-size: 13px;
-            font-weight: 600;
-            color: #334155;
-            margin-bottom: 5px;
-        }
-        .dbs-form-group input,
-        .dbs-form-group select,
-        .dbs-form-group textarea {
+        .dbs-form-group label { display: block; font-size: 13px; font-weight: 600; color: #334155; margin-bottom: 5px; }
+        .dbs-form-group input, .dbs-form-group select {
             width: 100%;
             padding: 10px 12px;
             border: 1px solid #cbd5e1;
             border-radius: 8px;
             font-size: 14px;
             box-sizing: border-box;
-        }
-        .dbs-form-group input:focus,
-        .dbs-form-group select:focus {
-            outline: none;
-            border-color: #1565c0;
-            box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.15);
         }
         .dbs-submit-btn {
             width: 100%;
@@ -203,14 +170,12 @@
             font-size: 15px;
             font-weight: 600;
             cursor: pointer;
-            transition: background 0.2s;
         }
         .dbs-submit-btn:hover { background: #0d47a1; }
     </style>
 </head>
 <body>
 
-    <!-- نوار هشدار وضعیت اضطراری (در روزهای عادی در CSS بالا display: none کنید) -->
     <div class="emergency-banner" id="emergencyBanner">
         <i class="fas fa-exclamation-triangle"></i>
         <span>Hinweis: Am Montag findet der Unterricht regulär statt. Aktuelle Infos zu Witterungsbedingungen finden Sie hier.</span>
@@ -218,28 +183,6 @@
     </div>
 
     <header class="ganzüben">
-        <!-- نوار بالایی جدید شامل اطلاعات تماس و دکمه اعلام غیبت آنلاین -->
-        <div class="top-bar-wrapper">
-            <h3 class="ganzüben-title">Tel. 05492 - 981215 | E-Mail: dbs-steinfeld@t-online.de | Ziegelstraße 12, 49439 Steinfeld</h3>
-            <button class="btn-krankmeldung" onclick="openKrankModal()">
-                <i class="fas fa-notes-medical"></i> Kind krank melden
-            </button>
-        </div>
-
-        <!-- بقیه کدهای هدر و منوی شما دقیقاً مثل قبل اینجا قرار می‌گیرد -->
-
-    
-    <body>
-
-    <!-- نوار هشدار وضعیت اضطراری -->
-    <div class="emergency-banner" id="emergencyBanner">
-        <i class="fas fa-exclamation-triangle"></i>
-        <span>Hinweis: Am Montag findet der Unterricht regulär statt. Aktuelle Infos zu Witterungsbedingungen finden Sie hier.</span>
-        <button class="emergency-close" onclick="document.getElementById('emergencyBanner').style.display='none'">✕</button>
-    </div>
-
-    <header class="ganzüben">
-        <!-- نوار بالایی شامل اطلاعات تماس و دکمه اعلام غیبت آنلاین -->
         <div class="top-bar-wrapper">
             <h3 class="ganzüben-title">Tel. 05492 - 981215 | E-Mail: dbs-steinfeld@t-online.de | Ziegelstraße 12, 49439 Steinfeld</h3>
             <button class="btn-krankmeldung" onclick="openKrankModal()">
@@ -250,7 +193,8 @@
         <div class="container">
             <div class="ganzüben-bild">
                 <img src="./imag/image_123650291(3).JPG" class="ganzüben-bild__Logo2" alt="Don-Bosco-Schule Steinfeld">
-            </div> 
+            </div>
+
             <span class="header__icon" onclick="toggleMobileMenu()"><i class="fa fa-bars"></i></span>
 
              
@@ -739,6 +683,7 @@ Wir verwenden Cookies, um Ihnen das beste Erlebnis auf unserer Schulwebsite zu g
  
     </body>
 </html>
+
 
 
 
