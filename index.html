@@ -659,42 +659,38 @@
           </div>
         </div>
       </div>
-
       <!-- ستون سمت راست: فرم ارسال پیام -->
-    <div class="contact-form-box">
-<form id="school-contact-form" action="https://web3forms.com" method="POST">
+      <div class="contact-form-box">
+        <form id="school-contact-form" action="https://web3forms.com" method="POST">
+          <input type="hidden" name="access_key" value="93778e54-2ced-4b44-8aff-4e187f4cb15e">
+          <input type="hidden" name="subject" value="Neue Kontaktanfrage - DBS Steinfeld">
+          <input type="hidden" name="from_name" value="DBS Steinfeld Website">
 
-        <input type="hidden" name="access_key" value="93778e54-2ced-4b44-8aff-4e187f4cb15e">
-        <input type="hidden" name="subject" value="Neue Kontaktanfrage - DBS Steinfeld">
-        <input type="hidden" name="from_name" value="DBS Steinfeld Website">
-
-
-        <div class="form-row">
+          <div class="form-row">
             <div class="form-group">
-                <label for="sender-name">Ihr Name *</label>
-                <input type="text" id="sender-name" name="name" required placeholder="Vor- und Nachname">
+              <label for="sender-name">Ihr Name *</label>
+              <input type="text" id="sender-name" name="name" required placeholder="Vor- und Nachname">
             </div>
             <div class="form-group">
-                <label for="sender-email">Ihre E-Mail-Adresse *</label>
-                <input type="email" id="sender-email" name="email" required placeholder="beispiel@mail.de">
+              <label for="sender-email">Ihre E-Mail-Adresse *</label>
+              <input type="email" id="sender-email" name="email" required placeholder="beispiel@mail.de">
             </div>
-        </div>
+          </div>
 
-        <div class="form-group">
+          <div class="form-group">
             <label for="sender-subject">Anliegen / Betreff *</label>
             <select id="sender-subject" name="betreff" required>
-                <option value="Allgemeine Anfrage">Allgemeine Anfrage</option>
-                <option value="Schulanmeldung">Schulanmeldung</option>
-                <option value="Krankmeldung / Beurlaubung">Krankmeldung / Beurlaubung</option>
-                <option value="Terminvereinbarung">Terminvereinbarung</option>
+              <option value="Allgemeine Anfrage">Allgemeine Anfrage</option>
+              <option value="Schulanmeldung">Schulanmeldung</option>
+              <option value="Krankmeldung / Beurlaubung">Krankmeldung / Beurlaubung</option>
+              <option value="Terminvereinbarung">Terminvereinbarung</option>
             </select>
-        </div>
+          </div>
 
-        <div class="form-group">
+          <div class="form-group">
             <label for="sender-message">Ihre Nachricht *</label>
             <textarea id="sender-message" name="message" rows="5" required placeholder="Schreiben Sie hier Ihre Nachricht an uns..."></textarea>
-        </div>
-
+          </div>
 
           <!-- تیک اجباری قوانین حریم خصوصی آلمان (DSGVO) -->
           <div class="form-checkbox">
@@ -708,8 +704,7 @@
             <i class="fas fa-paper-plane"></i> Nachricht absenden
           </button>
 
-          <!-- پیام تایید ارسال (مخفی در حالت عادی) -->
-          <div id="form-feedback" class="form-feedback" style="display: none;"></div>
+          <div id="contact-result" style="margin-top: 14px; font-size: 14px; font-weight: 600;"></div>
         </form>
       </div>
     </div>
@@ -718,145 +713,135 @@
     
 <!-- فوتر (پاورقی) سایت -->
 <footer class="site-footer">
-<div class="container footer-content">
-<div class="footer-col">
-<h4>Don-Bosco-Schule Steinfeld</h4>
-<p>Oberschule mit Ganztagsangebot</p>
-<p>Ziegelstraße 12, 49439 Steinfeld</p>
-</div>
+  <div class="container footer-content">
+    <div class="footer-col">
+      <h4>Don-Bosco-Schule Steinfeld</h4>
+      <p>Oberschule mit Ganztagsangebot</p>
+      <p>Ziegelstraße 12, 49439 Steinfeld</p>
+    </div>
 
-<div class="footer-col">
-<h4>Kontakt</h4>
-<p>Tel.: 05492 - 981215</p>
-<p>E-Mail: dbs-steinfeld@t-online.de</p>
-</div>
+    <div class="footer-col">
+      <h4>Kontakt</h4>
+      <p>Tel.: 05492 - 981215</p>
+      <p>E-Mail: dbs-steinfeld@t-online.de</p>
+    </div>
 
-<div class="footer-col">
-<h4>Rechtliches</h4>
-<ul class="footer-links">
-<li><a href="#">Impressum</a></li>
-<li><a href="#">Datenschutzerklärung</a></li>
-<!-- در منوی بالا -->
-<li class="header-ünten__links">
-  <a href="#kontakt" class="header-ünten__links1">Kontakt</a>
-</li>
-
-</ul>
-</div>
-</div>
-<div class="footer-bottom">
-<p>© 2026 Don-Bosco-Schule Steinfeld</p>
-</div>
+    <div class="footer-col">
+      <h4>Rechtliches</h4>
+      <ul class="footer-links">
+        <li><a href="#">Impressum</a></li>
+        <li><a href="#">Datenschutzerklärung</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Don-Bosco-Schule Steinfeld</p>
+  </div>
 </footer>
 
-
-
-<!-- پنجره جستجو (مخفی در حالت عادی - با جاوااسکریپت باز می‌شود) -->
 <!-- پنجره جستجوی هوشمند -->
 <div id="search-overlay" class="search-overlay">
-<div class="search-wrapper">
-<div class="search-box">
-<input type="text" id="search-input" onkeyup="liveSearch()" placeholder="Diese Website durchsuchen... (z.B. Mensa, Termine, Kontakt)">
-<button onclick="toggleSearch(event)">Schließen ✕</button>
+  <div class="search-wrapper">
+    <div class="search-box">
+      <input type="text" id="search-input" onkeyup="liveSearch()" placeholder="Diese Website durchsuchen... (z.B. Mensa, Termine, Kontakt)">
+      <button onclick="toggleSearch(event)">Schließen ✕</button>
+    </div>
+    <ul id="search-results" class="search-results"></ul>
+  </div>
 </div>
-<!-- لیست نتایج جستجو که توسط جاوااسکریپت پر می‌شود -->
-<ul id="search-results" class="search-results"></ul>
-</div>
-</div>
+
 <div id="news-modal" class="modal-overlay" onclick="closeModal(event)">
-<div class="modal-box">
-<button class="modal-close" onclick="closeModal(event)">✕</button>
-<div id="modal-date" class="news-date"></div>
-<h2 id="modal-title"></h2>
-<p id="modal-text"></p>
-</div>
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal(event)">✕</button>
+    <div id="modal-date" class="news-date"></div>
+    <h2 id="modal-title"></h2>
+    <p id="modal-text"></p>
+  </div>
 </div>
 
 <!-- نوار قوانین کوکی (Cookie Banner) -->
 <div id="cookie-banner" class="cookie-banner">
-<div class="container cookie-content">
-<p>
-Wir verwenden Cookies, um Ihnen das beste Erlebnis auf unserer Schulwebsite zu gewährleisten.
-</p>
-<button onclick="acceptCookies()" class="cookie-btn">Einverstanden</button>
+  <div class="container cookie-content">
+    <p>Wir verwenden Cookies, um Ihnen das beste Erlebnis auf unserer Schulwebsite zu gewährleisten.</p>
+    <button onclick="acceptCookies()" class="cookie-btn">Einverstanden</button>
+  </div>
 </div>
-</div>
-        <!-- نوار دسترسی سریع ویژه موبایل -->
-    <nav class="mobile-bottom-nav">
-        <a href="https://dbs-iserv.de" target="_blank" class="mobile-nav-item">
-            <i class="fas fa-envelope-open-text"></i>
-            <span>IServ</span>
-        </a>
-        <a href="https://webuntis.com" target="_blank" class="mobile-nav-item">
-            <i class="fas fa-calendar-alt"></i>
-            <span>WebUntis</span>
-        </a>
-        <button onclick="openKrankModal()" class="mobile-nav-item urgent">
-            <i class="fas fa-notes-medical"></i>
-            <span>Krankmelden</span>
-        </button>
-        <a href="#kontakt" class="mobile-nav-item">
-            <i class="fas fa-phone-alt"></i>
-            <span>Kontakt</span>
-        </a>
-    </nav>
 
+<!-- نوار دسترسی سریع ویژه موبایل -->
+<nav class="mobile-bottom-nav">
+  <a href="https://dbs-iserv.de" target="_blank" class="mobile-nav-item">
+    <i class="fas fa-envelope-open-text"></i>
+    <span>IServ</span>
+  </a>
+  <a href="https://webuntis.com" target="_blank" class="mobile-nav-item">
+    <i class="fas fa-calendar-alt"></i>
+    <span>WebUntis</span>
+  </a>
+  <button onclick="openKrankModal()" class="mobile-nav-item urgent">
+    <i class="fas fa-notes-medical"></i>
+    <span>Krankmelden</span>
+  </button>
+  <a href="#kontakt" class="mobile-nav-item">
+    <i class="fas fa-phone-alt"></i>
+    <span>Kontakt</span>
+  </a>
+</nav>
 
-    <script src="./scripts/app.js"></script>
-    <!-- پنجره فرم اعلام غیبت آنلاین (Krankmeldung Modal) -->
-    <div class="dbs-modal-overlay" id="krankModal">
-        <div class="dbs-modal-box">
-            <div class="dbs-modal-header">
-                <h2><i class="fas fa-notes-medical" style="color:#ef4444;"></i> Online-Krankmeldung</h2>
-                <button class="dbs-modal-close" onclick="closeKrankModal()">&times;</button>
-            </div>
-            <p style="font-size:13px; color:#475569; margin-bottom:16px;">
-                Bitte melden Sie Ihr Kind bis spätestens <strong>07:45 Uhr</strong> krank. Diese Nachricht geht direkt an das Sekretariat.
-            </p>
-            
-      <form id="school-contact-form" action="https://web3forms.com" method="POST">
-
-    <input type="hidden" name="access_key" value="93778e54-2ced-4b44-8aff-4e187f4cb15e">
-    <input type="hidden" name="subject" value="Neue Online-Krankmeldung - DBS Steinfeld">
-
-
-
-                <div class="dbs-form-group">
-                    <label>Name des Kindes (Vor- und Nachname) *</label>
-                    <input type="text" name="schueler_name" required placeholder="z.B. Max Mustermann">
-                </div>
-
-                <div class="dbs-form-group">
-                    <label>Klasse *</label>
-                    <select name="klasse" required>
-                        <option value="">Bitte Klasse wählen...</option>
-                        <option value="5a">5a</option><option value="5b">5b</option><option value="5c">5c</option>
-                        <option value="6a">6a</option><option value="6b">6b</option><option value="6c">6c</option>
-                        <option value="7a">7a</option><option value="7b">7b</option><option value="7c">7c</option>
-                        <option value="8a">8a</option><option value="8b">8b</option><option value="8c">8c</option>
-                        <option value="9a">9a</option><option value="9b">9b</option><option value="9c">9c</option>
-                        <option value="10a">10a</option><option value="10b">10b</option><option value="10c">10c</option>
-                    </select>
-                </div>
-
-                <div class="dbs-form-group">
-                    <label>Voraussichtliche Dauer (Datum) *</label>
-                    <input type="text" name="zeitraum" required placeholder="z.B. Heute, 24.11.2026 oder bis Mittwoch">
-                </div>
-
-                <div class="dbs-form-group">
-                    <label>Name des Erziehungsberechtigten & Telefonnummer *</label>
-                    <input type="text" name="eltern_kontakt" required placeholder="Für eventuelle Rückfragen">
-                </div>
-
-                <button type="submit" class="dbs-submit-btn">Krankmeldung absenden</button>
-            </form>
-        </div>
+<!-- پنجره فرم اعلام غیبت آنلاین (Krankmeldung Modal) -->
+<div class="dbs-modal-overlay" id="krankModal">
+  <div class="dbs-modal-box">
+    <div class="dbs-modal-header">
+      <h2><i class="fas fa-notes-medical" style="color:#ef4444;"></i> Online-Krankmeldung</h2>
+      <button class="dbs-modal-close" onclick="closeKrankModal()">&times;</button>
     </div>
-
+    <p style="font-size:13px; color:#475569; margin-bottom:16px;">
+      Bitte melden Sie Ihr Kind bis spätestens <strong>07:45 Uhr</strong> krank. Diese Nachricht geht direkt an das Sekretariat.
+    </p>
     
-    </body>
+    <form id="krankmeldung-form" action="https://web3forms.com" method="POST">
+      <input type="hidden" name="access_key" value="93778e54-2ced-4b44-8aff-4e187f4cb15e">
+      <input type="hidden" name="subject" value="Neue Online-Krankmeldung - DBS Steinfeld">
+
+      <div class="dbs-form-group">
+        <label>Name des Kindes (Vor- und Nachname) *</label>
+        <input type="text" name="schueler_name" required placeholder="z.B. Max Mustermann">
+      </div>
+
+      <div class="dbs-form-group">
+        <label>Klasse *</label>
+        <select name="klasse" required>
+          <option value="">Bitte Klasse wählen...</option>
+          <option value="5a">5a</option><option value="5b">5b</option><option value="5c">5c</option>
+          <option value="6a">6a</option><option value="6b">6b</option><option value="6c">6c</option>
+          <option value="7a">7a</option><option value="7b">7b</option><option value="7c">7c</option>
+          <option value="8a">8a</option><option value="8b">8b</option><option value="8c">8c</option>
+          <option value="9a">9a</option><option value="9b">9b</option><option value="9c">9c</option>
+          <option value="10a">10a</option><option value="10b">10b</option><option value="10c">10c</option>
+        </select>
+      </div>
+
+      <div class="dbs-form-group">
+        <label>Voraussichtliche Dauer (Datum) *</label>
+        <input type="text" name="zeitraum" required placeholder="z.B. Heute, 24.11.2026 oder bis Mittwoch">
+      </div>
+
+      <div class="dbs-form-group">
+        <label>Name des Erziehungsberechtigten & Telefonnummer *</label>
+        <input type="text" name="eltern_kontakt" required placeholder="Für eventuelle Rückfragen">
+      </div>
+
+      <button type="submit" class="dbs-submit-btn">Krankmeldung absenden</button>
+      <div id="krank-result" style="margin-top: 12px; font-size: 14px; font-weight: 600; text-align: center;"></div>
+    </form>
+  </div>
+</div>
+
+<script src="./scripts/app.js"></script>
+</body>
 </html>
+
+
 
 
 
