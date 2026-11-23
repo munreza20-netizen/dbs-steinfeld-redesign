@@ -680,9 +680,58 @@ Wir verwenden Cookies, um Ihnen das beste Erlebnis auf unserer Schulwebsite zu g
 </div>
 
     <script src="./scripts/app.js"></script>
- 
+    <!-- پنجره فرم اعلام غیبت آنلاین (Krankmeldung Modal) -->
+    <div class="dbs-modal-overlay" id="krankModal">
+        <div class="dbs-modal-box">
+            <div class="dbs-modal-header">
+                <h2><i class="fas fa-notes-medical" style="color:#ef4444;"></i> Online-Krankmeldung</h2>
+                <button class="dbs-modal-close" onclick="closeKrankModal()">&times;</button>
+            </div>
+            <p style="font-size:13px; color:#475569; margin-bottom:16px;">
+                Bitte melden Sie Ihr Kind bis spätestens <strong>07:45 Uhr</strong> krank. Diese Nachricht geht direkt an das Sekretariat.
+            </p>
+            
+            <form action="https://web3forms.com" method="POST">
+                <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                <input type="hidden" name="subject" value="Neue Online-Krankmeldung - DBS Steinfeld">
+
+                <div class="dbs-form-group">
+                    <label>Name des Kindes (Vor- und Nachname) *</label>
+                    <input type="text" name="schueler_name" required placeholder="z.B. Max Mustermann">
+                </div>
+
+                <div class="dbs-form-group">
+                    <label>Klasse *</label>
+                    <select name="klasse" required>
+                        <option value="">Bitte Klasse wählen...</option>
+                        <option value="5a">5a</option><option value="5b">5b</option><option value="5c">5c</option>
+                        <option value="6a">6a</option><option value="6b">6b</option><option value="6c">6c</option>
+                        <option value="7a">7a</option><option value="7b">7b</option><option value="7c">7c</option>
+                        <option value="8a">8a</option><option value="8b">8b</option><option value="8c">8c</option>
+                        <option value="9a">9a</option><option value="9b">9b</option><option value="9c">9c</option>
+                        <option value="10a">10a</option><option value="10b">10b</option><option value="10c">10c</option>
+                    </select>
+                </div>
+
+                <div class="dbs-form-group">
+                    <label>Voraussichtliche Dauer (Datum) *</label>
+                    <input type="text" name="zeitraum" required placeholder="z.B. Heute, 24.11.2026 oder bis Mittwoch">
+                </div>
+
+                <div class="dbs-form-group">
+                    <label>Name des Erziehungsberechtigten & Telefonnummer *</label>
+                    <input type="text" name="eltern_kontakt" required placeholder="Für eventuelle Rückfragen">
+                </div>
+
+                <button type="submit" class="dbs-submit-btn">Krankmeldung absenden</button>
+            </form>
+        </div>
+    </div>
+
+    
     </body>
 </html>
+
 
 
 
