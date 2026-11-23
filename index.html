@@ -1,73 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Project</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-        <link rel="stylesheet" href="./styles/dbs11.css?v=3">
-<style>
-.header-ünten__links .sub-menu,
-.header-ünten__links .menu-link__akt {
-overflow: visible !important;
-}
-.it-parent {
-position: relative;
-}
-.it-submenu {
-display: none !important;
-position: absolute;
-right: 100%;
-top: 0;
-background-color: #1565c0;
-min-width: 220px;
-list-style: none;
-padding: 8px 0;
-margin: 0;
-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-border-radius: 4px;
-z-index: 99999;
-}
-.it-parent:hover > .it-submenu {
-display: block !important;
-}
-.it-submenu li a {
-display: block;
-padding: 10px 16px;
-color: #ffffff !important;
-text-decoration: none;
-font-size: 14px;
-white-space: nowrap;
-}
-.it-submenu li a:hover {
-background-color: rgba(255, 255, 255, 0.15);
-}
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Don-Bosco-Schule Steinfeld – Oberschule</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="./styles/dbs11.css?v=3">
 
-/* تنظیم اختصاصی برای نمایش در گوشی موبایل */
-@media (max-width: 1024px) {
-.it-submenu {
-position: static !important;
-right: auto !important;
-width: 100% !important;
-background-color: #f1f5f9 !important;
-box-shadow: none !important;
-padding: 4px 0 !important;
-border-radius: 0 !important;
-}
-.it-submenu li a {
-color: #1e293b !important;
-padding: 10px 16px 10px 32px !important;
-font-size: 14px !important;
-border-bottom: 1px solid #e2e8f0;
-}
-}
-</style>
+    <style>
+        /* --- استایل‌های قبلی منوی شما --- */
+        .header-ünten__links .sub-menu,
+        .header-ünten__links .menu-link__akt {
+            overflow: visible !important;
+        }
+        .it-parent { position: relative; }
+        .it-submenu {
+            display: none !important;
+            position: absolute;
+            right: 100%;
+            top: 0;
+            background-color: #1565c0;
+            min-width: 220px;
+            list-style: none;
+            padding: 8px 0;
+            margin: 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            border-radius: 4px;
+            z-index: 99999;
+        }
+        .it-parent:hover > .it-submenu { display: block !important; }
+        .it-submenu li a {
+            display: block;
+            padding: 10px 16px;
+            color: #ffffff !important;
+            text-decoration: none;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+        .it-submenu li a:hover { background-color: rgba(255, 255, 255, 0.15); }
 
+        @media (max-width: 1024px) {
+            .it-submenu {
+                position: static !important;
+                right: auto !important;
+                width: 100% !important;
+                background-color: #f1f5f9 !important;
+                box-shadow: none !important;
+                padding: 4px 0 !important;
+                border-radius: 0 !important;
+            }
+            .it-submenu li a {
+                color: #1e293b !important;
+                padding: 10px 16px 10px 32px !important;
+                font-size: 14px !important;
+                border-bottom: 1px solid #e2e8f0;
+            }
+        }
 
+        /* --- ۱. استایل نوار هشدار اضطراری (Schulausfall Banner) --- */
+        .emergency-banner {
+            background-color: #dc2626;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px 16px;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex; /* برای مخفی کردن در روزهای عادی، این خط را به display: none; تغییر دهید */
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            z-index: 100000;
+        }
+        .emergency-banner i { font-size: 16px; }
+        .emergency-close {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            border-radius: 4px;
+            padding: 2px 8px;
+            cursor: pointer;
+            margin-left: 12px;
+        }
 
-        
-    </head>
+        /* --- ۲. دکمه اعلام غیبت آنلاین در هدر --- */
+        .top-bar-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            background-color: #0d47a1;
+            padding: 6px 20px;
+            color: #fff;
+        }
+        .top-bar-wrapper .ganzüben-title {
+            margin: 0;
+            padding: 0;
+            background: transparent;
+            font-size: 13px;
+        }
+        .btn-krankmeldung {
+            background-color: #ef4444;
+            color: #ffffff !important;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: background 0.2s, transform 0.2s;
+            box-shadow: 0 2px 6px rgba(239, 68, 68, 0.4);
+        }
+        .btn-krankmeldung:hover {
+            background-color: #dc2626;
+            transform: translateY(-1px);
+        }
+
+        /* --- ۳. استایل پنجره بازشو (Modal) فرم غیبت --- */
+        .dbs-modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(3px);
+            z-index: 999999;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+        }
+        .dbs-modal-overlay.active { display: flex; }
+        .dbs-modal-box {
+            background: #ffffff;
+            width: 100%;
+            max-width: 480px;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+            position: relative;
+            animation: modalFadeIn 0.25s ease-out;
+        }
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .dbs-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+        }
+        .dbs-modal-header h2 {
+            margin: 0;
+            font-size: 19px;
+            color: #1e293b;
+        }
+        .dbs-modal-close {
+            background: none;
+            border: none;
+            font-size: 22px;
+            color: #64748b;
+            cursor: pointer;
+        }
+        .dbs-form-group { margin-bottom: 14px; }
+        .dbs-form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 5px;
+        }
+        .dbs-form-group input,
+        .dbs-form-group select,
+        .dbs-form-group textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        .dbs-form-group input:focus,
+        .dbs-form-group select:focus {
+            outline: none;
+            border-color: #1565c0;
+            box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.15);
+        }
+        .dbs-submit-btn {
+            width: 100%;
+            background: #1565c0;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .dbs-submit-btn:hover { background: #0d47a1; }
+    </style>
+</head>
+<body>
+
+    <!-- نوار هشدار وضعیت اضطراری (در روزهای عادی در CSS بالا display: none کنید) -->
+    <div class="emergency-banner" id="emergencyBanner">
+        <i class="fas fa-exclamation-triangle"></i>
+        <span>Hinweis: Am Montag findet der Unterricht regulär statt. Aktuelle Infos zu Witterungsbedingungen finden Sie hier.</span>
+        <button class="emergency-close" onclick="document.getElementById('emergencyBanner').style.display='none'">✕</button>
+    </div>
+
+    <header class="ganzüben">
+        <!-- نوار بالایی جدید شامل اطلاعات تماس و دکمه اعلام غیبت آنلاین -->
+        <div class="top-bar-wrapper">
+            <h3 class="ganzüben-title">Tel. 05492 - 981215 | E-Mail: dbs-steinfeld@t-online.de | Ziegelstraße 12, 49439 Steinfeld</h3>
+            <button class="btn-krankmeldung" onclick="openKrankModal()">
+                <i class="fas fa-notes-medical"></i> Kind krank melden
+            </button>
+        </div>
+
+        <!-- بقیه کدهای هدر و منوی شما دقیقاً مثل قبل اینجا قرار می‌گیرد -->
+
     
     <body>
  
@@ -574,6 +734,7 @@ Wir verwenden Cookies, um Ihnen das beste Erlebnis auf unserer Schulwebsite zu g
  
     </body>
 </html>
+
 
 
 
