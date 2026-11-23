@@ -7,7 +7,47 @@
         <title>Project</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
         <link rel="stylesheet" href="./styles/dbs11.css?v=3">
+<style>
+.header-ünten__links .sub-menu,
+.header-ünten__links .menu-link__akt {
+overflow: visible !important;
+}
+.it-parent {
+position: relative;
+}
+.it-submenu {
+display: none !important;
+position: absolute;
+right: 100%;
+top: 0;
+background-color: #1565c0;
+min-width: 220px;
+list-style: none;
+padding: 8px 0;
+margin: 0;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+border-radius: 4px;
+z-index: 99999;
+}
+.it-parent:hover > .it-submenu {
+display: block !important;
+}
+.it-submenu li a {
+display: block;
+padding: 10px 16px;
+color: #ffffff !important;
+text-decoration: none;
+font-size: 14px;
+white-space: nowrap;
+}
+.it-submenu li a:hover {
+background-color: rgba(255, 255, 255, 0.15);
+}
+</style>
+
+        
     </head>
+    
     <body>
  
    
@@ -513,6 +553,7 @@ Wir verwenden Cookies, um Ihnen das beste Erlebnis auf unserer Schulwebsite zu g
  
     </body>
 </html>
+
 
 
 
