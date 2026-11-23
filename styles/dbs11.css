@@ -1232,16 +1232,41 @@ color: #64748b;
 position: relative;
 }
 
+
+/* زیرمنوی مستقل IT-Administration */
+.it-parent {
+position: relative;
+}
+
 .it-submenu {
 display: none;
 position: absolute;
-right: 100%; /* باز شدن به سمت چپ تا از صفحه بیرون نزند */
+right: 100%;
 top: 0;
-min-width: 210px;
+background-color: #0b5ed7; /* همان آبی منو */
+min-width: 220px;
+list-style: none;
+padding: 8px 0;
+margin: 0;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+border-radius: 4px;
 z-index: 9999;
 }
 
-.it-parent:hover .it-submenu {
+.it-parent:hover > .it-submenu {
 display: block;
+}
+
+.it-submenu li a {
+display: block;
+padding: 10px 16px;
+color: #ffffff;
+text-decoration: none;
+font-size: 14px;
+white-space: nowrap;
+}
+
+.it-submenu li a:hover {
+background-color: rgba(255, 255, 255, 0.15);
 }
 
