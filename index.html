@@ -230,14 +230,16 @@
 
     
     <body>
- 
-   
-    
-        
-       
-        
-        <    <header class="ganzüben">
-        <!-- نوار بالایی جدید شامل اطلاعات تماس و دکمه اعلام غیبت آنلاین -->
+
+    <!-- نوار هشدار وضعیت اضطراری -->
+    <div class="emergency-banner" id="emergencyBanner">
+        <i class="fas fa-exclamation-triangle"></i>
+        <span>Hinweis: Am Montag findet der Unterricht regulär statt. Aktuelle Infos zu Witterungsbedingungen finden Sie hier.</span>
+        <button class="emergency-close" onclick="document.getElementById('emergencyBanner').style.display='none'">✕</button>
+    </div>
+
+    <header class="ganzüben">
+        <!-- نوار بالایی شامل اطلاعات تماس و دکمه اعلام غیبت آنلاین -->
         <div class="top-bar-wrapper">
             <h3 class="ganzüben-title">Tel. 05492 - 981215 | E-Mail: dbs-steinfeld@t-online.de | Ziegelstraße 12, 49439 Steinfeld</h3>
             <button class="btn-krankmeldung" onclick="openKrankModal()">
@@ -247,13 +249,10 @@
 
         <div class="container">
             <div class="ganzüben-bild">
-                <img src="./imag/image_123650291(3).JPG" class="ganzüben-bild__Logo2" alt="">
+                <img src="./imag/image_123650291(3).JPG" class="ganzüben-bild__Logo2" alt="Don-Bosco-Schule Steinfeld">
+            </div> 
+            <span class="header__icon" onclick="toggleMobileMenu()"><i class="fa fa-bars"></i></span>
 
-           
-                     <img src="./imag/image_123650291(3).JPG" class="ganzüben-bild__Logo2" alt="">
-        
-                </div> 
-                <span class="header__icon" onclick="toggleMobileMenu()"><i class="fa fa-bars"></i></span>
              
                
 
@@ -740,6 +739,7 @@ Wir verwenden Cookies, um Ihnen das beste Erlebnis auf unserer Schulwebsite zu g
  
     </body>
 </html>
+
 
 
 
