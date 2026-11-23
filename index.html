@@ -43,7 +43,28 @@ white-space: nowrap;
 .it-submenu li a:hover {
 background-color: rgba(255, 255, 255, 0.15);
 }
+
+/* تنظیم اختصاصی برای نمایش در گوشی موبایل */
+@media (max-width: 1024px) {
+.it-submenu {
+position: static !important;
+right: auto !important;
+width: 100% !important;
+background-color: #f1f5f9 !important;
+box-shadow: none !important;
+padding: 4px 0 !important;
+border-radius: 0 !important;
+}
+.it-submenu li a {
+color: #1e293b !important;
+padding: 10px 16px 10px 32px !important;
+font-size: 14px !important;
+border-bottom: 1px solid #e2e8f0;
+}
+}
 </style>
+
+
 
         
     </head>
@@ -553,6 +574,7 @@ Wir verwenden Cookies, um Ihnen das beste Erlebnis auf unserer Schulwebsite zu g
  
     </body>
 </html>
+
 
 
 
