@@ -1227,4 +1227,21 @@ font-size: 1.1rem;
 font-weight: 600;
 color: #64748b;
 }
+/* زیرمنوی اختصاصی IT-Administration */
+.it-parent {
+position: relative;
+}
+
+.it-submenu {
+display: none;
+position: absolute;
+right: 100%; /* باز شدن به سمت چپ تا از صفحه بیرون نزند */
+top: 0;
+min-width: 210px;
+z-index: 9999;
+}
+
+.it-parent:hover .it-submenu {
+display: block;
+}
 
