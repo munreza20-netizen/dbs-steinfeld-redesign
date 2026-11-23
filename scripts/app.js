@@ -192,3 +192,19 @@ function handleContactSubmit(event) {
   }, 6000);
 }
 
+function openKrankModal() {
+    document.getElementById('krankModal').classList.add('active');
+}
+
+function closeKrankModal() {
+    document.getElementById('krankModal').classList.remove('active');
+}
+
+window.addEventListener('click', function(e) {
+    const modal = document.getElementById('krankModal');
+    if (e.target === modal) {
+        closeKrankModal();
+    }
+});
+
+
