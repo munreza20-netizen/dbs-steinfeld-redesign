@@ -662,32 +662,37 @@
 
       <!-- ستون سمت راست: فرم ارسال پیام -->
       <div class="contact-form-box">
-        <form id="school-contact-form" onsubmit="handleContactSubmit(event)">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="sender-name">Ihr Name *</label>
-              <input type="text" id="sender-name" name="name" required placeholder="Vor- und Nachname">
-            </div>
-            <div class="form-group">
-              <label for="sender-email">Ihre E-Mail-Adresse *</label>
-              <input type="email" id="sender-email" name="email" required placeholder="beispiel@mail.de">
-            </div>
-          </div>
+    <form id="school-contact-form" action="https://web3forms.com" method="POST">
+        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+        <input type="hidden" name="subject" value="Neue Kontaktanfrage - DBS Steinfeld">
+        <input type="hidden" name="from_name" value="DBS Steinfeld Website">
 
-          <div class="form-group">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="sender-name">Ihr Name *</label>
+                <input type="text" id="sender-name" name="name" required placeholder="Vor- und Nachname">
+            </div>
+            <div class="form-group">
+                <label for="sender-email">Ihre E-Mail-Adresse *</label>
+                <input type="email" id="sender-email" name="email" required placeholder="beispiel@mail.de">
+            </div>
+        </div>
+
+        <div class="form-group">
             <label for="sender-subject">Anliegen / Betreff *</label>
-            <select id="sender-subject" name="subject" required>
-              <option value="Allgemeine Anfrage">Allgemeine Anfrage</option>
-              <option value="Schulanmeldung">Schulanmeldung</option>
-              <option value="Krankmeldung / Beurlaubung">Krankmeldung / Beurlaubung</option>
-              <option value="Terminvereinbarung">Terminvereinbarung</option>
+            <select id="sender-subject" name="betreff" required>
+                <option value="Allgemeine Anfrage">Allgemeine Anfrage</option>
+                <option value="Schulanmeldung">Schulanmeldung</option>
+                <option value="Krankmeldung / Beurlaubung">Krankmeldung / Beurlaubung</option>
+                <option value="Terminvereinbarung">Terminvereinbarung</option>
             </select>
-          </div>
+        </div>
 
-          <div class="form-group">
+        <div class="form-group">
             <label for="sender-message">Ihre Nachricht *</label>
             <textarea id="sender-message" name="message" rows="5" required placeholder="Schreiben Sie hier Ihre Nachricht an uns..."></textarea>
-          </div>
+        </div>
+
 
           <!-- تیک اجباری قوانین حریم خصوصی آلمان (DSGVO) -->
           <div class="form-checkbox">
@@ -847,6 +852,7 @@ Wir verwenden Cookies, um Ihnen das beste Erlebnis auf unserer Schulwebsite zu g
     
     </body>
 </html>
+
 
 
 
