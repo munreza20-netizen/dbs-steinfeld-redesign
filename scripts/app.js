@@ -318,12 +318,19 @@ submitBtn.disabled = true;
 submitBtn.innerHTML = "Wird gesendet...";
 resultDiv.innerHTML = "";
 
+// تبدیل اطلاعات فرم به JSON استاندارد برای جلوگیری از خطای اتصال
 const formData = new FormData(form);
+const object = Object.fromEntries(formData);
+const json = JSON.stringify(object);
 
 try {
 const response = await fetch("https://web3forms.com", {
 method: "POST",
-body: formData
+headers: {
+"Content-Type": "application/json",
+"Accept": "application/json"
+},
+body: json
 });
 const data = await response.json();
 
@@ -337,15 +344,17 @@ closeKrankModal();
 }, 3500);
 } else {
 resultDiv.style.color = "#721c24";
-resultDiv.innerHTML = "❌ Fehler beim Senden. Bitte versuchen Sie es erneut.";
+resultDiv.innerHTML = "❌ Fehler: " + (data.message || "Bitte versuchen Sie es erneut.");
 }
 } catch (error) {
 resultDiv.style.color = "#721c24";
-resultDiv.innerHTML = "❌ Verbindungsfehler. Bitte prüfen Sie Ihre Internetverbindung.";
+resultDiv.innerHTML = "❌ Verbindungsfehler (Bitte AdBlocker/VPN prüfen oder erneut versuchen).";
 } finally {
 submitBtn.disabled = false;
 submitBtn.innerHTML = originalText;
 }
 }
+
+
 
 
