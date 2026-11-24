@@ -234,9 +234,12 @@ modal.classList.remove('active');
 }
 }
 
+const KOLLEGIUM_CODE = "DBS2026"; // رمز عبور همکاران (قابل تغییر به دلخواه شما)
+
 function switchKrankTab(type) {
 const formSchueler = document.getElementById('krankmeldung-form');
 const formKollegium = document.getElementById('krankmeldung-kollegium-form');
+const lockBox = document.getElementById('kollegium-lock-box');
 const tabSchueler = document.getElementById('tab-krank-schueler');
 const tabKollegium = document.getElementById('tab-krank-kollegium');
 
@@ -244,16 +247,45 @@ if (!formSchueler || !formKollegium) return;
 
 if (type === 'kollegium') {
 formSchueler.style.display = 'none';
-formKollegium.style.display = 'block';
 if (tabKollegium) tabKollegium.classList.add('active');
 if (tabSchueler) tabSchueler.classList.remove('active');
+
+// بررسی اینکه آیا همکار قبلاً رمز را وارد کرده است یا خیر
+const isUnlocked = localStorage.getItem('dbs_kollegium_unlocked') === 'true';
+if (isUnlocked) {
+if (lockBox) lockBox.style.display = 'none';
+formKollegium.style.display = 'block';
 } else {
-formSchueler.style.display = 'block';
 formKollegium.style.display = 'none';
+if (lockBox) lockBox.style.display = 'block';
+}
+} else {
+if (lockBox) lockBox.style.display = 'none';
+formKollegium.style.display = 'none';
+formSchueler.style.display = 'block';
 if (tabSchueler) tabSchueler.classList.add('active');
 if (tabKollegium) tabKollegium.classList.remove('active');
 }
 }
+
+function checkKollegiumPassword() {
+const input = document.getElementById('kollegium-pass-input');
+const errorMsg = document.getElementById('kollegium-pass-error');
+const lockBox = document.getElementById('kollegium-lock-box');
+const formKollegium = document.getElementById('krankmeldung-kollegium-form');
+
+if (input.value.trim() === KOLLEGIUM_CODE) {
+localStorage.setItem('dbs_kollegium_unlocked', 'true'); // ذخیره رمز در مرورگر همکار
+errorMsg.style.display = 'none';
+lockBox.style.display = 'none';
+formKollegium.style.display = 'block';
+input.value = '';
+} else {
+errorMsg.style.display = 'block';
+}
+}
+
+
 
 // بستن منو یا مودال با کلیک بیرون از کادر
 window.addEventListener('click', function(e) {
