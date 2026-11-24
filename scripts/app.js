@@ -216,14 +216,13 @@ const dropdown = document.getElementById('krankDropdown');
 if (dropdown) {
 dropdown.classList.remove('active');
 }
-openKrankModal(type);
+openKrankModal();
 }
 
-function openKrankModal(type) {
+function openKrankModal() {
 const modal = document.getElementById('krankModal');
 if (modal) {
 modal.classList.add('active');
-switchKrankTab(type || 'schueler');
 }
 }
 
@@ -233,68 +232,7 @@ if (modal) {
 modal.classList.remove('active');
 }
 }
-const KOLLEGIUM_CODE = "DBS2026";
 
-function switchKrankTab(type) {
-const formSchueler = document.getElementById('krankmeldung-form');
-const formKollegium = document.getElementById('krankmeldung-kollegium-form');
-const lockBox = document.getElementById('kollegium-lock-box');
-const tabSchueler = document.getElementById('tab-krank-schueler');
-const tabKollegium = document.getElementById('tab-krank-kollegium');
-
-if (!formSchueler || !formKollegium) return;
-
-if (type === 'kollegium') {
-formSchueler.style.display = 'none';
-if (tabKollegium) tabKollegium.classList.add('active');
-if (tabSchueler) tabSchueler.classList.remove('active');
-
-// مقایسه رمز ذخیره شده در مرورگر با رمز فعلی سایت
-const savedCode = localStorage.getItem('dbs_kollegium_saved_code');
-if (savedCode === KOLLEGIUM_CODE) {
-if (lockBox) lockBox.style.display = 'none';
-formKollegium.style.display = 'block';
-} else {
-formKollegium.style.display = 'none';
-if (lockBox) lockBox.style.display = 'block';
-}
-} else {
-if (lockBox) lockBox.style.display = 'none';
-formKollegium.style.display = 'none';
-formSchueler.style.display = 'block';
-if (tabSchueler) tabSchueler.classList.add('active');
-if (tabKollegium) tabKollegium.classList.remove('active');
-}
-}
-
-function checkKollegiumPassword() {
-const input = document.getElementById('kollegium-pass-input');
-const errorMsg = document.getElementById('kollegium-pass-error');
-const lockBox = document.getElementById('kollegium-lock-box');
-const formKollegium = document.getElementById('krankmeldung-kollegium-form');
-
-if (input.value.trim() === KOLLEGIUM_CODE) {
-localStorage.setItem('dbs_kollegium_saved_code', KOLLEGIUM_CODE);
-errorMsg.style.display = 'none';
-lockBox.style.display = 'none';
-formKollegium.style.display = 'block';
-input.value = '';
-} else {
-errorMsg.style.display = 'block';
-}
-}
-
-// قفل کردن مجدد فرم (مناسب برای کامپیوترهای مشترک دفتر معلمان)
-function lockKollegiumForm() {
-localStorage.removeItem('dbs_kollegium_saved_code');
-switchKrankTab('kollegium');
-}
-
-
-
-
-
-// بستن منو یا مودال با کلیک بیرون از کادر
 window.addEventListener('click', function(e) {
 const modal = document.getElementById('krankModal');
 if (e.target === modal) {
@@ -306,7 +244,13 @@ dropdown.classList.remove('active');
 }
 });
 
-// ارسال بدون رفرش فرم‌های بیماری به ایمیل از طریق Web3Forms
+document.addEventListener("keydown", function(event) {
+if (event.key === "Escape") {
+closeKrankModal();
+}
+});
+
+// ارسال بدون رفرش فرم بیماری دانش‌آموزان به ایمیل از طریق Web3Forms
 async function submitKrankForm(event, formId, resultId) {
 event.preventDefault();
 const form = document.getElementById(formId);
@@ -347,5 +291,6 @@ submitBtn.disabled = false;
 submitBtn.innerHTML = originalText;
 }
 }
+
 
 
