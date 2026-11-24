@@ -216,28 +216,42 @@ z-index: 100001;
 display: block;
 }
 
-.krank-dropdown-menu a {
+.top-bar-wrapper {
+position: relative;
+z-index: 100002;
+}
+
+.krank-item-btn {
+width: 100%;
+border: none;
 display: flex;
 align-items: center;
 gap: 8px;
 background-color: #ffffff;
 color: #1e293b !important;
-padding: 10px 14px;
-text-decoration: none;
-font-size: 13px;
+padding: 12px 14px;
+text-align: left;
+font-size: 14px;
 font-weight: 600;
 border-bottom: 1px solid #e2e8f0;
+cursor: pointer;
 box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-.krank-dropdown-menu a:first-child {
+.krank-item-btn:first-child {
 border-radius: 8px 8px 0 0;
 }
 
-.krank-dropdown-menu a:last-child {
+.krank-item-btn:last-child {
 border-radius: 0 0 8px 8px;
 border-bottom: none;
 }
+
+.krank-item-btn:hover, .krank-item-btn:active {
+background-color: #f1f5f9;
+color: #1565c0 !important;
+}
+
 
 .krank-dropdown-menu a:hover {
 background-color: #f8fafc;
@@ -281,13 +295,17 @@ left: 0;
 <button class="btn-krankmeldung">
 <i class="fas fa-notes-medical"></i> Krankmeldung <i class="fas fa-chevron-down" style="font-size: 11px;"></i>
 </button>
-<div class="krank-dropdown-menu">
-<a href="#" onclick="event.preventDefault(); openKrankModal('schueler')">
+<div class="krank-dropdown">
+<button type="button" class="btn-krankmeldung" id="krankDropdownBtn">
+<i class="fas fa-notes-medical"></i> Krankmeldung <i class="fas fa-chevron-down" style="font-size: 11px;"></i>
+</button>
+<div class="krank-dropdown-menu" id="krankDropdownMenu">
+<button type="button" class="krank-item-btn" data-type="schueler">
 <i class="fas fa-user-graduate" style="color:#ef4444;"></i> Für Schüler / Eltern
-</a>
-<a href="#" onclick="event.preventDefault(); openKrankModal('kollegium')">
+</button>
+<button type="button" class="krank-item-btn" data-type="kollegium">
 <i class="fas fa-chalkboard-teacher" style="color:#f59e0b;"></i> Für Kollegium
-</a>
+</button>
 </div>
 </div>
 
