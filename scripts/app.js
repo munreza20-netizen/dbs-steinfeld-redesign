@@ -291,4 +291,47 @@ submitBtn.disabled = false;
 submitBtn.innerHTML = originalText;
 }
 }
+Tomas Kiel <kiltomas760@gmail.com>
+	
+15:43 (vor 3 Minuten)
+	
+	
+an mich
+/* باز شدن منو با کلیک/لمس در موبایل */
+.krank-dropdown.active .krank-dropdown-menu {
+display: block;
+}
+
+/* تنظیم جایگاه منو در صفحات کوچک موبایل */
+@media (max-width: 600px) {
+.krank-dropdown-menu {
+right: auto;
+left: 0;
+}
+}
+
+
+
+// باز و بسته کردن منوی کشویی بیماری با لمس در موبایل
+document.addEventListener("DOMContentLoaded", function () {
+const krankBtn = document.querySelector(".krank-dropdown .btn-krankmeldung");
+const krankDropdown = document.querySelector(".krank-dropdown");
+
+if (krankBtn && krankDropdown) {
+krankBtn.addEventListener("click", function (e) {
+e.preventDefault();
+e.stopPropagation();
+krankDropdown.classList.toggle("active");
+});
+
+// بستن منو هنگام کلیک بیرون از آن
+document.addEventListener("click", function (e) {
+if (!krankDropdown.contains(e.target)) {
+krankDropdown.classList.remove("active");
+}
+});
+}
+});
+
+
 
