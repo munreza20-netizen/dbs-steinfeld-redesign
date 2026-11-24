@@ -200,7 +200,25 @@ feedback.style.display = "none";
 }
 }
 
-// ۸. مودال اعلام غیبت / بیماری
+function toggleKrankDropdown(event) {
+if (event) {
+event.preventDefault();
+event.stopPropagation();
+}
+const dropdown = document.getElementById('krankDropdown');
+if (dropdown) {
+dropdown.classList.toggle('active');
+}
+}
+
+function selectKrankType(type) {
+const dropdown = document.getElementById('krankDropdown');
+if (dropdown) {
+dropdown.classList.remove('active');
+}
+openKrankModal(type);
+}
+
 function openKrankModal(type) {
 const modal = document.getElementById('krankModal');
 if (modal) {
@@ -227,26 +245,25 @@ if (!formSchueler || !formKollegium) return;
 if (type === 'kollegium') {
 formSchueler.style.display = 'none';
 formKollegium.style.display = 'block';
-tabKollegium.classList.add('active');
-tabSchueler.classList.remove('active');
+if (tabKollegium) tabKollegium.classList.add('active');
+if (tabSchueler) tabSchueler.classList.remove('active');
 } else {
 formSchueler.style.display = 'block';
 formKollegium.style.display = 'none';
-tabSchueler.classList.add('active');
-tabKollegium.classList.remove('active');
+if (tabSchueler) tabSchueler.classList.add('active');
+if (tabKollegium) tabKollegium.classList.remove('active');
 }
 }
 
+// بستن منو یا مودال با کلیک بیرون از کادر
 window.addEventListener('click', function(e) {
 const modal = document.getElementById('krankModal');
 if (e.target === modal) {
 closeKrankModal();
 }
-});
-
-document.addEventListener("keydown", function(event) {
-if (event.key === "Escape") {
-closeKrankModal();
+const dropdown = document.getElementById('krankDropdown');
+if (dropdown && !dropdown.contains(e.target)) {
+dropdown.classList.remove('active');
 }
 });
 
@@ -265,7 +282,7 @@ resultDiv.innerHTML = "";
 const formData = new FormData(form);
 
 try {
-const response = await fetch("https://api.web3forms.com/submit", {
+const response = await fetch("https://web3forms.com", {
 method: "POST",
 body: formData
 });
@@ -291,60 +308,5 @@ submitBtn.disabled = false;
 submitBtn.innerHTML = originalText;
 }
 }
-Tomas Kiel <kiltomas760@gmail.com>
-	
-15:43 (vor 3 Minuten)
-	
-	
-an mich
-/* باز شدن منو با کلیک/لمس در موبایل */
-.krank-dropdown.active .krank-dropdown-menu {
-display: block;
-}
-
-/* تنظیم جایگاه منو در صفحات کوچک موبایل */
-@media (max-width: 600px) {
-.krank-dropdown-menu {
-right: auto;
-left: 0;
-}
-}
-
-
-
-// باز و بسته کردن منوی کشویی بیماری با لمس در موبایل
-document.addEventListener("DOMContentLoaded", function () {
-const krankBtn = document.getElementById("krankDropdownBtn");
-const krankDropdown = document.querySelector(".krank-dropdown");
-const itemBtns = document.querySelectorAll(".krank-item-btn");
-
-if (krankBtn && krankDropdown) {
-krankBtn.addEventListener("click", function (e) {
-e.preventDefault();
-e.stopPropagation();
-krankDropdown.classList.toggle("active");
-});
-
-itemBtns.forEach(function (btn) {
-btn.addEventListener("click", function (e) {
-e.preventDefault();
-e.stopPropagation();
-const type = btn.getAttribute("data-type");
-krankDropdown.classList.remove("active");
-openKrankModal(type);
-});
-});
-
-document.addEventListener("click", function (e) {
-if (!krankDropdown.contains(e.target)) {
-krankDropdown.classList.remove("active");
-}
-});
-}
-});
-
-
-
-
 
 
