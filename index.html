@@ -197,6 +197,57 @@ color: #ffffff;
             cursor: pointer;
         }
         .dbs-submit-btn:hover { background: #0d47a1; }
+        .krank-dropdown {
+position: relative;
+display: inline-block;
+}
+
+.krank-dropdown-menu {
+display: none;
+position: absolute;
+right: 0;
+top: 100%;
+padding-top: 6px;
+min-width: 210px;
+z-index: 100001;
+}
+
+.krank-dropdown:hover .krank-dropdown-menu {
+display: block;
+}
+
+.krank-dropdown-menu a {
+display: flex;
+align-items: center;
+gap: 8px;
+background-color: #ffffff;
+color: #1e293b !important;
+padding: 10px 14px;
+text-decoration: none;
+font-size: 13px;
+font-weight: 600;
+border-bottom: 1px solid #e2e8f0;
+box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.krank-dropdown-menu a:first-child {
+border-radius: 8px 8px 0 0;
+}
+
+.krank-dropdown-menu a:last-child {
+border-radius: 0 0 8px 8px;
+border-bottom: none;
+}
+
+.krank-dropdown-menu a:hover {
+background-color: #f8fafc;
+color: #1565c0 !important;
+}
+
+/* مخفی کردن تب‌های داخل مودال برای جلوگیری از تکرار */
+.krank-tabs {
+display: none !important;
+}
     </style>
 </head>
 <body>
@@ -211,12 +262,21 @@ color: #ffffff;
         <div class="top-bar-wrapper">
             <h3 class="ganzüben-title">Tel. 05492 - 981215 | E-Mail: dbs-steinfeld@t-online.de | Ziegelstraße 12, 49439 Steinfeld</h3>
             <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-<button class="btn-krankmeldung" onclick="openKrankModal('schueler')">
-<i class="fas fa-notes-medical"></i> Kind krank melden
+<div class="krank-dropdown">
+<button class="btn-krankmeldung">
+<i class="fas fa-notes-medical"></i> Krankmeldung <i class="fas fa-chevron-down" style="font-size: 11px;"></i>
 </button>
-<button class="btn-krankmeldung" style="background-color: #f59e0b; color: #1e293b !important;" onclick="openKrankModal('kollegium')">
-<i class="fas fa-chalkboard-teacher"></i> Kollegium krank melden
-</button>
+<div class="krank-dropdown-menu">
+<a href="#" onclick="event.preventDefault(); openKrankModal('schueler')">
+<i class="fas fa-user-graduate" style="color:#ef4444;"></i> Für Schüler / Eltern
+</a>
+<a href="#" onclick="event.preventDefault(); openKrankModal('kollegium')">
+<i class="fas fa-chalkboard-teacher" style="color:#f59e0b;"></i> Für Kollegium
+</a>
+</div>
+</div>
+
+
 </div>
         </div>
 
