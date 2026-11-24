@@ -200,6 +200,9 @@ feedback.style.display = "none";
 }
 }
 
+// ۸. منو و مودال اعلام غیبت / بیماری (دو حالته با قفل همکاران)
+const KOLLEGIUM_CODE = "DBS2026"; // رمز عبور همکاران
+
 function toggleKrankDropdown(event) {
 if (event) {
 event.preventDefault();
@@ -216,13 +219,14 @@ const dropdown = document.getElementById('krankDropdown');
 if (dropdown) {
 dropdown.classList.remove('active');
 }
-openKrankModal();
+openKrankModal(type);
 }
 
-function openKrankModal() {
+function openKrankModal(type) {
 const modal = document.getElementById('krankModal');
 if (modal) {
 modal.classList.add('active');
+switchKrankTab(type || 'schueler');
 }
 }
 
@@ -231,6 +235,59 @@ const modal = document.getElementById('krankModal');
 if (modal) {
 modal.classList.remove('active');
 }
+}
+
+function switchKrankTab(type) {
+const formSchueler = document.getElementById('krankmeldung-form');
+const formKollegium = document.getElementById('krankmeldung-kollegium-form');
+const lockBox = document.getElementById('kollegium-lock-box');
+const tabSchueler = document.getElementById('tab-krank-schueler');
+const tabKollegium = document.getElementById('tab-krank-kollegium');
+
+if (!formSchueler || !formKollegium) return;
+
+if (type === 'kollegium') {
+formSchueler.style.display = 'none';
+if (tabKollegium) tabKollegium.classList.add('active');
+if (tabSchueler) tabSchueler.classList.remove('active');
+
+const savedCode = localStorage.getItem('dbs_kollegium_saved_code');
+if (savedCode === KOLLEGIUM_CODE) {
+if (lockBox) lockBox.style.display = 'none';
+formKollegium.style.display = 'block';
+} else {
+formKollegium.style.display = 'none';
+if (lockBox) lockBox.style.display = 'block';
+}
+} else {
+if (lockBox) lockBox.style.display = 'none';
+formKollegium.style.display = 'none';
+formSchueler.style.display = 'block';
+if (tabSchueler) tabSchueler.classList.add('active');
+if (tabKollegium) tabKollegium.classList.remove('active');
+}
+}
+
+function checkKollegiumPassword() {
+const input = document.getElementById('kollegium-pass-input');
+const errorMsg = document.getElementById('kollegium-pass-error');
+const lockBox = document.getElementById('kollegium-lock-box');
+const formKollegium = document.getElementById('krankmeldung-kollegium-form');
+
+if (input.value.trim() === KOLLEGIUM_CODE) {
+localStorage.setItem('dbs_kollegium_saved_code', KOLLEGIUM_CODE);
+errorMsg.style.display = 'none';
+lockBox.style.display = 'none';
+formKollegium.style.display = 'block';
+input.value = '';
+} else {
+errorMsg.style.display = 'block';
+}
+}
+
+function lockKollegiumForm() {
+localStorage.removeItem('dbs_kollegium_saved_code');
+switchKrankTab('kollegium');
 }
 
 window.addEventListener('click', function(e) {
@@ -250,7 +307,6 @@ closeKrankModal();
 }
 });
 
-// ارسال بدون رفرش فرم بیماری دانش‌آموزان به ایمیل از طریق Web3Forms
 async function submitKrankForm(event, formId, resultId) {
 event.preventDefault();
 const form = document.getElementById(formId);
@@ -291,6 +347,5 @@ submitBtn.disabled = false;
 submitBtn.innerHTML = originalText;
 }
 }
-
 
 
