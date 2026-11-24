@@ -921,6 +921,18 @@ left: 0;
 </div>
 
 <!-- فرم ۱: دانش‌آموزان -->
+  <div id="kollegium-lock-box" style="display: none; text-align: center; padding: 10px 0;">
+<p style="font-size: 13px; color: #475569; margin-bottom: 12px;">
+<i class="fas fa-lock" style="color: #f59e0b;"></i> Geschützter Bereich: Bitte geben Sie den Zugangscode für das Kollegium ein.
+</p>
+<div class="dbs-form-group">
+<input type="password" id="kollegium-pass-input" placeholder="Zugangscode eingeben..." style="text-align: center;">
+</div>
+<button type="button" class="dbs-submit-btn" onclick="checkKollegiumPassword()">Freischalten</button>
+<div id="kollegium-pass-error" style="color: #dc2626; font-size: 13px; font-weight: 600; margin-top: 8px; display: none;">
+❌ Falscher Code! Bitte versuchen Sie es erneut.
+</div>
+</div>  
 <form id="krankmeldung-form" onsubmit="submitKrankForm(event, 'krankmeldung-form', 'krank-result')">
 <input type="hidden" name="access_key" value="93778e54-2ced-4b44-8aff-4e187f4cb15e">
 <input type="hidden" name="subject" value="Krankmeldung Schüler - DBS Steinfeld">
