@@ -201,12 +201,40 @@ feedback.style.display = "none";
 }
 
 // ۸. مودال اعلام غیبت / بیماری
-function openKrankModal() {
-document.getElementById('krankModal').classList.add('active');
+function openKrankModal(type) {
+const modal = document.getElementById('krankModal');
+if (modal) {
+modal.classList.add('active');
+switchKrankTab(type || 'schueler');
+}
 }
 
 function closeKrankModal() {
-document.getElementById('krankModal').classList.remove('active');
+const modal = document.getElementById('krankModal');
+if (modal) {
+modal.classList.remove('active');
+}
+}
+
+function switchKrankTab(type) {
+const formSchueler = document.getElementById('krankmeldung-form');
+const formKollegium = document.getElementById('krankmeldung-kollegium-form');
+const tabSchueler = document.getElementById('tab-krank-schueler');
+const tabKollegium = document.getElementById('tab-krank-kollegium');
+
+if (!formSchueler || !formKollegium) return;
+
+if (type === 'kollegium') {
+formSchueler.style.display = 'none';
+formKollegium.style.display = 'block';
+tabKollegium.classList.add('active');
+tabSchueler.classList.remove('active');
+} else {
+formSchueler.style.display = 'block';
+formKollegium.style.display = 'none';
+tabSchueler.classList.add('active');
+tabKollegium.classList.remove('active');
+}
 }
 
 window.addEventListener('click', function(e) {
@@ -215,4 +243,52 @@ if (e.target === modal) {
 closeKrankModal();
 }
 });
+
+document.addEventListener("keydown", function(event) {
+if (event.key === "Escape") {
+closeKrankModal();
+}
+});
+
+// ارسال بدون رفرش فرم‌های بیماری به ایمیل از طریق Web3Forms
+async function submitKrankForm(event, formId, resultId) {
+event.preventDefault();
+const form = document.getElementById(formId);
+const resultDiv = document.getElementById(resultId);
+const submitBtn = form.querySelector("button[type='submit']");
+
+const originalText = submitBtn.innerHTML;
+submitBtn.disabled = true;
+submitBtn.innerHTML = "Wird gesendet...";
+resultDiv.innerHTML = "";
+
+const formData = new FormData(form);
+
+try {
+const response = await fetch("https://api.web3forms.com/submit", {
+method: "POST",
+body: formData
+});
+const data = await response.json();
+
+if (data.success) {
+resultDiv.style.color = "#155724";
+resultDiv.innerHTML = "✅ Vielen Dank! Die Krankmeldung wurde erfolgreich an das Sekretariat gesendet.";
+form.reset();
+setTimeout(() => {
+resultDiv.innerHTML = "";
+closeKrankModal();
+}, 3500);
+} else {
+resultDiv.style.color = "#721c24";
+resultDiv.innerHTML = "❌ Fehler beim Senden. Bitte versuchen Sie es erneut.";
+}
+} catch (error) {
+resultDiv.style.color = "#721c24";
+resultDiv.innerHTML = "❌ Verbindungsfehler. Bitte prüfen Sie Ihre Internetverbindung.";
+} finally {
+submitBtn.disabled = false;
+submitBtn.innerHTML = originalText;
+}
+}
 
