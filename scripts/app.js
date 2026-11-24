@@ -314,8 +314,9 @@ left: 0;
 
 // باز و بسته کردن منوی کشویی بیماری با لمس در موبایل
 document.addEventListener("DOMContentLoaded", function () {
-const krankBtn = document.querySelector(".krank-dropdown .btn-krankmeldung");
+const krankBtn = document.getElementById("krankDropdownBtn");
 const krankDropdown = document.querySelector(".krank-dropdown");
+const itemBtns = document.querySelectorAll(".krank-item-btn");
 
 if (krankBtn && krankDropdown) {
 krankBtn.addEventListener("click", function (e) {
@@ -324,7 +325,16 @@ e.stopPropagation();
 krankDropdown.classList.toggle("active");
 });
 
-// بستن منو هنگام کلیک بیرون از آن
+itemBtns.forEach(function (btn) {
+btn.addEventListener("click", function (e) {
+e.preventDefault();
+e.stopPropagation();
+const type = btn.getAttribute("data-type");
+krankDropdown.classList.remove("active");
+openKrankModal(type);
+});
+});
+
 document.addEventListener("click", function (e) {
 if (!krankDropdown.contains(e.target)) {
 krankDropdown.classList.remove("active");
@@ -332,6 +342,9 @@ krankDropdown.classList.remove("active");
 });
 }
 });
+
+
+
 
 
 
