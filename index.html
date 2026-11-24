@@ -926,7 +926,7 @@ left: 0;
 <i class="fas fa-lock" style="color: #f59e0b;"></i> Geschützter Bereich: Bitte geben Sie den Zugangscode für das Kollegium ein.
 </p>
 <div class="dbs-form-group">
-<input type="password" id="kollegium-pass-input" placeholder="Zugangscode eingeben..." style="text-align: center;">
+<input type="password" id="kollegium-pass-input" onkeyup="if(event.key==='Enter') checkKollegiumPassword()" placeholder="Zugangscode eingeben..." style="text-align: center;">
 </div>
 <button type="button" class="dbs-submit-btn" onclick="checkKollegiumPassword()">Freischalten</button>
 <div id="kollegium-pass-error" style="color: #dc2626; font-size: 13px; font-weight: 600; margin-top: 8px; display: none;">
