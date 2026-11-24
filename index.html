@@ -185,9 +185,14 @@
     <header class="ganzüben">
         <div class="top-bar-wrapper">
             <h3 class="ganzüben-title">Tel. 05492 - 981215 | E-Mail: dbs-steinfeld@t-online.de | Ziegelstraße 12, 49439 Steinfeld</h3>
-            <button class="btn-krankmeldung" onclick="openKrankModal()">
-                <i class="fas fa-notes-medical"></i> Kind krank melden
-            </button>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+<button class="btn-krankmeldung" onclick="openKrankModal('schueler')">
+<i class="fas fa-notes-medical"></i> Kind krank melden
+</button>
+<button class="btn-krankmeldung" style="background-color: #f59e0b; color: #1e293b !important;" onclick="openKrankModal('kollegium')">
+<i class="fas fa-chalkboard-teacher"></i> Kollegium krank melden
+</button>
+</div>
         </div>
 
         <div class="container">
