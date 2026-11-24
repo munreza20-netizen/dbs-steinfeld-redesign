@@ -233,8 +233,7 @@ if (modal) {
 modal.classList.remove('active');
 }
 }
-
-const KOLLEGIUM_CODE = "DBS2026"; // رمز عبور همکاران (قابل تغییر به دلخواه شما)
+const KOLLEGIUM_CODE = "DBS2026";
 
 function switchKrankTab(type) {
 const formSchueler = document.getElementById('krankmeldung-form');
@@ -250,9 +249,9 @@ formSchueler.style.display = 'none';
 if (tabKollegium) tabKollegium.classList.add('active');
 if (tabSchueler) tabSchueler.classList.remove('active');
 
-// بررسی اینکه آیا همکار قبلاً رمز را وارد کرده است یا خیر
-const isUnlocked = localStorage.getItem('dbs_kollegium_unlocked') === 'true';
-if (isUnlocked) {
+// مقایسه رمز ذخیره شده در مرورگر با رمز فعلی سایت
+const savedCode = localStorage.getItem('dbs_kollegium_saved_code');
+if (savedCode === KOLLEGIUM_CODE) {
 if (lockBox) lockBox.style.display = 'none';
 formKollegium.style.display = 'block';
 } else {
@@ -275,7 +274,7 @@ const lockBox = document.getElementById('kollegium-lock-box');
 const formKollegium = document.getElementById('krankmeldung-kollegium-form');
 
 if (input.value.trim() === KOLLEGIUM_CODE) {
-localStorage.setItem('dbs_kollegium_unlocked', 'true'); // ذخیره رمز در مرورگر همکار
+localStorage.setItem('dbs_kollegium_saved_code', KOLLEGIUM_CODE);
 errorMsg.style.display = 'none';
 lockBox.style.display = 'none';
 formKollegium.style.display = 'block';
@@ -284,6 +283,14 @@ input.value = '';
 errorMsg.style.display = 'block';
 }
 }
+
+// قفل کردن مجدد فرم (مناسب برای کامپیوترهای مشترک دفتر معلمان)
+function lockKollegiumForm() {
+localStorage.removeItem('dbs_kollegium_saved_code');
+switchKrankTab('kollegium');
+}
+
+
 
 
 
