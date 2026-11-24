@@ -288,28 +288,22 @@ left: 0;
     </div>
 
     <header class="ganzüben">
-        <div class="top-bar-wrapper">
-            <h3 class="ganzüben-title">Tel. 05492 - 981215 | E-Mail: dbs-steinfeld@t-online.de | Ziegelstraße 12, 49439 Steinfeld</h3>
-            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-<div class="krank-dropdown">
-<button class="btn-krankmeldung">
+div class="top-bar-wrapper">
+<h3 class="ganzüben-title">Tel. 05492 - 981215 | E-Mail: dbs-steinfeld@t-online.de | Ziegelstraße 12, 49439 Steinfeld</h3>
+
+<div class="krank-dropdown" id="krankDropdown">
+<button type="button" class="btn-krankmeldung" onclick="toggleKrankDropdown(event)">
 <i class="fas fa-notes-medical"></i> Krankmeldung <i class="fas fa-chevron-down" style="font-size: 11px;"></i>
 </button>
-<div class="krank-dropdown">
-<button type="button" class="btn-krankmeldung" id="krankDropdownBtn">
-<i class="fas fa-notes-medical"></i> Krankmeldung <i class="fas fa-chevron-down" style="font-size: 11px;"></i>
-</button>
-<div class="krank-dropdown-menu" id="krankDropdownMenu">
-<button type="button" class="krank-item-btn" data-type="schueler">
+<div class="krank-dropdown-menu">
+<button type="button" class="krank-item-btn" onclick="selectKrankType('schueler')">
 <i class="fas fa-user-graduate" style="color:#ef4444;"></i> Für Schüler / Eltern
 </button>
-<button type="button" class="krank-item-btn" data-type="kollegium">
+<button type="button" class="krank-item-btn" onclick="selectKrankType('kollegium')">
 <i class="fas fa-chalkboard-teacher" style="color:#f59e0b;"></i> Für Kollegium
 </button>
 </div>
 </div>
-
-
 </div>
         </div>
 
