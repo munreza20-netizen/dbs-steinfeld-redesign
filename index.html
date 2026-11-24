@@ -297,9 +297,9 @@ left: 0;
 <button type="button" class="krank-item-btn" onclick="selectKrankType('schueler')">
 <i class="fas fa-user-graduate" style="color:#ef4444;"></i> Für Schüler / Eltern
 </button>
-<a href="https://dbs-iserv.de" target="_blank" rel="noopener noreferrer" class="krank-item-btn" style="text-decoration: none; box-sizing: border-box;">
-<i class="fas fa-chalkboard-teacher" style="color:#1565c0;"></i> Für Kollegium (IServ)
-</a>
+<button type="button" class="krank-item-btn" onclick="selectKrankType('kollegium')">
+<i class="fas fa-chalkboard-teacher" style="color:#f59e0b;"></i> Für Kollegium
+</button>
 </div>
 </div>
 </div>
@@ -910,29 +910,17 @@ left: 0;
 <button class="dbs-modal-close" onclick="closeKrankModal()">&times;</button>
 </div>
 
-<!-- دکمه‌های تغییر حالت بین دانش‌آموز و همکار -->
+<!-- تب‌های انتخاب برای نسخه موبایل -->
 <div class="krank-tabs">
-<button type="button" id="tab-krank-schueler" class="krank-tab-btn active" onclick="openKrankModal()">
+<button type="button" id="tab-krank-schueler" class="krank-tab-btn active" onclick="switchKrankTab('schueler')">
 <i class="fas fa-user-graduate"></i> Schüler / Eltern
 </button>
-<a href="https://dbs-iserv.de" target="_blank" rel="noopener noreferrer" class="krank-tab-btn" style="text-decoration: none; text-align: center;">
-<i class="fas fa-chalkboard-teacher"></i> Kollegium (IServ)
-</a>
+<button type="button" id="tab-krank-kollegium" class="krank-tab-btn" onclick="switchKrankTab('kollegium')">
+<i class="fas fa-chalkboard-teacher"></i> Kollegium
+</button>
 </div>
 
 <!-- فرم ۱: دانش‌آموزان -->
-  <div id="kollegium-lock-box" style="display: none; text-align: center; padding: 10px 0;">
-<p style="font-size: 13px; color: #475569; margin-bottom: 12px;">
-<i class="fas fa-lock" style="color: #f59e0b;"></i> Geschützter Bereich: Bitte geben Sie den Zugangscode für das Kollegium ein.
-</p>
-<div class="dbs-form-group">
-<input type="password" id="kollegium-pass-input" onkeyup="if(event.key==='Enter') checkKollegiumPassword()" placeholder="Zugangscode eingeben..." style="text-align: center;">
-</div>
-<button type="button" class="dbs-submit-btn" onclick="checkKollegiumPassword()">Freischalten</button>
-<div id="kollegium-pass-error" style="color: #dc2626; font-size: 13px; font-weight: 600; margin-top: 8px; display: none;">
-❌ Falscher Code! Bitte versuchen Sie es erneut.
-</div>
-</div>  
 <form id="krankmeldung-form" onsubmit="submitKrankForm(event, 'krankmeldung-form', 'krank-result')">
 <input type="hidden" name="access_key" value="93778e54-2ced-4b44-8aff-4e187f4cb15e">
 <input type="hidden" name="subject" value="Krankmeldung Schüler - DBS Steinfeld">
@@ -973,6 +961,20 @@ Bitte melden Sie Ihr Kind bis spätestens <strong>07:45 Uhr</strong> krank. Dies
 <div id="krank-result" style="margin-top: 12px; font-size: 14px; font-weight: 600; text-align: center;"></div>
 </form>
 
+<!-- بخش قفل رمز عبور ویژه همکاران -->
+<div id="kollegium-lock-box" style="display: none; text-align: center; padding: 10px 0;">
+<p style="font-size: 13px; color: #475569; margin-bottom: 12px;">
+<i class="fas fa-lock" style="color: #f59e0b;"></i> Geschützter Bereich: Bitte geben Sie den Zugangscode für das Kollegium ein.
+</p>
+<div class="dbs-form-group">
+<input type="password" id="kollegium-pass-input" onkeyup="if(event.key==='Enter') checkKollegiumPassword()" placeholder="Zugangscode eingeben..." style="text-align: center;">
+</div>
+<button type="button" class="dbs-submit-btn" onclick="checkKollegiumPassword()">Freischalten</button>
+<div id="kollegium-pass-error" style="color: #dc2626; font-size: 13px; font-weight: 600; margin-top: 8px; display: none;">
+❌ Falscher Code! Bitte versuchen Sie es erneut.
+</div>
+</div>
+
 <!-- فرم ۲: همکاران -->
 <form id="krankmeldung-kollegium-form" onsubmit="submitKrankForm(event, 'krankmeldung-kollegium-form', 'krank-result-kollegium')" style="display: none;">
 <input type="hidden" name="access_key" value="93778e54-2ced-4b44-8aff-4e187f4cb15e">
@@ -999,7 +1001,8 @@ Interne Krankmeldung für Lehrkräfte und Mitarbeiter an die Schulleitung / das 
 
 <button type="submit" class="dbs-submit-btn">Krankmeldung absenden</button>
 <div id="krank-result-kollegium" style="margin-top: 12px; font-size: 14px; font-weight: 600; text-align: center;"></div>
-    <div style="text-align: right; margin-top: 10px;">
+
+<div style="text-align: right; margin-top: 10px;">
 <button type="button" onclick="lockKollegiumForm()" style="background: none; border: none; color: #64748b; font-size: 12px; cursor: pointer; text-decoration: underline;">
 <i class="fas fa-lock"></i> Bereich wieder sperren
 </button>
