@@ -23,7 +23,7 @@ searchOverlay.style.display = "none";
 
 // ۲. اسلایدر عکس‌ها به همراه پخش خودکار
 const images = [
-"https://dbs-steinfeld.de/wp-content/uploads/elementor/thumbs/DJI_0005-ouvknx50ub4s1o15ibbca674kwyiwkg605v8899qts.jpg"
+" ./imag/schule-aussen.jpg"
 ];
 
 let currentIndex = 0;
