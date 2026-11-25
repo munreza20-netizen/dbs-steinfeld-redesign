@@ -171,7 +171,7 @@ submitBtn.innerHTML = "Wird gesendet...";
 const formData = new FormData(form);
 
 try {
-const response = await fetch("https://web3forms.com", {
+const response = await fetch("https://api.web3forms.com/submit", {
 
 method: "POST",
 body: formData
