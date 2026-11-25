@@ -170,7 +170,7 @@ margin-bottom: 4px;
 
 <div class="step-label">Schritt 1: Eltern direkt per Nachricht informieren</div>
 <button type="button" class="btn-whatsapp" onclick="sendWhatsApp()">📲 Nachricht per WhatsApp an Eltern senden</button>
-<a id="smsLink" href="#" class="btn-sms" onclick="prepareSMS()">💬 Als SMS senden</a>
+<a id="smsLink" href="#" class="btn-sms" onclick="return prepareSMS()">💬 Als SMS senden</a>
 
 <div class="step-label">Schritt 2: Im Sekretariat melden</div>
 <button type="submit" class="btn-submit">✅ Meldung an das Sekretariat senden</button>
@@ -210,7 +210,7 @@ return;
 }
 const waPhone = formatPhoneForWA(rawPhone);
 const text = encodeURIComponent(getMessageText());
-window.open(`https://wa.me{waPhone}?text=${text}`, '_blank');
+window.location.href = `https://wa.me{waPhone}?text=${text}`;
 }
 
 function prepareSMS() {
@@ -227,4 +227,6 @@ return true;
 
 </body>
 </html>
+
+
 
