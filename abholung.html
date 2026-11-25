@@ -248,7 +248,7 @@ const msg = `Guten Tag, hier ist das Sekretariat der Don-Bosco-Schule Steinfeld.
 const encodedMsg = encodeURIComponent(msg);
 const waPhone = formatPhoneForWA(rawPhone);
 
-const waUrl = "https://whatsapp.com" + waPhone + "&text=" + encodedMsg;
+const waUrl = "https://api.whatsapp.com/send?phone=" + waPhone + "&text=" + encodedMsg;
 
 document.getElementById('finalWhatsAppLink').href = waUrl;
 document.getElementById('finalSmsLink').href = "sms:" + rawPhone + "?body=" + encodedMsg;
