@@ -356,28 +356,30 @@ submitBtn.innerHTML = originalText;
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  // ۱. هایلایت خودکار غذای امروز در جدول سلف (Mensa)
+  // ۱. پیدا کردن روز جاری هفته به آلمانی
   const tage = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
   const heuteName = tage[new Date().getDay()];
 
-  // جستجو در میان ردیف‌ها یا باکس‌های برنامه غذایی
-  const mensaItems = document.querySelectorAll("tr, .mensa-item, .menu-row"); 
-  mensaItems.forEach((item) => {
-    if (item.textContent.includes(heuteName)) {
-      item.style.backgroundColor = "#eef6ff"; // رنگ پس‌زمینه ملایم برای روز جاری
-      item.style.borderLeft = "4px solid #0056b3"; // خط رنگی کناری برای تاکید بیشتر
-      item.style.fontWeight = "600";
+  // ۲. بررسی ردیف‌های جدول برنامه غذایی شما (.mensa-table)
+  const mensaZeilen = document.querySelectorAll(".mensa-table tr");
+  
+  mensaZeilen.forEach((zeile) => {
+    const tagZelle = zeile.querySelector(".mensa-day");
+    if (tagZelle && tagZelle.textContent.trim() === heuteName) {
+      // تغییر رنگ پس‌زمینه کل ردیف امروز
+      zeile.style.backgroundColor = "#eef6ff";
+      zeile.style.borderLeft = "4px solid #0056b3";
+      
+      // اضافه کردن برچسب "Heute" کنار نام روز
+      tagZelle.innerHTML += ' <span style="background:#0056b3; color:#fff; font-size:0.75em; padding:2px 6px; border-radius:4px; margin-left:5px;">Heute</span>';
     }
   });
 
-  // ۲. قرار دادن تاریخ امروز به صورت پیش‌فرض در فیلدهای تاریخ فرم غیبت
-  const heuteDatum = new Date().toISOString().split("T")[0];
-  const dateInputs = document.querySelectorAll('input[type="date"]');
-  dateInputs.forEach((input) => {
+  // ۳. قرار دادن تاریخ امروز به صورت پیش‌فرض در فرم غیبت (در صورت وجود input[type="date"])
+  const heuteDatum = new Date().toISOString().split("T");
+  document.querySelectorAll('input[type="date"]').forEach((input) => {
     if (!input.value) {
       input.value = heuteDatum;
     }
   });
 });
-
-
