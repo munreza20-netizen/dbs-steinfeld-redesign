@@ -4,8 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Abholung bei Erkrankung – Don-Bosco-Schule Steinfeld</title>
-<link rel="stylesheet" href="./styles/dbs11.css">
-<style>  
+<style>
 body {
 background-color: #f1f5f9;
 font-family: system-ui, -apple-system, sans-serif;
@@ -183,13 +182,16 @@ margin-bottom: 4px;
 
 <script>
 function formatPhoneForWA(rawPhone) {
-let cleaned = rawPhone.replace(/[^0-9+]/g, '');
-if (cleaned.startsWith('00')) {
-cleaned = cleaned.substring(2);
+let cleaned = rawPhone.replace(/\D/g, '');
+if (cleaned.startsWith('0049')) {
+cleaned = '49' + cleaned.substring(4);
 } else if (cleaned.startsWith('0')) {
 cleaned = '49' + cleaned.substring(1);
-} else if (cleaned.startsWith('+')) {
-cleaned = cleaned.substring(1);
+} else if (!cleaned.startsWith('49')) {
+cleaned = '49' + cleaned;
+}
+if (cleaned.startsWith('490')) {
+cleaned = '49' + cleaned.substring(3);
 }
 return cleaned;
 }
@@ -210,8 +212,7 @@ return;
 }
 const waPhone = formatPhoneForWA(rawPhone);
 const text = encodeURIComponent(getMessageText());
-
-window.location.href = `https://whatsapp.com{waPhone}&text=${text}`;  
+window.location.href = `https://whatsapp.com{waPhone}&text=${text}`;
 }
 
 function prepareSMS() {
@@ -228,6 +229,4 @@ return true;
 
 </body>
 </html>
-
-
 
