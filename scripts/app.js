@@ -319,3 +319,8 @@ window.addEventListener("load", function () {
     }
   });
 });
+window.addEventListener("pageshow", function(event) {
+document.querySelectorAll("form").forEach(function(form) {
+form.reset();
+});
+});
