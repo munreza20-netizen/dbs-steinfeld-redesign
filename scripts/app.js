@@ -355,6 +355,29 @@ submitBtn.innerHTML = originalText;
 }
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+  // ۱. هایلایت خودکار غذای امروز در جدول سلف (Mensa)
+  const tage = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
+  const heuteName = tage[new Date().getDay()];
 
+  // جستجو در میان ردیف‌ها یا باکس‌های برنامه غذایی
+  const mensaItems = document.querySelectorAll("tr, .mensa-item, .menu-row"); 
+  mensaItems.forEach((item) => {
+    if (item.textContent.includes(heuteName)) {
+      item.style.backgroundColor = "#eef6ff"; // رنگ پس‌زمینه ملایم برای روز جاری
+      item.style.borderLeft = "4px solid #0056b3"; // خط رنگی کناری برای تاکید بیشتر
+      item.style.fontWeight = "600";
+    }
+  });
+
+  // ۲. قرار دادن تاریخ امروز به صورت پیش‌فرض در فیلدهای تاریخ فرم غیبت
+  const heuteDatum = new Date().toISOString().split("T")[0];
+  const dateInputs = document.querySelectorAll('input[type="date"]');
+  dateInputs.forEach((input) => {
+    if (!input.value) {
+      input.value = heuteDatum;
+    }
+  });
+});
 
 
