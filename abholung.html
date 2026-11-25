@@ -66,37 +66,37 @@ outline: none;
 border-color: #2563eb;
 background: #ffffff;
 }
-.btn-whatsapp {
+.btn-primary {
 display: block;
 width: 100%;
 padding: 15px;
 font-size: 16px;
 font-weight: 700;
 color: #ffffff;
-background-color: #16a34a;
+background-color: #1d4ed8;
 border: none;
 border-radius: 10px;
 text-align: center;
+cursor: pointer;
+margin-top: 12px;
+}
+.btn-primary:disabled {
+background-color: #93c5fd;
+}
+.btn-whatsapp {
+display: block;
+width: 100%;
+padding: 16px;
+font-size: 17px;
+font-weight: 700;
+color: #ffffff;
+background-color: #16a34a;
+border-radius: 10px;
+text-align: center;
+text-decoration: none;
 box-sizing: border-box;
 margin-top: 12px;
-cursor: pointer;
-box-shadow: 0 4px 12px rgba(22, 163, 74, 0.25);
-}
-.btn-whatsapp:disabled {
-background-color: #86efac;
-cursor: not-allowed;
-}
-.btn-submit {
-width: 100%;
-padding: 12px;
-font-size: 14px;
-font-weight: 600;
-color: #1d4ed8;
-background-color: #eff6ff;
-border: 1px solid #bfdbfe;
-border-radius: 10px;
-cursor: pointer;
-margin-top: 8px;
+box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
 }
 .btn-sms {
 display: block;
@@ -110,7 +110,26 @@ border-radius: 10px;
 text-align: center;
 text-decoration: none;
 box-sizing: border-box;
-margin-top: 8px;
+margin-top: 10px;
+}
+.success-box {
+display: none;
+background: #f0fdf4;
+border: 2px solid #86efac;
+border-radius: 12px;
+padding: 20px;
+text-align: center;
+margin-top: 10px;
+}
+.success-box h2 {
+color: #15803d;
+font-size: 19px;
+margin: 0 0 8px 0;
+}
+.success-box p {
+color: #166534;
+font-size: 14px;
+margin: 0 0 16px 0;
 }
 .info-box {
 background: #fef2f2;
@@ -122,15 +141,6 @@ font-size: 13px;
 margin-top: 18px;
 line-height: 1.5;
 }
-.step-label {
-font-size: 12px;
-text-transform: uppercase;
-letter-spacing: 0.5px;
-color: #64748b;
-font-weight: 700;
-margin-top: 18px;
-margin-bottom: 4px;
-}
 </style>
 </head>
 <body>
@@ -138,12 +148,12 @@ margin-bottom: 4px;
 <div class="abholung-card">
 <span class="school-badge">Don-Bosco-Schule Steinfeld</span>
 <h1>Abholung bei Erkrankung</h1>
-<p class="subtitle">Bitte fülle dieses Formular aus. Mit einem Klick wird das Sekretariat per E-Mail informiert und WhatsApp für deine Eltern geöffnet.</p>
+<p class="subtitle">Bitte fülle dieses Formular aus, damit das Sekretariat informiert wird und deine Eltern benachrichtigt werden können.</p>
 
-<form id="abholungForm" action="https://web3forms.com" method="POST">
+<!-- مرحله ۱: فرم ارسال ایمیل به دبیرخانه -->
+<form id="abholungForm" onsubmit="submitFormStep1(event)">
 <input type="hidden" name="access_key" value="93778e54-2ced-4b44-8aff-4e187f4cb15e">
 <input type="hidden" name="subject" value="DRINGEND: Schüler-Abholung (Erkrankung) – DBS Steinfeld">
-<input type="hidden" name="redirect" value="https://github.io">
 
 <div class="form-group">
 <label for="studentName">Vor- und Nachname *</label>
@@ -171,13 +181,16 @@ margin-bottom: 4px;
 </select>
 </div>
 
- <div class="step-label">Empfohlen: Alles mit einem Klick erledigen</div>
-<a id="waMainBtn" href="#" class="btn-whatsapp" onclick="return handleOneClickAction()">📲 Sekretariat melden & WhatsApp senden</a>
-
-<div class="step-label">Alternative ohne WhatsApp</div>
-<a id="smsLink" href="#" class="btn-sms" onclick="return prepareSMS()">💬 Nur als SMS an Eltern senden</a>
-<button type="submit" class="btn-submit">✉️ Nur per E-Mail an Sekretariat senden</button>
+<button type="submit" id="submitBtn" class="btn-primary">1️⃣ Weiter & Sekretariat informieren</button>
 </form>
+
+<!-- مرحله ۲: نمایش خودکار دکمه واقعی واتساپ پس از ارسال ایمیل -->
+<div id="step2Success" class="success-box">
+<h2>✅ Sekretariat wurde informiert!</h2>
+<p>Bitte tippe jetzt auf den grünen Button, um deine Eltern per WhatsApp zu benachrichtigen:</p>
+<a id="finalWhatsAppLink" href="#" class="btn-whatsapp">📲 Jetzt WhatsApp an Eltern öffnen</a>
+<a id="finalSmsLink" href="#" class="btn-sms">💬 Alternativ als SMS senden</a>
+</div>
 
 <div class="info-box">
 <strong>Wichtiger Hinweis:</strong> Bitte warte im Sekretariat bzw. Sanitätsraum, bis deine Eltern dich persönlich abholen. Du darfst das Schulgelände nicht alleine verlassen.
@@ -200,53 +213,42 @@ cleaned = '49' + cleaned.substring(3);
 return cleaned;
 }
 
-function getMessageText() {
-const name = document.getElementById('studentName').value.trim() || 'Ihr Kind';
-const klasse = document.getElementById('studentClass').value.trim();
-const grund = document.getElementById('symptom').value;
-const classText = klasse ? ` (Klasse ${klasse})` : '';
-return `Guten Tag, hier ist das Sekretariat der Don-Bosco-Schule Steinfeld. Ihr Kind ${name}${classText} fühlt sich in der Schule nicht wohl (${grund}) und müsste bitte im Sekretariat abgeholt werden.`;
+async function submitFormStep1(event) {
+event.preventDefault();
+
+const btn = document.getElementById('submitBtn');
+btn.disabled = true;
+btn.innerText = '⏳ Wird an Sekretariat gesendet...';
+
+const form = document.getElementById('abholungForm');
+const formData = new FormData(form);
+
+try {
+await fetch("https://web3forms.com", {
+method: "POST",
+body: formData
+});
+} catch (err) {
+console.log(err);
 }
 
-function handleOneClickAction() {
+// ساخت متن و لینک واقعی واتساپ و SMS
 const name = document.getElementById('studentName').value.trim();
 const klasse = document.getElementById('studentClass').value.trim();
 const rawPhone = document.getElementById('parentPhone').value.trim();
+const grund = document.getElementById('symptom').value;
 
-if (!name || !klasse || !rawPhone) {
-alert('Bitte fülle zuerst Name, Klasse und Telefonnummer der Eltern aus.');
-return false;
-}
-
-// ۱. ارسال ایمیل به دبیرخانه در پس‌زمینه
-const form = document.getElementById('abholungForm');
-const formData = new FormData(form);
-navigator.sendBeacon("https://web3forms.com", formData);
-
-// ۲. تنظیم لینک مستقیم واتساپ روی خود دکمه (تضمینی در آیفون)
+const msg = `Guten Tag, hier ist das Sekretariat der Don-Bosco-Schule Steinfeld. Ihr Kind ${name} (Klasse ${klasse}) fühlt sich in der Schule nicht wohl (${grund}) und müsste bitte im Sekretariat abgeholt werden.`;
+const encodedMsg = encodeURIComponent(msg);
 const waPhone = formatPhoneForWA(rawPhone);
-const text = encodeURIComponent(getMessageText());
-document.getElementById('waMainBtn').href = "https://whatsapp.com" + waPhone + "&text=" + text;
 
-return true;
+document.getElementById('finalWhatsAppLink').href = "https://whatsapp.com" + waPhone + "&text=" + encodedMsg;
+document.getElementById('finalSmsLink').href = "sms:" + rawPhone + "?body=" + encodedMsg;
+
+// مخفی کردن فرم و نمایش دکمه سبز واتساپ
+form.style.display = 'none';
+document.getElementById('step2Success').style.display = 'block';
 }
-
-function prepareSMS() {
-const rawPhone = document.getElementById('parentPhone').value.trim();
-if (!rawPhone) {
-alert('Bitte zuerst die Telefonnummer der Eltern eingeben.');
-return false;
-}
-const text = encodeURIComponent(getMessageText());
-document.getElementById('smsLink').href = `sms:${rawPhone}?body=${text}`;
-return true;
-}
-</script>
-
-</body>
-</html>
-
-
 </script>
 
 </body>
