@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Abholung bei Erkrankung – Don-Bosco-Schule Steinfeld</title>
+<link rel="stylesheet" href="./styles/dbs11.css">
+<style>
+body {
+background-color: #f1f5f9;
+font-family: system-ui, -apple-system, sans-serif;
+margin: 0;
+padding: 16px;
+color: #1e293b;
+}
+.abholung-card {
+max-width: 480px;
+margin: 15px auto;
+background: #ffffff;
+padding: 24px;
+border-radius: 16px;
+box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+border-top: 6px solid #dc2626;
+}
+.school-badge {
+display: inline-block;
+background: #eff6ff;
+color: #1d4ed8;
+font-size: 13px;
+font-weight: 700;
+padding: 5px 12px;
+border-radius: 999px;
+margin-bottom: 10px;
+}
+h1 {
+font-size: 22px;
+margin: 0 0 8px 0;
+color: #0f172a;
+}
+.subtitle {
+font-size: 14px;
+color: #475569;
+margin-bottom: 20px;
+line-height: 1.5;
+}
+.form-group {
+margin-bottom: 16px;
+}
+label {
+display: block;
+font-weight: 600;
+font-size: 14px;
+margin-bottom: 6px;
+color: #334155;
+}
+input, select {
+width: 100%;
+padding: 12px;
+font-size: 16px;
+border: 1.5px solid #cbd5e1;
+border-radius: 10px;
+box-sizing: border-box;
+background: #f8fafc;
+}
+input:focus, select:focus {
+outline: none;
+border-color: #2563eb;
+background: #ffffff;
+}
+.btn-submit {
+width: 100%;
+padding: 14px;
+font-size: 16px;
+font-weight: 700;
+color: #ffffff;
+background-color: #1d4ed8;
+border: none;
+border-radius: 10px;
+cursor: pointer;
+margin-top: 8px;
+}
+.btn-whatsapp {
+display: block;
+width: 100%;
+padding: 14px;
+font-size: 16px;
+font-weight: 700;
+color: #ffffff;
+background-color: #16a34a;
+border: none;
+border-radius: 10px;
+text-align: center;
+text-decoration: none;
+box-sizing: border-box;
+margin-top: 10px;
+cursor: pointer;
+}
+.btn-sms {
+display: block;
+width: 100%;
+padding: 12px;
+font-size: 15px;
+font-weight: 600;
+color: #0f172a;
+background-color: #e2e8f0;
+border-radius: 10px;
+text-align: center;
+text-decoration: none;
+box-sizing: border-box;
+margin-top: 8px;
+}
+.info-box {
+background: #fef2f2;
+border: 1px solid #fecaca;
+color: #991b1b;
+padding: 12px;
+border-radius: 10px;
+font-size: 13px;
+margin-top: 18px;
+line-height: 1.5;
+}
+.step-label {
+font-size: 12px;
+text-transform: uppercase;
+letter-spacing: 0.5px;
+color: #64748b;
+font-weight: 700;
+margin-top: 18px;
+margin-bottom: 4px;
+}
+</style>
+</head>
+<body>
+
+<div class="abholung-card">
+<span class="school-badge">Don-Bosco-Schule Steinfeld</span>
+<h1>Abholung bei Erkrankung</h1>
+<p class="subtitle">Bitte fülle dieses Formular aus, damit das Sekretariat informiert wird und deine Eltern benachrichtigt werden können.</p>
+
+<form id="abholungForm" action="https://web3forms.com" method="POST">
+<input type="hidden" name="access_key" value="93778e54-2ced-4b44-8aff-4e187f4cb15e">
+<input type="hidden" name="subject" value="DRINGEND: Schüler-Abholung (Erkrankung) – DBS Steinfeld">
+<input type="hidden" name="redirect" value="https://github.io">
+
+<div class="form-group">
+<label for="studentName">Vor- und Nachname *</label>
+<input type="text" id="studentName" name="Schülername" placeholder="z. B. Max Mustermann" required>
+</div>
+
+<div class="form-group">
+<label for="studentClass">Klasse *</label>
+<input type="text" id="studentClass" name="Klasse" placeholder="z. B. 7a" required>
+</div>
+
+<div class="form-group">
+<label for="parentPhone">Telefonnummer der Eltern *</label>
+<input type="tel" id="parentPhone" name="Telefonnummer_Eltern" placeholder="z. B. 0171 1234567" required>
+</div>
+
+<div class="form-group">
+<label for="symptom">Beschwerden *</label>
+<select id="symptom" name="Grund" required>
+<option value="Kopfschmerzen">Kopfschmerzen</option>
+<option value="Bauchschmerzen / Übelkeit">Bauchschmerzen / Übelkeit</option>
+<option value="Fieber / Schüttelfrost">Fieber / Schüttelfrost</option>
+<option value="Verletzung / Schmerzen">Verletzung / Schmerzen</option>
+<option value="Sonstiges Unwohlsein">Sonstiges Unwohlsein</option>
+</select>
+</div>
+
+<div class="step-label">Schritt 1: Eltern direkt per Nachricht informieren</div>
+<button type="button" class="btn-whatsapp" onclick="sendWhatsApp()">📲 Nachricht per WhatsApp an Eltern senden</button>
+<a id="smsLink" href="#" class="btn-sms" onclick="prepareSMS()">💬 Als SMS senden</a>
+
+<div class="step-label">Schritt 2: Im Sekretariat melden</div>
+<button type="submit" class="btn-submit">✅ Meldung an das Sekretariat senden</button>
+</form>
+
+<div class="info-box">
+<strong>Wichtiger Hinweis:</strong> Bitte warte im Sekretariat bzw. Sanitätsraum, bis deine Eltern dich persönlich abholen. Du darfst das Schulgelände nicht alleine verlassen.
+</div>
+</div>
+
+<script>
+function formatPhoneForWA(rawPhone) {
+let cleaned = rawPhone.replace(/[^0-9+]/g, '');
+if (cleaned.startsWith('00')) {
+cleaned = cleaned.substring(2);
+} else if (cleaned.startsWith('0')) {
+cleaned = '49' + cleaned.substring(1);
+} else if (cleaned.startsWith('+')) {
+cleaned = cleaned.substring(1);
+}
+return cleaned;
+}
+
+function getMessageText() {
+const name = document.getElementById('studentName').value.trim() || 'Ihr Kind';
+const klasse = document.getElementById('studentClass').value.trim();
+const grund = document.getElementById('symptom').value;
+const classText = klasse ? ` (Klasse ${klasse})` : '';
+return `Guten Tag, hier ist das Sekretariat der Don-Bosco-Schule Steinfeld. Ihr Kind ${name}${classText} fühlt sich in der Schule nicht wohl (${grund}) und müsste bitte im Sekretariat abgeholt werden.`;
+}
+
+function sendWhatsApp() {
+const rawPhone = document.getElementById('parentPhone').value.trim();
+if (!rawPhone) {
+alert('Bitte zuerst die Telefonnummer der Eltern eingeben.');
+return;
+}
+const waPhone = formatPhoneForWA(rawPhone);
+const text = encodeURIComponent(getMessageText());
+window.open(`https://wa.me{waPhone}?text=${text}`, '_blank');
+}
+
+function prepareSMS() {
+const rawPhone = document.getElementById('parentPhone').value.trim();
+if (!rawPhone) {
+alert('Bitte zuerst die Telefonnummer der Eltern eingeben.');
+return false;
+}
+const text = encodeURIComponent(getMessageText());
+document.getElementById('smsLink').href = `sms:${rawPhone}?body=${text}`;
+return true;
+}
+</script>
+
+</body>
+</html>
+
