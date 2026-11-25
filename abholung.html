@@ -208,7 +208,7 @@ const classText = klasse ? ` (Klasse ${klasse})` : '';
 return `Guten Tag, hier ist das Sekretariat der Don-Bosco-Schule Steinfeld. Ihr Kind ${name}${classText} fühlt sich in der Schule nicht wohl (${grund}) und müsste bitte im Sekretariat abgeholt werden.`;
 }
 
-async function sendBothEmailAndWhatsApp() {
+function sendBothEmailAndWhatsApp() {
 const name = document.getElementById('studentName').value.trim();
 const klasse = document.getElementById('studentClass').value.trim();
 const rawPhone = document.getElementById('parentPhone').value.trim();
@@ -218,32 +218,22 @@ alert('Bitte fülle zuerst Name, Klasse und Telefonnummer der Eltern aus.');
 return;
 }
 
-const btn = document.getElementById('waMainBtn');
-btn.disabled = true;
-btn.innerText = '⏳ Wird an Sekretariat gesendet...';
-
-// ۱. ارسال خودکار ایمیل به دبیرخانه در پس‌زمینه
+// ۱. ارسال فوری ایمیل در پس‌زمینه بدون معطل کردن آیفون (با keepalive تا هنگام خروج از صفحه هم ارسال کامل شود)
 const form = document.getElementById('abholungForm');
 const formData = new FormData(form);
-
-try {
-await fetch("https://web3forms.com", {
+fetch("https://web3forms.com", {
 method: "POST",
-body: formData
-});
-} catch (e) {
-console.log("Email background send error:", e);
-}
+body: formData,
+keepalive: true
+}).catch(() => {});
 
-// ۲. باز کردن واتساپ بلافاصله پس از ارسال ایمیل
+// ۲. باز کردن فوری واتساپ (بدون مسدود شدن توسط سافاری آیفون)
 const waPhone = formatPhoneForWA(rawPhone);
 const text = encodeURIComponent(getMessageText());
-
-btn.disabled = false;
-btn.innerText = '📲 Sekretariat melden & WhatsApp senden';
-
 window.location.href = "https://whatsapp.com" + waPhone + "&text=" + text;
 }
+
+
 
 function prepareSMS() {
 const rawPhone = document.getElementById('parentPhone').value.trim();
