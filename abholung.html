@@ -196,7 +196,6 @@ line-height: 1.5;
 <strong>Wichtiger Hinweis:</strong> Bitte warte im Sekretariat bzw. Sanitätsraum, bis deine Eltern dich persönlich abholen. Du darfst das Schulgelände nicht alleine verlassen.
 </div>
 </div>
-
 <script>
 function formatPhoneForWA(rawPhone) {
 let cleaned = rawPhone.replace(/\D/g, '');
@@ -223,16 +222,23 @@ btn.innerText = '⏳ Wird an Sekretariat gesendet...';
 const form = document.getElementById('abholungForm');
 const formData = new FormData(form);
 
+// ساخت آدرس ایمیل به صورت تکه تکه تا در کپی پیست خراب نشود
+const mailUrl = "https://" + "://web3forms.com" + "/submit";
+
 try {
-await fetch("https://web3forms.com", {
+const res = await fetch(mailUrl, {
 method: "POST",
 body: formData
 });
+const result = await res.json();
+if (!result.success) {
+alert("Fehler beim E-Mail-Versand: " + (result.message || "Unbekannter Fehler"));
+}
 } catch (err) {
-console.log(err);
+alert("Netzwerkfehler beim Senden der E-Mail.");
 }
 
-// ساخت متن و لینک واقعی واتساپ و SMS
+// ساخت متن و لینک واقعی واتساپ به صورت تکه تکه تا در کپی پیست خراب نشود
 const name = document.getElementById('studentName').value.trim();
 const klasse = document.getElementById('studentClass').value.trim();
 const rawPhone = document.getElementById('parentPhone').value.trim();
@@ -242,7 +248,9 @@ const msg = `Guten Tag, hier ist das Sekretariat der Don-Bosco-Schule Steinfeld.
 const encodedMsg = encodeURIComponent(msg);
 const waPhone = formatPhoneForWA(rawPhone);
 
-document.getElementById('finalWhatsAppLink').href = "https://whatsapp.com" + waPhone + "&text=" + encodedMsg;
+const waUrl = "https://" + "://whatsapp.com" + "/send?phone=" + waPhone + "&text=" + encodedMsg;
+
+document.getElementById('finalWhatsAppLink').href = waUrl;
 document.getElementById('finalSmsLink').href = "sms:" + rawPhone + "?body=" + encodedMsg;
 
 // مخفی کردن فرم و نمایش دکمه سبز واتساپ
@@ -250,6 +258,9 @@ form.style.display = 'none';
 document.getElementById('step2Success').style.display = 'block';
 }
 </script>
+
+
+
 
 </body>
 </html>
