@@ -23,7 +23,7 @@ searchOverlay.style.display = "none";
 
 // ۲. اسلایدر عکس‌ها به همراه پخش خودکار
 const images = [
-" ./imag/schule-aussen.jpg"
+" ./imag/schule-aussen.JPG"
 ];
 
 let currentIndex = 0;
