@@ -1024,7 +1024,7 @@ window.addEventListener("load", function () {
   });
 
   // ۲. پر کردن خودکار تاریخ امروز در کادر تاریخ فرم غیبت
-  const tag = String(jetzt.getDate()).padStart(2, '0');
+  const tag = String(jetzt.getDate()).padStart(2, '0'); 
   const monat = String(jetzt.getMonth() + 1).padStart(2, '0');
   const jahr = jetzt.getFullYear();
   const deutschesDatum = "Heute, " + tag + "." + monat + "." + jahr;
