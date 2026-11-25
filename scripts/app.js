@@ -269,117 +269,52 @@ if (tabKollegium) tabKollegium.classList.remove('active');
 }
 
 function checkKollegiumPassword() {
-const input = document.getElementById('kollegium-pass-input');
-const errorMsg = document.getElementById('kollegium-pass-error');
-const lockBox = document.getElementById('kollegium-lock-box');
-const formKollegium = document.getElementById('krankmeldung-kollegium-form');
+  const input = document.getElementById('kollegium-pass-input');
+  const errorMsg = document.getElementById('kollegium-pass-error');
+  const lockBox = document.getElementById('kollegium-lock-box');
+  const formKollegium = document.getElementById('krankmeldung-kollegium-form');
 
-if (input.value.trim() === KOLLEGIUM_CODE) {
-localStorage.setItem('dbs_kollegium_saved_code', KOLLEGIUM_CODE);
-errorMsg.style.display = 'none';
-lockBox.style.display = 'none';
-formKollegium.style.display = 'block';
-input.value = '';
-} else {
-errorMsg.style.display = 'block';
-}
+  if (input && input.value === KOLLEGIUM_CODE) {
+    localStorage.setItem('dbs_kollegium_saved_code', KOLLEGIUM_CODE);
+    if (errorMsg) errorMsg.style.display = 'none';
+    if (lockBox) lockBox.style.display = 'none';
+    if (formKollegium) formKollegium.style.display = 'block';
+  } else {
+    if (errorMsg) errorMsg.style.display = 'block';
+  }
 }
 
 function lockKollegiumForm() {
-localStorage.removeItem('dbs_kollegium_saved_code');
-switchKrankTab('kollegium');
+  localStorage.removeItem('dbs_kollegium_saved_code');
+  switchKrankTab('kollegium');
 }
 
-window.addEventListener('click', function(e) {
-const modal = document.getElementById('krankModal');
-if (e.target === modal) {
-closeKrankModal();
-}
-const dropdown = document.getElementById('krankDropdown');
-if (dropdown && !dropdown.contains(e.target)) {
-dropdown.classList.remove('active');
-}
-});
+// ۹. هایلایت خودکار غذای امروز و تاریخ خودکار در فرم غیبت
+window.addEventListener("load", function () {
+  const jetzt = new Date();
 
-document.addEventListener("keydown", function(event) {
-if (event.key === "Escape") {
-closeKrankModal();
-}
-});
-
-async function submitKrankForm(event, formId, resultId) {
-event.preventDefault();
-const form = document.getElementById(formId);
-const resultDiv = document.getElementById(resultId);
-const submitBtn = form.querySelector("button[type='submit']");
-
-const originalText = submitBtn.innerHTML;
-submitBtn.disabled = true;
-submitBtn.innerHTML = "Wird gesendet...";
-resultDiv.innerHTML = "";
-
-// تبدیل اطلاعات فرم به JSON استاندارد برای جلوگیری از خطای اتصال
-const formData = new FormData(form);
-const object = Object.fromEntries(formData);
-const json = JSON.stringify(object);
-
-try {
-const response = await fetch("https://web3forms.com", {
-method: "POST",
-headers: {
-"Content-Type": "application/json",
-"Accept": "application/json"
-},
-body: json
-});
-const data = await response.json();
-
-if (data.success) {
-resultDiv.style.color = "#155724";
-resultDiv.innerHTML = "✅ Vielen Dank! Die Krankmeldung wurde erfolgreich an das Sekretariat gesendet.";
-form.reset();
-setTimeout(() => {
-resultDiv.innerHTML = "";
-closeKrankModal();
-}, 3500);
-} else {
-resultDiv.style.color = "#721c24";
-resultDiv.innerHTML = "❌ Fehler: " + (data.message || "Bitte versuchen Sie es erneut.");
-}
-} catch (error) {
-resultDiv.style.color = "#721c24";
-resultDiv.innerHTML = "❌ Verbindungsfehler (Bitte AdBlocker/VPN prüfen oder erneut versuchen).";
-} finally {
-submitBtn.disabled = false;
-submitBtn.innerHTML = originalText;
-}
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-  // ۱. پیدا کردن روز جاری هفته به آلمانی
+  // الف) هایلایت غذای امروز در جدول Mensa
   const tage = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
-  const heuteName = tage[new Date().getDay()];
+  const heuteName = tage[jetzt.getDay()];
 
-  // ۲. بررسی ردیف‌های جدول برنامه غذایی شما (.mensa-table)
-  const mensaZeilen = document.querySelectorAll(".mensa-table tr");
-  
-  mensaZeilen.forEach((zeile) => {
+  document.querySelectorAll(".mensa-table tr").forEach(function (zeile) {
     const tagZelle = zeile.querySelector(".mensa-day");
-    if (tagZelle && tagZelle.textContent.trim() === heuteName) {
-      // تغییر رنگ پس‌زمینه کل ردیف امروز
+    if (tagZelle && tagZelle.textContent.indexOf(heuteName) !== -1) {
       zeile.style.backgroundColor = "#eef6ff";
       zeile.style.borderLeft = "4px solid #0056b3";
-      
-      // اضافه کردن برچسب "Heute" کنار نام روز
       tagZelle.innerHTML += ' <span style="background:#0056b3; color:#fff; font-size:0.75em; padding:2px 6px; border-radius:4px; margin-left:5px;">Heute</span>';
     }
   });
 
-  // ۳. قرار دادن تاریخ امروز به صورت پیش‌فرض در فرم غیبت (در صورت وجود input[type="date"])
-  const heuteDatum = new Date().toISOString().split("T");
-  document.querySelectorAll('input[type="date"]').forEach((input) => {
+  // ب) پر کردن خودکار تاریخ امروز در فیلدهای تاریخ فرم غیبت
+  const tag = String(jetzt.getDate()).padStart(2, '0');
+  const monat = String(jetzt.getMonth() + 1).padStart(2, '0');
+  const jahr = jetzt.getFullYear();
+  const deutschesDatum = "Heute, " + tag + "." + monat + "." + jahr;
+
+  document.querySelectorAll('input[name="zeitraum"]').forEach(function (input) {
     if (!input.value) {
-      input.value = heuteDatum;
+      input.value = deutschesDatum;
     }
   });
 });
