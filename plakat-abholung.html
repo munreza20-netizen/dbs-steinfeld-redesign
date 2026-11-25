@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aushang Sekretariat – Abholung bei Erkrankung (DBS Steinfeld)</title>
+<style>
+@page {
+size: A4 portrait;
+margin: 12mm;
+}
+body {
+font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+background-color: #f1f5f9;
+margin: 0;
+padding: 20px;
+color: #0f172a;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+}
+.poster-container {
+max-width: 720px;
+margin: 0 auto;
+background: #ffffff;
+border-radius: 20px;
+border: 3px solid #1d4ed8;
+border-top: 14px solid #dc2626;
+padding: 32px 36px;
+box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+box-sizing: border-box;
+}
+.header {
+text-align: center;
+border-bottom: 2px solid #e2e8f0;
+padding-bottom: 18px;
+margin-bottom: 22px;
+}
+.school-name {
+display: inline-block;
+background: #eff6ff;
+color: #1d4ed8;
+font-weight: 800;
+font-size: 15px;
+padding: 6px 16px;
+border-radius: 999px;
+letter-spacing: 0.5px;
+margin-bottom: 10px;
+}
+h1 {
+font-size: 32px;
+margin: 0 0 6px 0;
+color: #0f172a;
+}
+.subtitle {
+font-size: 18px;
+color: #475569;
+margin: 0;
+font-weight: 500;
+}
+.qr-section {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 28px;
+background: #f8fafc;
+border: 2px dashed #94a3b8;
+border-radius: 16px;
+padding: 20px;
+margin-bottom: 24px;
+}
+.qr-box {
+background: #ffffff;
+padding: 12px;
+border-radius: 12px;
+border: 2px solid #cbd5e1;
+text-align: center;
+}
+.qr-box img {
+width: 170px;
+height: 170px;
+display: block;
+}
+.qr-caption {
+font-size: 12px;
+font-weight: 700;
+color: #1d4ed8;
+margin-top: 6px;
+}
+.qr-text h2 {
+font-size: 20px;
+margin: 0 0 8px 0;
+color: #1d4ed8;
+}
+.qr-text p {
+font-size: 15px;
+color: #334155;
+margin: 0;
+line-height: 1.5;
+}
+.steps {
+display: flex;
+flex-direction: column;
+gap: 14px;
+margin-bottom: 24px;
+}
+.step-item {
+display: flex;
+align-items: flex-start;
+gap: 14px;
+background: #f8fafc;
+padding: 14px 18px;
+border-radius: 12px;
+border-left: 6px solid #1d4ed8;
+}
+.step-item.green {
+border-left-color: #16a34a;
+background: #f0fdf4;
+}
+.step-num {
+background: #1d4ed8;
+color: #ffffff;
+font-weight: 800;
+font-size: 17px;
+width: 32px;
+height: 32px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0;
+margin-top: 2px;
+}
+.step-item.green .step-num {
+background: #16a34a;
+}
+.step-content strong {
+display: block;
+font-size: 17px;
+color: #0f172a;
+margin-bottom: 3px;
+}
+.step-content span {
+font-size: 15px;
+color: #334155;
+line-height: 1.4;
+}
+.warning-box {
+background: #fef2f2;
+border: 2px solid #dc2626;
+border-radius: 14px;
+padding: 16px 20px;
+color: #991b1b;
+display: flex;
+align-items: center;
+gap: 14px;
+}
+.warning-icon {
+font-size: 32px;
+flex-shrink: 0;
+}
+.warning-text {
+font-size: 15px;
+line-height: 1.45;
+}
+.print-btn {
+display: block;
+margin: 0 auto 20px auto;
+padding: 12px 28px;
+background: #1d4ed8;
+color: white;
+border: none;
+border-radius: 10px;
+font-size: 16px;
+font-weight: 700;
+cursor: pointer;
+}
+@media print {
+body {
+background: #ffffff;
+padding: 0;
+}
+.poster-container {
+box-shadow: none;
+max-width: 100%;
+}
+.print-btn {
+display: none !important;
+}
+}
+</style>
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()">🖨️ Diese Seite jetzt drucken (A4)</button>
+
+<div class="poster-container">
+<div class="header">
+<div class="school-name">DON-BOSCO-SCHULE STEINFELD – SEKRETARIAT</div>
+<h1>Krank in der Schule?</h1>
+<p class="subtitle">So meldest du dich schnell und sicher ab:</p>
+</div>
+
+<div class="qr-section">
+<div class="qr-box">
+<img src="https://qrserver.com" alt="QR-Code Abholung">
+<div class="qr-caption">Mit Handy-Kamera scannen</div>
+</div>
+<div class="qr-text">
+<h2>📱 Schritt 1: QR-Code scannen</h2>
+<p>Öffne die <strong>Kamera</strong> deines Handys, halte sie auf den QR-Code links und tippe auf den angezeigten Link, um das Formular zu öffnen.</p>
+</div>
+</div>
+
+<div class="steps">
+<div class="step-item">
+<div class="step-num">2</div>
+<div class="step-content">
+<strong>Formular vollständig ausfüllen</strong>
+<span>Trage deinen <strong>Vor- und Nachnamen</strong>, deine <strong>Klasse</strong>, die <strong>Telefonnummer deiner Eltern</strong> sowie deine Beschwerden ein.</span>
+</div>
+</div>
+
+<div class="step-item">
+<div class="step-num">3</div>
+<div class="step-content">
+<strong>Sekretariat informieren (Blauer Button)</strong>
+<span>Tippe auf <strong>„1️⃣ Weiter &amp; Sekretariat informieren“</strong> – das Sekretariat erhält sofort automatisch eine E-Mail.</span>
+</div>
+</div>
+
+<div class="step-item green">
+<div class="step-num">4</div>
+<div class="step-content">
+<strong>Eltern benachrichtigen (Grüner Button)</strong>
+<span>Tippe anschließend auf <strong>„📲 Jetzt WhatsApp an Eltern öffnen“</strong> (oder wähle SMS) und sende die vorbereitete Nachricht ab.</span>
+</div>
+</div>
+</div>
+
+<div class="warning-box">
+<div class="warning-icon">⚠️</div>
+<div class="warning-text">
+<strong>Wichtiger Hinweis:</strong> Bitte bleibe im Sekretariat bzw. Sanitätsraum, bis deine Eltern dich persönlich abholen. <strong>Du darfst das Schulgelände auf keinen Fall alleine verlassen!</strong>
+</div>
+</div>
+</div>
+
+</body>
+</html>
+
