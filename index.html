@@ -989,6 +989,37 @@ d    <!-- بخش قفل رمز عبور ویژه همکاران -->
 
 
 <script src="./scripts/app.js"></script>
+    <script>
+window.addEventListener("load", function () {
+  const jetzt = new Date();
+
+  // ۱. هایلایت غذای امروز در جدول Mensa
+  const tage = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
+  const heuteName = tage[jetzt.getDay()];
+
+  document.querySelectorAll(".mensa-table tr").forEach(function (zeile) {
+    const tagZelle = zeile.querySelector(".mensa-day");
+    if (tagZelle && tagZelle.textContent.indexOf(heuteName) !== -1) {
+      zeile.style.backgroundColor = "#eef6ff";
+      zeile.style.borderLeft = "4px solid #0056b3";
+      tagZelle.innerHTML += ' <span style="background:#0056b3; color:#fff; font-size:0.75em; padding:2px 6px; border-radius:4px; margin-left:5px;">Heute</span>';
+    }
+  });
+
+  // ۲. پر کردن خودکار تاریخ امروز در کادر تاریخ فرم غیبت
+  const tag = String(jetzt.getDate()).padStart(2, '0');
+  const monat = String(jetzt.getMonth() + 1).padStart(2, '0');
+  const jahr = jetzt.getFullYear();
+  const deutschesDatum = "Heute, " + tag + "." + monat + "." + jahr;
+
+  document.querySelectorAll('input[name="zeitraum"]').forEach(function (input) {
+    if (!input.value) {
+      input.value = deutschesDatum;
+    }
+  });
+});
+</script>
+</body>
 </body>
 </html>
 
