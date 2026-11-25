@@ -257,6 +257,11 @@ document.getElementById('finalSmsLink').href = "sms:" + rawPhone + "?body=" + en
 form.style.display = 'none';
 document.getElementById('step2Success').style.display = 'block';
 }
+  window.addEventListener("pageshow", function(event) {
+document.querySelectorAll("form").forEach(function(form) {
+form.reset();
+});
+});
 </script>
 
 
