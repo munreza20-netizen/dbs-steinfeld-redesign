@@ -223,7 +223,7 @@ const form = document.getElementById('abholungForm');
 const formData = new FormData(form);
 
 // ساخت آدرس ایمیل به صورت تکه تکه تا در کپی پیست خراب نشود
-const mailUrl = "https://" + "://web3forms.com" + "/submit";
+const mailUrl = "https://api.web3forms.com/submit";
 
 try {
 const res = await fetch(mailUrl, {
@@ -248,7 +248,7 @@ const msg = `Guten Tag, hier ist das Sekretariat der Don-Bosco-Schule Steinfeld.
 const encodedMsg = encodeURIComponent(msg);
 const waPhone = formatPhoneForWA(rawPhone);
 
-const waUrl = "https://" + "://whatsapp.com" + "/send?phone=" + waPhone + "&text=" + encodedMsg;
+const waUrl = "https://whatsapp.com" + waPhone + "&text=" + encodedMsg;
 
 document.getElementById('finalWhatsAppLink').href = waUrl;
 document.getElementById('finalSmsLink').href = "sms:" + rawPhone + "?body=" + encodedMsg;
