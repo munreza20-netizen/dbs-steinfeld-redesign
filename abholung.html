@@ -171,8 +171,8 @@ margin-bottom: 4px;
 </select>
 </div>
 
-<div class="step-label">Empfohlen: Alles mit einem Klick erledigen</div>
-<button type="button" id="waMainBtn" class="btn-whatsapp" onclick="sendBothEmailAndWhatsApp()">📲 Sekretariat melden & WhatsApp senden</button>
+ <div class="step-label">Empfohlen: Alles mit einem Klick erledigen</div>
+<a id="waMainBtn" href="#" class="btn-whatsapp" onclick="return handleOneClickAction()">📲 Sekretariat melden & WhatsApp senden</a>
 
 <div class="step-label">Alternative ohne WhatsApp</div>
 <a id="smsLink" href="#" class="btn-sms" onclick="return prepareSMS()">💬 Nur als SMS an Eltern senden</a>
@@ -208,32 +208,28 @@ const classText = klasse ? ` (Klasse ${klasse})` : '';
 return `Guten Tag, hier ist das Sekretariat der Don-Bosco-Schule Steinfeld. Ihr Kind ${name}${classText} fühlt sich in der Schule nicht wohl (${grund}) und müsste bitte im Sekretariat abgeholt werden.`;
 }
 
-function sendBothEmailAndWhatsApp() {
+function handleOneClickAction() {
 const name = document.getElementById('studentName').value.trim();
 const klasse = document.getElementById('studentClass').value.trim();
 const rawPhone = document.getElementById('parentPhone').value.trim();
 
 if (!name || !klasse || !rawPhone) {
 alert('Bitte fülle zuerst Name, Klasse und Telefonnummer der Eltern aus.');
-return;
+return false;
 }
 
-// ۱. ارسال فوری ایمیل در پس‌زمینه بدون معطل کردن آیفون (با keepalive تا هنگام خروج از صفحه هم ارسال کامل شود)
+// ۱. ارسال ایمیل به دبیرخانه در پس‌زمینه
 const form = document.getElementById('abholungForm');
 const formData = new FormData(form);
-fetch("https://web3forms.com", {
-method: "POST",
-body: formData,
-keepalive: true
-}).catch(() => {});
+navigator.sendBeacon("https://web3forms.com", formData);
 
-// ۲. باز کردن فوری واتساپ (بدون مسدود شدن توسط سافاری آیفون)
+// ۲. تنظیم لینک مستقیم واتساپ روی خود دکمه (تضمینی در آیفون)
 const waPhone = formatPhoneForWA(rawPhone);
 const text = encodeURIComponent(getMessageText());
-window.location.href = "https://whatsapp.com" + waPhone + "&text=" + text;
+document.getElementById('waMainBtn').href = "https://whatsapp.com" + waPhone + "&text=" + text;
+
+return true;
 }
-
-
 
 function prepareSMS() {
 const rawPhone = document.getElementById('parentPhone').value.trim();
@@ -245,6 +241,12 @@ const text = encodeURIComponent(getMessageText());
 document.getElementById('smsLink').href = `sms:${rawPhone}?body=${text}`;
 return true;
 }
+</script>
+
+</body>
+</html>
+
+
 </script>
 
 </body>
