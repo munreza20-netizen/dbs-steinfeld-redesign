@@ -172,6 +172,7 @@ const formData = new FormData(form);
 
 try {
 const response = await fetch("https://web3forms.com", {
+
 method: "POST",
 body: formData
 });
