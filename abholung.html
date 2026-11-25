@@ -212,7 +212,8 @@ return;
 }
 const waPhone = formatPhoneForWA(rawPhone);
 const text = encodeURIComponent(getMessageText());
-window.location.href = `https://whatsapp.com{waPhone}&text=${text}`;
+
+window.location.href = "https://api.whatsapp.com/send?phone=" + waPhone + "&text=" + text;  
 }
 
 function prepareSMS() {
