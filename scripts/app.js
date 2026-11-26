@@ -84,7 +84,7 @@ const cookieBanner = document.getElementById("cookie-banner");
 const isAccepted = localStorage.getItem("dbs_cookies_accepted");
 if (cookieBanner && !isAccepted) {
 cookieBanner.style.display = "block";
-}
+} 
 });
 
 function acceptCookies() {
