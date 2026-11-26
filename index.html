@@ -898,59 +898,24 @@ left: 0;
       </button>
     </div>
 
-    <!-- فرم ۱: دانش‌آموزان -->
-    <form id="krankmeldung-form" action="https://api.web3forms.com/submit" method="POST">
-      <input type="hidden" name="access_key" value="93778e54-2ced-4b44-8aff-4e187f4cb15e">
-      <input type="hidden" name="subject" value="Krankmeldung Schüler - DBS Steinfeld">
-      <input type="hidden" name="redirect" value="https://munreza20-netizen.github.io/dbs-steinfeld-redesign/danke.html">
+   <!-- بخش 1: هدایت والدین به DiLer -->
+<div id="krankmeldung-form" style="text-align: center; padding: 15px 10px;">
+<div style="background: #f0f7ff; border: 1px solid #cce3ff; border-radius: 10px; padding: 18px; margin-bottom: 18px;">
+<i class="fas fa-shield-alt" style="font-size: 28px; color: #005a9c; margin-bottom: 10px;"></i>
+<h3 style="margin: 0 0 8px 0; color: #005a9c; font-size: 16px;">Krankmeldung über DiLer</h3>
+<p style="font-size: 13.5px; color: #334155; line-height: 1.5; margin: 0;">
+Um Missbrauch vorzubeugen und den Datenschutz zu gewährleisten, erfolgen Krankmeldungen für Schülerinnen und Schüler ab sofort ausschließlich über das verifizierte Eltern-Konto in <strong>DiLer</strong>.
+</p>
+</div>
 
-      <p style="font-size:13px; color:#475569; margin-bottom:14px;">
-        Bitte melden Sie Ihr Kind bis spätestens <strong>07:45 Uhr</strong> krank. Diese Nachricht geht direkt an das Sekretariat.
-      </p>
+<p style="font-size: 13px; color: #475569; margin-bottom: 16px;">
+Bitte melden Sie Ihr Kind dort bis spätestens <strong>07:45 Uhr</strong> krank.
+</p>
 
-      <div class="dbs-form-group">
-        <label>Name des Kindes (Vor- und Nachname) *</label>
-        <input type="text" name="schueler_name" required placeholder="z.B. Max Mustermann">
-      </div>
-
-      <div class="dbs-form-group">
-        <label>Klasse *</label>
-        <select name="klasse" required>
-          <option value="">Bitte Klasse wählen...</option>
-          <option value="5a">5a</option><option value="5b">5b</option><option value="5c">5c</option>
-          <option value="6a">6a</option><option value="6b">6b</option><option value="6c">6c</option>
-          <option value="7a">7a</option><option value="7b">7b</option><option value="7c">7c</option>
-          <option value="8a">8a</option><option value="8b">8b</option><option value="8c">8c</option>
-          <option value="9a">9a</option><option value="9b">9b</option><option value="9c">9c</option>
-          <option value="10a">10a</option><option value="10b">10b</option><option value="10c">10c</option>
-        </select>
-      </div>
-
-      <div class="dbs-form-group">
-        <label>Voraussichtliche Dauer (Datum) *</label>
-        <input type="text" name="zeitraum" class="auto-heute-datum" required placeholder="z.B. Heute oder bis Freitag">
-      </div>
-
-      <div class="dbs-form-group">
-        <label>E-Mail-Adresse des Erziehungsberechtigten *</label>
-        <input type="email" name="email" required placeholder="eltern@beispiel.de">
-      </div>
-
-      <div class="dbs-form-group">
-        <label>Name des Erziehungsberechtigten & Telefonnummer *</label>
-        <input type="text" name="eltern_kontakt" required placeholder="Für eventuelle Rückfragen">
-      </div>
-
-      <div class="dbs-form-group" style="display: flex; align-items: flex-start; gap: 8px; background: #fef2f2; padding: 10px; border-radius: 8px; border: 1px solid #fecaca;">
-        <input type="checkbox" id="eltern-bestaetigung" name="Eltern_Bestaetigung" value="Ja" required style="width: auto; margin-top: 3px;">
-        <label for="eltern-bestaetigung" style="margin: 0; font-size: 12px; color: #991b1b; line-height: 1.4;">
-          Ich bestätige, dass ich erziehungsberechtigt bin. (Hinweis: Eine Krankmeldung durch Schülerinnen und Schüler selbst ist unzulässig; das Sekretariat hält ggf. telefonisch Rücksprache.) *
-        </label>
-      </div>
-
-      <button type="submit" class="dbs-submit-btn">Krankmeldung absenden</button>
-    </form>
-d    <!-- بخش قفل رمز عبور ویژه همکاران -->
+<a href="https://iserv.de" target="_blank" rel="noopener noreferrer" class="dbs-submit-btn" style="display: inline-block; text-decoration: none; text-align: center; box-sizing: border-box;">
+<i class="fas fa-external-link-alt"></i> Jetzt bei DiLer anmelden
+</a>
+</div>d    <!-- بخش قفل رمز عبور ویژه همکاران -->
     <div id="kollegium-lock-box" style="display: none; text-align: center; padding: 10px 0;">
       <p style="font-size: 13px; color: #475569; margin-bottom: 12px;">
         <i class="fas fa-lock" style="color: #f59e0b;"></i> Geschützter Bereich: Bitte geben Sie den Zugangscode für das Kollegium ein.
