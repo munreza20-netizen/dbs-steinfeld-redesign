@@ -452,8 +452,7 @@ left: 0;
 <li class="menu-link__akt1"><a href="https://dbs-iserv.de" target="_blank" rel="noopener noreferrer">IServ Portal</a></li>
 <li class="menu-link__akt1"><a href="https://webuntis.com" target="_blank" rel="noopener noreferrer">WebUntis (Stundenplan)</a></li>
 <li class="menu-link__akt1"><a href="https://diler.dbs-iserv.de" target="_blank" rel="noopener noreferrer">DiLer Lernplattform</a></li>
-<li class="menu-link__akt1"><a href="#it-infrastruktur">IT-Infrastruktur</a></li>
-</ul>
+<li class="menu-link__akt1"><a href="#" onclick="openAdminModal(event)">Admin-Bereich</a></li>
 </div>
 </li>
 
@@ -1036,8 +1035,88 @@ window.addEventListener("load", function () {
   });
 });
 </script>
+    <!-- پنل ادمین با قابلیت ورود با رمز -->
+<div id="adminModal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.6); align-items:center; justify-content:center; font-family:sans-serif;">
+<div style="background:#fff; padding:25px; border-radius:12px; width:90%; max-width:420px; box-shadow:0 10px 25px rgba(0,0,0,0.2); position:relative; text-align:center;">
+
+<!-- دکمه بستن پنجره -->
+<span onclick="closeAdminModal()" style="position:absolute; top:12px; right:16px; font-size:24px; cursor:pointer; color:#666;">&times;</span>
+
+<!-- بخش ۱: فرم ورود رمز -->
+<div id="adminLoginSection">
+<h3 style="margin-top:0; color:#005a9c;">Admin-Bereich</h3>
+<p style="font-size:14px; color:#555;">Bitte geben Sie das Administrator-Passwort ein:</p>
+<input type="password" id="adminPasswordInput" placeholder="Passwort..." onkeypress="if(event.key==='Enter') checkAdminPassword()" style="width:100%; padding:10px; margin:10px 0; border:1px solid #ccc; border-radius:6px; box-sizing:border-box; font-size:15px;">
+<p id="adminErrorMsg" style="color:#d93025; font-size:13px; display:none; margin:5px 0;">Falsches Passwort!</p>
+<button onclick="checkAdminPassword()" style="width:100%; padding:10px; background:#0066b2; color:#fff; border:none; border-radius:6px; font-size:15px; cursor:pointer; font-weight:bold; margin-top:5px;">Anmelden</button>
+</div>
+
+<!-- بخش ۲: محتوای پنل ادمین (پس از تایید رمز) -->
+<div id="adminLinksSection" style="display:none; text-align:left;">
+<h3 style="margin-top:0; color:#005a9c; text-align:center; border-bottom:1px solid #eee; padding-bottom:10px;">Admin-Werkzeuge</h3>
+<ul style="list-style:none; padding:0; margin:15px 0;">
+<li style="margin-bottom:10px;">
+<a href="https://ui.com" target="_blank" rel="noopener noreferrer" style="display:block; padding:12px; background:#f0f7ff; color:#005a9c; text-decoration:none; border-radius:8px; font-weight:bold; border:1px solid #cce3ff;">
+🌐 UniFi Network Console
+</a>
+</li>
+<li style="margin-bottom:10px;">
+<a href="https://apple.com" target="_blank" rel="noopener noreferrer" style="display:block; padding:12px; background:#f0f7ff; color:#005a9c; text-decoration:none; border-radius:8px; font-weight:bold; border:1px solid #cce3ff;">
+🍎 Apple School Manager
+</a>
+</li>
+<li style="margin-bottom:10px;">
+<a href="https://dbssteinfeld.auth-1.jamfcloud.com/?redirect-url=dbssteinfeld.jamfcloud.com" target="_blank" rel="noopener noreferrer" style="display:block; padding:12px; background:#f0f7ff; color:#005a9c; text-decoration:none; border-radius:8px; font-weight:bold; border:1px solid #cce3ff;">
+📱 Jamf School
+</a>
+</li>
+<li style="margin-bottom:10px;">
+<a href="https://admin.prowise.com/emm/devices?size=100&column=name&order=ascending" target="_blank" rel="noopener noreferrer" style="display:block; padding:12px; background:#f0f7ff; color:#005a9c; text-decoration:none; border-radius:8px; font-weight:bold; border:1px solid #cce3ff;">
+🖥️ Prowise Central / EMM
+</a>
+</li>
+<li>
+<a href="#it-infrastruktur" onclick="closeAdminModal()" style="display:block; padding:12px; background:#f5f5f5; color:#333; text-decoration:none; border-radius:8px; font-weight:bold; border:1px solid #ddd;">
+⚙️ IT-Infrastruktur (Übersicht)
+</a>
+</li>
+</ul>
+</div>
+
+</div>
+</div>
+
+<script>
+// رمز عبور دلخواه خود را اینجا تغییر دهید:
+const ADMIN_PASSWORD = "Steinfeld2026";
+
+function openAdminModal(e) {
+if (e) e.preventDefault();
+document.getElementById("adminModal").style.display = "flex";
+document.getElementById("adminLoginSection").style.display = "block";
+document.getElementById("adminLinksSection").style.display = "none";
+document.getElementById("adminErrorMsg").style.display = "none";
+document.getElementById("adminPasswordInput").value = "";
+setTimeout(() => document.getElementById("adminPasswordInput").focus(), 100);
+}
+
+function closeAdminModal() {
+document.getElementById("adminModal").style.display = "none";
+}
+
+function checkAdminPassword() {
+const input = document.getElementById("adminPasswordInput").value;
+if (input === ADMIN_PASSWORD) {
+document.getElementById("adminLoginSection").style.display = "none";
+document.getElementById("adminLinksSection").style.display = "block";
+} else {
+document.getElementById("adminErrorMsg").style.display = "block";
+}
+}
+</script>
+
 </body>
-</body>
+
 </html>
 
 
