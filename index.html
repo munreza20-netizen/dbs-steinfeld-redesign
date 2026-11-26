@@ -431,9 +431,7 @@ left: 0;
 <div class="sub-menu">
 <ul class="menu-link__akt">
 <li class="menu-link__akt1"><a href="#downloads"><strong>Elternbriefe</strong></a></li>
-<li class="menu-link__akt1"><a href="#downloads">Jahrgang 5</a></li>
-<li class="menu-link__akt1"><a href="#downloads">Jahrgang 6</a></li>
-<li class="menu-link__akt1"><a href="#downloads">Jahrgang 7 – 10</a></li>
+<<li class="menu-link__akt1"><a href="#" onclick="openTeacherModal(event)">Lehrerbereich (Jahrgänge 5–10)</a></li>
 <li class="menu-link__akt1"><a href="#downloads">Allgemeines & Formulare</a></li>
 <li class="menu-link__akt1"><a href="#downloads">Mensa & Schulbücher</a></li>
 <li class="menu-link__akt1"><a href="#downloads">IT-Nutzungsordnung</a></li>
@@ -1114,6 +1112,80 @@ document.getElementById("adminErrorMsg").style.display = "block";
 }
 }
 </script>
+    <!-- پنل معلم‌ها با قابلیت ورود با رمز -->
+<div id="teacherModal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.6); align-items:center; justify-content:center; font-family:sans-serif;">
+<div style="background:#fff; padding:25px; border-radius:12px; width:90%; max-width:420px; box-shadow:0 10px 25px rgba(0,0,0,0.2); position:relative; text-align:center;">
+
+<!-- دکمه بستن پنجره -->
+<span onclick="closeTeacherModal()" style="position:absolute; top:12px; right:16px; font-size:24px; cursor:pointer; color:#666;">&times;</span>
+
+<!-- بخش ۱: فرم ورود رمز معلم -->
+<div id="teacherLoginSection">
+<h3 style="margin-top:0; color:#005a9c;">Lehrerbereich</h3>
+<p style="font-size:14px; color:#555;">Bitte geben Sie das Lehrer-Passwort ein:</p>
+<input type="password" id="teacherPasswordInput" placeholder="Passwort..." onkeypress="if(event.key==='Enter') checkTeacherPassword()" style="width:100%; padding:10px; margin:10px 0; border:1px solid #ccc; border-radius:6px; box-sizing:border-box; font-size:15px;">
+<p id="teacherErrorMsg" style="color:#d93025; font-size:13px; display:none; margin:5px 0;">Falsches Passwort!</p>
+<button onclick="checkTeacherPassword()" style="width:100%; padding:10px; background:#0066b2; color:#fff; border:none; border-radius:6px; font-size:15px; cursor:pointer; font-weight:bold; margin-top:5px;">Anmelden</button>
+</div>
+
+<!-- بخش ۲: لیست کلاس‌های ۵ تا ۱۰ (پس از تایید رمز) -->
+<div id="teacherLinksSection" style="display:none; text-align:left;">
+<h3 style="margin-top:0; color:#005a9c; text-align:center; border-bottom:1px solid #eee; padding-bottom:10px;">Downloads: Jahrgänge 5–10</h3>
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:15px 0;">
+<a href="#downloads" onclick="closeTeacherModal()" style="display:block; padding:12px; background:#f0f7ff; color:#005a9c; text-decoration:none; border-radius:8px; font-weight:bold; border:1px solid #cce3ff; text-align:center;">
+📚 Jahrgang 5
+</a>
+<a href="#downloads" onclick="closeTeacherModal()" style="display:block; padding:12px; background:#f0f7ff; color:#005a9c; text-decoration:none; border-radius:8px; font-weight:bold; border:1px solid #cce3ff; text-align:center;">
+📚 Jahrgang 6
+</a>
+<a href="#downloads" onclick="closeTeacherModal()" style="display:block; padding:12px; background:#f0f7ff; color:#005a9c; text-decoration:none; border-radius:8px; font-weight:bold; border:1px solid #cce3ff; text-align:center;">
+📚 Jahrgang 7
+</a>
+<a href="#downloads" onclick="closeTeacherModal()" style="display:block; padding:12px; background:#f0f7ff; color:#005a9c; text-decoration:none; border-radius:8px; font-weight:bold; border:1px solid #cce3ff; text-align:center;">
+📚 Jahrgang 8
+</a>
+<a href="#downloads" onclick="closeTeacherModal()" style="display:block; padding:12px; background:#f0f7ff; color:#005a9c; text-decoration:none; border-radius:8px; font-weight:bold; border:1px solid #cce3ff; text-align:center;">
+📚 Jahrgang 9
+</a>
+<a href="#downloads" onclick="closeTeacherModal()" style="display:block; padding:12px; background:#f0f7ff; color:#005a9c; text-decoration:none; border-radius:8px; font-weight:bold; border:1px solid #cce3ff; text-align:center;">
+📚 Jahrgang 10
+</a>
+</div>
+</div>
+
+</div>
+</div>
+
+<script>
+// رمز عبور معلم‌ها را اینجا تغییر دهید:
+const TEACHER_PASSWORD = "Lehrer2026";
+
+function openTeacherModal(e) {
+if (e) e.preventDefault();
+document.getElementById("teacherModal").style.display = "flex";
+document.getElementById("teacherLoginSection").style.display = "block";
+document.getElementById("teacherLinksSection").style.display = "none";
+document.getElementById("teacherErrorMsg").style.display = "none";
+document.getElementById("teacherPasswordInput").value = "";
+setTimeout(() => document.getElementById("teacherPasswordInput").focus(), 100);
+}
+
+function closeTeacherModal() {
+document.getElementById("teacherModal").style.display = "none";
+}
+
+function checkTeacherPassword() {
+const input = document.getElementById("teacherPasswordInput").value;
+if (input === TEACHER_PASSWORD) {
+document.getElementById("teacherLoginSection").style.display = "none";
+document.getElementById("teacherLinksSection").style.display = "block";
+} else {
+document.getElementById("teacherErrorMsg").style.display = "block";
+}
+}
+</script>
+
+
 
 </body>
 
