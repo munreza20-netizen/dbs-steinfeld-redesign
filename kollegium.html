@@ -133,8 +133,8 @@ font-weight: 600;
 <body>
 
 <div class="kollegium-header">
-<h1>Unser Kollegium</h1>
-<p>Don-Bosco-Schule Steinfeld – Übersicht der Lehrkräfte und Aufgabenbereiche</p>
+<h1>Unser Kollegium & Team</h1>
+<p>Don-Bosco-Schule Steinfeld – Übersicht der Lehrkräfte und Mitarbeiter</p>
 </div>
 
 <div class="top-nav-back">
@@ -142,7 +142,7 @@ font-weight: 600;
 </div>
 
 <div class="search-container">
-<input type="text" id="teacherSearch" class="search-box" onkeyup="filterTeachers()" placeholder="Nach Name, Fach oder Aufgabe suchen (z. B. Mathematik, Sport)..." />
+<input type="text" id="teacherSearch" class="search-box" onkeyup="filterTeachers()" placeholder="Nach Name, Fach oder Aufgabe suchen (z. B. Mathematik, Assistenz)..." />
 </div>
 
 <div class="kollegium-grid" id="kollegiumGrid">
@@ -215,6 +215,15 @@ font-weight: 600;
 </div>
 </div>
 
+<div class="teacher-card">
+<div class="avatar-circle">GS</div>
+<div class="teacher-info">
+<h3>Gholamreza Salahshoor</h3>
+<p class="teacher-subjects"><strong>Tätigkeit:</strong> Schulbegleitung & Unterstützung</p>
+<span class="teacher-role">Schülerassistent</span>
+</div>
+</div>
+
 <div class="teacher-card" style="border-top-color: #0284c7;">
 <div class="avatar-circle" style="background:#fef3c7; color:#b45309;"><i class="fas fa-paw"></i></div>
 <div class="teacher-info">
@@ -239,4 +248,6 @@ card.style.display = text.includes(query) ? "flex" : "none";
 
 </body>
 </html>
+
+
 
