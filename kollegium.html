@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kollegium – Don-Bosco-Schule Steinfeld</title>
+<link rel="stylesheet" href="./styles/all.min.css" />
+<link rel="stylesheet" href="./styles/dbs11.css?v=3" />
+<style>
+body {
+font-family: "TTNorms", sans-serif;
+background-color: #f8fafc;
+color: #1e293b;
+margin: 0;
+padding: 0;
+}
+.kollegium-header {
+background: linear-gradient(135deg, #0d47a1, #1565c0);
+color: #ffffff;
+padding: 36px 20px;
+text-align: center;
+}
+.kollegium-header h1 {
+margin: 0 0 8px 0;
+font-size: 28px;
+}
+.kollegium-header p {
+margin: 0;
+font-size: 15px;
+opacity: 0.9;
+}
+.top-nav-back {
+max-width: 1100px;
+margin: 20px auto 0 auto;
+padding: 0 20px;
+}
+.back-btn {
+display: inline-flex;
+align-items: center;
+gap: 8px;
+text-decoration: none;
+color: #1565c0;
+font-weight: 600;
+font-size: 14px;
+background: #ffffff;
+padding: 8px 16px;
+border-radius: 8px;
+border: 1px solid #cbd5e1;
+transition: 0.2s;
+}
+.back-btn:hover {
+background: #f1f5f9;
+}
+.search-container {
+max-width: 1100px;
+margin: 20px auto;
+padding: 0 20px;
+}
+.search-box {
+width: 100%;
+max-width: 450px;
+padding: 12px 16px;
+border: 1px solid #cbd5e1;
+border-radius: 10px;
+font-size: 15px;
+box-sizing: border-box;
+background: #ffffff;
+box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+.search-box:focus {
+outline: none;
+border-color: #1565c0;
+}
+.kollegium-grid {
+max-width: 1100px;
+margin: 0 auto 50px auto;
+padding: 0 20px;
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+gap: 18px;
+}
+.teacher-card {
+background: #ffffff;
+border-radius: 12px;
+padding: 20px;
+border: 1px solid #e2e8f0;
+border-top: 4px solid #1565c0;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+display: flex;
+align-items: flex-start;
+gap: 14px;
+transition: transform 0.2s, box-shadow 0.2s;
+}
+.teacher-card:hover {
+transform: translateY(-2px);
+box-shadow: 0 8px 18px rgba(0, 0, 0, 0.07);
+}
+.avatar-circle {
+width: 46px;
+height: 46px;
+border-radius: 50%;
+background-color: #e0f2fe;
+color: #0369a1;
+font-weight: 700;
+font-size: 15px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0;
+}
+.teacher-info h3 {
+margin: 0 0 6px 0;
+font-size: 17px;
+color: #0f172a;
+}
+.teacher-subjects {
+font-size: 13.5px;
+color: #334155;
+margin: 0 0 6px 0;
+line-height: 1.4;
+}
+.teacher-role {
+display: inline-block;
+font-size: 12px;
+background: #f1f5f9;
+color: #475569;
+padding: 3px 8px;
+border-radius: 6px;
+font-weight: 600;
+}
+</style>
+</head>
+<body>
+
+<div class="kollegium-header">
+<h1>Unser Kollegium</h1>
+<p>Don-Bosco-Schule Steinfeld – Übersicht der Lehrkräfte und Aufgabenbereiche</p>
+</div>
+
+<div class="top-nav-back">
+<a href="./index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Zurück zur Startseite</a>
+</div>
+
+<div class="search-container">
+<input type="text" id="teacherSearch" class="search-box" onkeyup="filterTeachers()" placeholder="Nach Name, Fach oder Aufgabe suchen (z. B. Mathematik, Sport)..." />
+</div>
+
+<div class="kollegium-grid" id="kollegiumGrid">
+
+<div class="teacher-card">
+<div class="avatar-circle">SB</div>
+<div class="teacher-info">
+<h3>S. Blömer</h3>
+<p class="teacher-subjects"><strong>Fächer:</strong> Wirtschaft, Sport</p>
+<span class="teacher-role">Fachbereichsleitung AWT</span>
+</div>
+</div>
+
+<div class="teacher-card">
+<div class="avatar-circle">SK</div>
+<div class="teacher-info">
+<h3>S. Kern</h3>
+<p class="teacher-subjects"><strong>Fächer:</strong> Wirtschaft, Deutsch, DaZ</p>
+</div>
+</div>
+
+<div class="teacher-card">
+<div class="avatar-circle">AS</div>
+<div class="teacher-info">
+<h3>A. Sobtzick</h3>
+<p class="teacher-subjects"><strong>Fächer:</strong> GSW, Religion</p>
+</div>
+</div>
+
+<div class="teacher-card">
+<div class="avatar-circle">JW</div>
+<div class="teacher-info">
+<h3>J. Wehry</h3>
+<p class="teacher-subjects"><strong>Fächer:</strong> Mathematik, Physik</p>
+<span class="teacher-role">Fachbereichsleitung Mat./Nat., Personalrat</span>
+</div>
+</div>
+
+<div class="teacher-card">
+<div class="avatar-circle">VE</div>
+<div class="teacher-info">
+<h3>V. Eirich</h3>
+<p class="teacher-subjects"><strong>Fächer:</strong> Englisch, Sport</p>
+</div>
+</div>
+
+<div class="teacher-card">
+<div class="avatar-circle">SH</div>
+<div class="teacher-info">
+<h3>S. Haverkamp</h3>
+<p class="teacher-subjects"><strong>Fächer:</strong> Textiles Gestalten, Mathematik, Religion</p>
+</div>
+</div>
+
+<div class="teacher-card">
+<div class="avatar-circle">BM</div>
+<div class="teacher-info">
+<h3>B. Märten</h3>
+<p class="teacher-subjects"><strong>Fächer:</strong> GSW, Deutsch, Sport</p>
+<span class="teacher-role">Öffentlichkeitsarbeit, Social Media</span>
+</div>
+</div>
+
+<div class="teacher-card">
+<div class="avatar-circle">ST</div>
+<div class="teacher-info">
+<h3>S. Tepe</h3>
+<p class="teacher-subjects"><strong>Fächer:</strong> Mathematik, Sport</p>
+<span class="teacher-role">Social Media</span>
+</div>
+</div>
+
+<div class="teacher-card" style="border-top-color: #0284c7;">
+<div class="avatar-circle" style="background:#fef3c7; color:#b45309;"><i class="fas fa-paw"></i></div>
+<div class="teacher-info">
+<h3>Fine (Schulhund)</h3>
+<p class="teacher-subjects">Health & Office Management, Feelgood-Managerin</p>
+<span class="teacher-role">Personal Trainer</span>
+</div>
+</div>
+
+</div>
+
+<script>
+function filterTeachers() {
+const query = document.getElementById("teacherSearch").value.toLowerCase();
+const cards = document.querySelectorAll(".teacher-card");
+cards.forEach(card => {
+const text = card.innerText.toLowerCase();
+card.style.display = text.includes(query) ? "flex" : "none";
+});
+}
+</script>
+
+</body>
+</html>
+
