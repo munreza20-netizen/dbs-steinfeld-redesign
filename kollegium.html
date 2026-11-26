@@ -3,12 +3,14 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Kollegium – Don-Bosco-Schule Steinfeld</title>
+<title>Kollegium & Team – Don-Bosco-Schule Steinfeld</title>
 <link rel="stylesheet" href="./styles/all.min.css" />
-<link rel="stylesheet" href="./styles/dbs11.css?v=3" />
 <style>
+* {
+box-sizing: border-box;
+}
 body {
-font-family: "TTNorms", sans-serif;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 background-color: #f8fafc;
 color: #1e293b;
 margin: 0;
@@ -51,10 +53,35 @@ transition: 0.2s;
 .back-btn:hover {
 background: #f1f5f9;
 }
-.search-container {
+.controls-wrapper {
 max-width: 1100px;
 margin: 20px auto;
 padding: 0 20px;
+}
+.category-tabs {
+display: flex;
+flex-wrap: wrap;
+gap: 8px;
+margin-bottom: 16px;
+}
+.cat-btn {
+padding: 8px 16px;
+border: 1px solid #cbd5e1;
+background: #ffffff;
+color: #334155;
+border-radius: 20px;
+font-size: 14px;
+font-weight: 600;
+cursor: pointer;
+transition: all 0.2s;
+}
+.cat-btn:hover {
+background: #e2e8f0;
+}
+.cat-btn.active {
+background: #1565c0;
+color: #ffffff;
+border-color: #1565c0;
 }
 .search-box {
 width: 100%;
@@ -63,7 +90,6 @@ padding: 12px 16px;
 border: 1px solid #cbd5e1;
 border-radius: 10px;
 font-size: 15px;
-box-sizing: border-box;
 background: #ffffff;
 box-shadow: 0 2px 6px rgba(0,0,0,0.04);
 }
@@ -116,7 +142,7 @@ color: #0f172a;
 .teacher-subjects {
 font-size: 13.5px;
 color: #334155;
-margin: 0 0 6px 0;
+margin: 0 0 8px 0;
 line-height: 1.4;
 }
 .teacher-role {
@@ -124,7 +150,7 @@ display: inline-block;
 font-size: 12px;
 background: #f1f5f9;
 color: #475569;
-padding: 3px 8px;
+padding: 4px 10px;
 border-radius: 6px;
 font-weight: 600;
 }
@@ -134,20 +160,41 @@ font-weight: 600;
 
 <div class="kollegium-header">
 <h1>Unser Kollegium & Team</h1>
-<p>Don-Bosco-Schule Steinfeld – Übersicht der Lehrkräfte und Mitarbeiter</p>
+<p>Don-Bosco-Schule Steinfeld – Übersicht nach Fachbereichen und Aufgaben</p>
 </div>
 
 <div class="top-nav-back">
 <a href="./index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Zurück zur Startseite</a>
 </div>
 
-<div class="search-container">
-<input type="text" id="teacherSearch" class="search-box" onkeyup="filterTeachers()" placeholder="Nach Name, Fach oder Aufgabe suchen (z. B. Mathematik, Assistenz)..." />
+<div class="controls-wrapper">
+<!-- دکمه‌های دسته‌بندی -->
+<div class="category-tabs">
+<button class="cat-btn active" onclick="setCategory('all', this)">Alle Bereiche</button>
+<button class="cat-btn" onclick="setCategory('schulleitung', this)">Schulleitung</button>
+<button class="cat-btn" onclick="setCategory('lehrkraefte', this)">Lehrkräfte</button>
+<button class="cat-btn" onclick="setCategory('it-medien', this)">IT & Medien</button>
+<button class="cat-btn" onclick="setCategory('assistenz', this)">Beratung & Assistenz</button>
+</div>
+
+<!-- کادر جستجو -->
+<input type="text" id="teacherSearch" class="search-box" onkeyup="filterTeachers()" placeholder="Nach Name, Fach oder Aufgabe suchen..." />
 </div>
 
 <div class="kollegium-grid" id="kollegiumGrid">
 
-<div class="teacher-card">
+<!-- مدیریت -->
+<div class="teacher-card" data-category="schulleitung">
+<div class="avatar-circle" style="background:#dbeafe; color:#1e40af;">MK</div>
+<div class="teacher-info">
+<h3>Marco Kruse</h3>
+<p class="teacher-subjects"><strong>Funktion:</strong> Schulleitung</p>
+<span class="teacher-role">Rektor</span>
+</div>
+</div>
+
+<!-- معلم‌ها -->
+<div class="teacher-card" data-category="lehrkraefte">
 <div class="avatar-circle">SB</div>
 <div class="teacher-info">
 <h3>S. Blömer</h3>
@@ -156,7 +203,7 @@ font-weight: 600;
 </div>
 </div>
 
-<div class="teacher-card">
+<div class="teacher-card" data-category="lehrkraefte">
 <div class="avatar-circle">SK</div>
 <div class="teacher-info">
 <h3>S. Kern</h3>
@@ -164,7 +211,7 @@ font-weight: 600;
 </div>
 </div>
 
-<div class="teacher-card">
+<div class="teacher-card" data-category="lehrkraefte">
 <div class="avatar-circle">AS</div>
 <div class="teacher-info">
 <h3>A. Sobtzick</h3>
@@ -172,7 +219,7 @@ font-weight: 600;
 </div>
 </div>
 
-<div class="teacher-card">
+<div class="teacher-card" data-category="lehrkraefte">
 <div class="avatar-circle">JW</div>
 <div class="teacher-info">
 <h3>J. Wehry</h3>
@@ -181,7 +228,7 @@ font-weight: 600;
 </div>
 </div>
 
-<div class="teacher-card">
+<div class="teacher-card" data-category="lehrkraefte">
 <div class="avatar-circle">VE</div>
 <div class="teacher-info">
 <h3>V. Eirich</h3>
@@ -189,7 +236,7 @@ font-weight: 600;
 </div>
 </div>
 
-<div class="teacher-card">
+<div class="teacher-card" data-category="lehrkraefte">
 <div class="avatar-circle">SH</div>
 <div class="teacher-info">
 <h3>S. Haverkamp</h3>
@@ -197,7 +244,8 @@ font-weight: 600;
 </div>
 </div>
 
-<div class="teacher-card">
+<!-- حوزه آی‌تی و رسانه -->
+<div class="teacher-card" data-category="it-medien lehrkraefte">
 <div class="avatar-circle">BM</div>
 <div class="teacher-info">
 <h3>B. Märten</h3>
@@ -206,7 +254,7 @@ font-weight: 600;
 </div>
 </div>
 
-<div class="teacher-card">
+<div class="teacher-card" data-category="it-medien lehrkraefte">
 <div class="avatar-circle">ST</div>
 <div class="teacher-info">
 <h3>S. Tepe</h3>
@@ -215,16 +263,17 @@ font-weight: 600;
 </div>
 </div>
 
-<div class="teacher-card">
-<div class="avatar-circle">GS</div>
+<div class="teacher-card" data-category="it-medien assistenz">
+<div class="avatar-circle" style="background:#e0e7ff; color:#3730a3;">GS</div>
 <div class="teacher-info">
 <h3>Gholamreza Salahshoor</h3>
-<p class="teacher-subjects"><strong>Tätigkeit:</strong> Schulbegleitung & Unterstützung</p>
-<span class="teacher-role">Schülerassistent</span>
+<p class="teacher-subjects"><strong>Tätigkeit:</strong> Schulbegleitung, IT & Web-Administration</p>
+<span class="teacher-role">Schülerassistent & IT-Support</span>
 </div>
 </div>
 
-<div class="teacher-card" style="border-top-color: #0284c7;">
+<!-- مشاوره و سگ مدرسه -->
+<div class="teacher-card" data-category="assistenz" style="border-top-color: #0284c7;">
 <div class="avatar-circle" style="background:#fef3c7; color:#b45309;"><i class="fas fa-paw"></i></div>
 <div class="teacher-info">
 <h3>Fine (Schulhund)</h3>
@@ -236,18 +285,29 @@ font-weight: 600;
 </div>
 
 <script>
+let currentCategory = 'all';
+
+function setCategory(category, btnElement) {
+currentCategory = category;
+document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
+btnElement.classList.add('active');
+filterTeachers();
+}
+
 function filterTeachers() {
 const query = document.getElementById("teacherSearch").value.toLowerCase();
 const cards = document.querySelectorAll(".teacher-card");
 cards.forEach(card => {
 const text = card.innerText.toLowerCase();
-card.style.display = text.includes(query) ? "flex" : "none";
+const categories = card.getAttribute("data-category");
+const matchesCategory = (currentCategory === 'all') || categories.includes(currentCategory);
+const matchesSearch = text.includes(query);
+card.style.display = (matchesCategory && matchesSearch) ? "flex" : "none";
 });
 }
 </script>
 
 </body>
 </html>
-
 
 
