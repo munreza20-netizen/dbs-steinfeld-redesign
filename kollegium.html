@@ -1,3 +1,268 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kollegium & Team – Don-Bosco-Schule Steinfeld</title>
+<link rel="stylesheet" href="./styles/all.min.css" />
+<style>
+* {
+box-sizing: border-box;
+}
+body {
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+background-color: #f1f5f9;
+color: #1e293b;
+margin: 0;
+padding: 0;
+}
+.kollegium-header {
+background: linear-gradient(135deg, #0d47a1, #1565c0);
+color: #ffffff;
+padding: 36px 20px;
+text-align: center;
+box-shadow: 0 4px 12px rgba(13, 71, 161, 0.15);
+}
+.kollegium-header h1 {
+margin: 0 0 8px 0;
+font-size: 28px;
+}
+.kollegium-header p {
+margin: 0;
+font-size: 15px;
+opacity: 0.9;
+}
+.top-nav-back {
+max-width: 1100px;
+margin: 20px auto 0 auto;
+padding: 0 20px;
+}
+.back-btn {
+display: inline-flex;
+align-items: center;
+gap: 8px;
+text-decoration: none;
+color: #1565c0;
+font-weight: 600;
+font-size: 14px;
+background: #ffffff;
+padding: 8px 16px;
+border-radius: 8px;
+border: 1px solid #cbd5e1;
+box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+transition: 0.2s;
+}
+.back-btn:hover {
+background: #f8fafc;
+}
+.controls-wrapper {
+max-width: 1100px;
+margin: 20px auto;
+padding: 0 20px;
+}
+.category-tabs {
+display: flex;
+flex-wrap: wrap;
+gap: 8px;
+margin-bottom: 16px;
+}
+.cat-btn {
+padding: 8px 16px;
+border: 1px solid #cbd5e1;
+background: #ffffff;
+color: #334155;
+border-radius: 20px;
+font-size: 14px;
+font-weight: 600;
+cursor: pointer;
+box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+transition: all 0.2s;
+}
+.cat-btn:hover {
+background: #e2e8f0;
+}
+.cat-btn.active {
+background: #1565c0;
+color: #ffffff;
+border-color: #1565c0;
+box-shadow: 0 4px 10px rgba(21, 101, 192, 0.25);
+}
+.filter-bar {
+display: flex;
+flex-wrap: wrap;
+gap: 12px;
+align-items: center;
+}
+.category-select {
+padding: 12px 16px;
+border: 1px solid #cbd5e1;
+border-radius: 10px;
+font-size: 15px;
+font-weight: 600;
+color: #1e293b;
+background: #ffffff;
+box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+cursor: pointer;
+min-width: 250px;
+}
+.category-select:focus {
+outline: none;
+border-color: #1565c0;
+}
+.search-box {
+flex: 1;
+min-width: 250px;
+max-width: 450px;
+padding: 12px 16px;
+border: 1px solid #cbd5e1;
+border-radius: 10px;
+font-size: 15px;
+background: #ffffff;
+box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+}
+.search-box:focus {
+outline: none;
+border-color: #1565c0;
+}
+.kollegium-grid {
+max-width: 1100px;
+margin: 0 auto 50px auto;
+padding: 0 20px;
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+gap: 20px;
+}
+/* سایه برجسته و نرم زیر تمام کارت‌ها */
+.teacher-card {
+background: #ffffff;
+border-radius: 14px;
+padding: 20px;
+border: 1px solid #e2e8f0;
+border-top: 4px solid #1565c0;
+box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.1), 0 4px 10px -2px rgba(15, 23, 42, 0.05);
+display: flex;
+align-items: flex-start;
+gap: 14px;
+transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.teacher-card:hover {
+transform: translateY(-4px);
+box-shadow: 0 16px 32px -5px rgba(15, 23, 42, 0.16), 0 6px 14px -2px rgba(15, 23, 42, 0.08);
+}
+.teacher-card.leadership-card {
+border-top: 4px solid #0d47a1;
+background: linear-gradient(to bottom, #ffffff, #f8fafc);
+}
+.avatar-circle {
+width: 48px;
+height: 48px;
+border-radius: 50%;
+background-color: #e0f2fe;
+color: #0369a1;
+font-weight: 700;
+font-size: 15px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0;
+box-shadow: 0 2px 6px rgba(3, 105, 161, 0.12);
+}
+.teacher-info {
+flex: 1;
+}
+.teacher-info h3 {
+margin: 0 0 6px 0;
+font-size: 17px;
+color: #0f172a;
+}
+.teacher-subjects {
+font-size: 13.5px;
+color: #334155;
+margin: 0 0 8px 0;
+line-height: 1.4;
+}
+.teacher-role {
+display: inline-block;
+font-size: 12px;
+background: #f1f5f9;
+color: #475569;
+padding: 4px 10px;
+border-radius: 6px;
+font-weight: 600;
+}
+.leadership-role {
+background: #dbeafe;
+color: #1e40af;
+}
+.contact-links {
+margin-top: 10px;
+padding-top: 10px;
+border-top: 1px solid #e2e8f0;
+display: flex;
+flex-direction: column;
+gap: 6px;
+font-size: 13px;
+}
+.contact-link-item {
+display: inline-flex;
+align-items: center;
+gap: 8px;
+color: #1565c0;
+text-decoration: none;
+font-weight: 500;
+transition: color 0.2s;
+}
+.contact-link-item:hover {
+color: #0d47a1;
+text-decoration: underline;
+}
+.contact-link-item i {
+width: 16px;
+text-align: center;
+color: #0284c7;
+}
+</style>
+</head>
+<body>
+
+<div class="kollegium-header">
+<h1>Unser Kollegium & Team</h1>
+<p>Don-Bosco-Schule Steinfeld – Übersicht nach Fachbereichen und Aufgaben</p>
+</div>
+
+<div class="top-nav-back">
+<a href="./index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Zurück zur Startseite</a>
+</div>
+
+<div class="controls-wrapper">
+<!-- دکمه‌های دسته‌بندی -->
+<div class="category-tabs">
+<button class="cat-btn active" onclick="setCategory('all', this)">Alle Bereiche</button>
+<button class="cat-btn" onclick="setCategory('schulleitung', this)">Schulleitung (Rektor & Konrektoren)</button>
+<button class="cat-btn" onclick="setCategory('lehrkraefte', this)">Lehrkräfte</button>
+<button class="cat-btn" onclick="setCategory('it-medien', this)">IT & Medien</button>
+<button class="cat-btn" onclick="setCategory('assistenz', this)">Beratung & Assistenz</button>
+<button class="cat-btn" onclick="setCategory('sekretariat', this)">Sekretariat & Verwaltung</button>
+</div>
+
+<!-- منوی کشویی و کادر جستجو -->
+<div class="filter-bar">
+<select id="categoryDropdown" class="category-select" onchange="setCategoryFromDropdown(this.value)">
+<option value="all">📂 Alle Bereiche anzeigen</option>
+<option value="schulleitung">👔 Schulleitung (Rektor & Konrektoren)</option>
+<option value="lehrkraefte">📚 Lehrkräfte</option>
+<option value="it-medien">💻 IT & Medien</option>
+<option value="assistenz">🤝 Beratung & Assistenz</option>
+<option value="sekretariat">🏢 Sekretariat & Verwaltung</option>
+</select>
+
+<input type="text" id="teacherSearch" class="search-box" onkeyup="filterTeachers()" placeholder="Nach Name, Fach oder Aufgabe suchen..." />
+</div>
+</div>
+
+<div class="kollegium-grid" id="kollegiumGrid">
+
+<!-- ۱. مدیریت مدرسه (Schulleitung) -->
 <div class="teacher-card leadership-card" data-category="schulleitung">
 <div class="avatar-circle" style="background:#dbeafe; color:#1e40af;">MK</div>
 <div class="teacher-info">
@@ -24,16 +289,25 @@
 </div>
 </div>
 
-<div class="teacher-card leadership-card" data-category="schulleitung">
+<div class="teacher-card leadership-card" data-category="schulleitung lehrkraefte">
 <div class="avatar-circle" style="background:#dbeafe; color:#1e40af;">SF</div>
 <div class="teacher-info">
 <h3>Sandra Fischer</h3>
-<p class="teacher-subjects"><strong>Funktion:</strong> Didaktische Leitung</p>
-<span class="teacher-role leadership-role">Oberschulrektorin</span>
+<p class="teacher-subjects"><strong>Fächer:</strong> Deutsch, Englisch, Musik</p>
+<span class="teacher-role leadership-role">Oberschulrektorin – Didaktische Leitung</span>
 <div class="contact-links">
 <a href="tel:+495492981215" class="contact-link-item"><i class="fas fa-phone-alt"></i> 05492 - 981215</a>
 <a href="mailto:sandra.fischer@dbs-iserv.de" class="contact-link-item"><i class="fas fa-envelope"></i> sandra.fischer@dbs-iserv.de</a>
 </div>
 </div>
 </div>
+
+<!-- ۲. دفتر مدرسه (Sekretariat) -->
+<div class="teacher-card" data-category="sekretariat">
+<div class="avatar-circle" style="background:#e0e7ff; color:#3730a3;"><i class="fas fa-building"></i></div>
+<div class="teacher-info">
+<h3>Sekretariat</h3>
+<p class="teacher-subjects"><strong>Verwaltung & Anmeldungen</strong></p>
+<span class="teacher-role">Mo–Fr: 07:30 – 13:00 Uhr</span>
+<div class="contact-links">
 
