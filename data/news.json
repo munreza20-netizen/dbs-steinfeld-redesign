@@ -1,10 +1,22 @@
 {
 "items": [
 {
-"date": "27.11.2026",
-"title": "Anmeldung für das neue Schuljahr",
-"summary": "Alle wichtigen Informationen und Termine für die Schulanmeldung finden Sie ab sofort im Sekretariat.",
-"details": "Bitte bringen Sie zur Anmeldung die Geburtsurkunde Ihres Kindes sowie den Impfausweis mit."
+"date": "20. November 2026",
+"title": "Tag der offenen Tür",
+"summary": "Wir laden alle interessierten Eltern und Viertklässler herzlich ein, unsere Schule kennenzulernen.",
+"details": "Besuchen Sie unsere Klassenräume, lernen Sie das Kollegium kennen und informieren Sie sich über unser pädagogisches Konzept."
+},
+{
+"date": "12. November 2026",
+"title": "Berufsorientierung & Praktikum",
+"summary": "Wichtige Informationen und Termine für das bevorstehende Schülerbetriebspraktikum im Jahrgang 9.",
+"details": "Alle Unterlagen und Fristen zur Praktikumsplatzsuche finden Sie im Sekretariat oder über unser IServ-Portal."
+},
+{
+"date": "05. November 2026",
+"title": "Digitales Lernen mit ISERV",
+"summary": "Hinweise zur Nutzung unserer Schulplattform und neue Zugangsdaten für die neuen Klassen.",
+"details": "Die Zugangsdaten werden über die Klassenlehrkräfte verteilt. Bei Fragen wenden Sie sich bitte an den Support."
 }
 ]
 }
