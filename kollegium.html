@@ -6,9 +6,7 @@
 <title>Kollegium & Team – Don-Bosco-Schule Steinfeld</title>
 <link rel="stylesheet" href="./styles/all.min.css" />
 <style>
-* {
-box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 body {
 font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 background-color: #f1f5f9;
@@ -23,126 +21,49 @@ padding: 36px 20px;
 text-align: center;
 box-shadow: 0 4px 12px rgba(13, 71, 161, 0.15);
 }
-.kollegium-header h1 {
-margin: 0 0 8px 0;
-font-size: 28px;
-}
-.kollegium-header p {
-margin: 0;
-font-size: 15px;
-opacity: 0.9;
-}
-.top-nav-back {
-max-width: 1100px;
-margin: 20px auto 0 auto;
-padding: 0 20px;
-}
+.kollegium-header h1 { margin: 0 0 8px 0; font-size: 28px; }
+.kollegium-header p { margin: 0; font-size: 15px; opacity: 0.9; }
+.top-nav-back { max-width: 1100px; margin: 20px auto 0 auto; padding: 0 20px; }
 .back-btn {
-display: inline-flex;
-align-items: center;
-gap: 8px;
-text-decoration: none;
-color: #1565c0;
-font-weight: 600;
-font-size: 14px;
-background: #ffffff;
-padding: 8px 16px;
-border-radius: 8px;
-border: 1px solid #cbd5e1;
-box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-transition: 0.2s;
+display: inline-flex; align-items: center; gap: 8px;
+text-decoration: none; color: #1565c0; font-weight: 600; font-size: 14px;
+background: #ffffff; padding: 8px 16px; border-radius: 8px;
+border: 1px solid #cbd5e1; box-shadow: 0 2px 6px rgba(0,0,0,0.05); transition: 0.2s;
 }
-.back-btn:hover {
-background: #f8fafc;
-}
-.controls-wrapper {
-max-width: 1100px;
-margin: 20px auto;
-padding: 0 20px;
-}
-.category-tabs {
-display: flex;
-flex-wrap: wrap;
-gap: 8px;
-margin-bottom: 16px;
-}
+.back-btn:hover { background: #f8fafc; }
+.controls-wrapper { max-width: 1100px; margin: 20px auto; padding: 0 20px; }
+.category-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
 .cat-btn {
-padding: 8px 16px;
-border: 1px solid #cbd5e1;
-background: #ffffff;
-color: #334155;
-border-radius: 20px;
-font-size: 14px;
-font-weight: 600;
-cursor: pointer;
-box-shadow: 0 2px 5px rgba(0,0,0,0.04);
-transition: all 0.2s;
+padding: 8px 16px; border: 1px solid #cbd5e1; background: #ffffff; color: #334155;
+border-radius: 20px; font-size: 14px; font-weight: 600; cursor: pointer;
+box-shadow: 0 2px 5px rgba(0,0,0,0.04); transition: all 0.2s;
 }
-.cat-btn:hover {
-background: #e2e8f0;
-}
+.cat-btn:hover { background: #e2e8f0; }
 .cat-btn.active {
-background: #1565c0;
-color: #ffffff;
-border-color: #1565c0;
+background: #1565c0; color: #ffffff; border-color: #1565c0;
 box-shadow: 0 4px 10px rgba(21, 101, 192, 0.25);
 }
-.filter-bar {
-display: flex;
-flex-wrap: wrap;
-gap: 12px;
-align-items: center;
-}
+.filter-bar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
 .category-select {
-padding: 12px 16px;
-border: 1px solid #cbd5e1;
-border-radius: 10px;
-font-size: 15px;
-font-weight: 600;
-color: #1e293b;
-background: #ffffff;
-box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
-cursor: pointer;
-min-width: 250px;
-}
-.category-select:focus {
-outline: none;
-border-color: #1565c0;
+padding: 12px 16px; border: 1px solid #cbd5e1; border-radius: 10px;
+font-size: 15px; font-weight: 600; color: #1e293b; background: #ffffff;
+box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06); cursor: pointer; min-width: 250px;
 }
 .search-box {
-flex: 1;
-min-width: 250px;
-max-width: 450px;
-padding: 12px 16px;
-border: 1px solid #cbd5e1;
-border-radius: 10px;
-font-size: 15px;
-background: #ffffff;
-box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+flex: 1; min-width: 250px; max-width: 450px; padding: 12px 16px;
+border: 1px solid #cbd5e1; border-radius: 10px; font-size: 15px;
+background: #ffffff; box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
 }
-.search-box:focus {
-outline: none;
-border-color: #1565c0;
-}
+.search-box:focus, .category-select:focus { outline: none; border-color: #1565c0; }
 .kollegium-grid {
-max-width: 1100px;
-margin: 0 auto 50px auto;
-padding: 0 20px;
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-gap: 20px;
+max-width: 1100px; margin: 0 auto 50px auto; padding: 0 20px;
+display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;
 }
-/* سایه برجسته و نرم زیر تمام کارت‌ها */
 .teacher-card {
-background: #ffffff;
-border-radius: 14px;
-padding: 20px;
-border: 1px solid #e2e8f0;
-border-top: 4px solid #1565c0;
+background: #ffffff; border-radius: 14px; padding: 20px;
+border: 1px solid #e2e8f0; border-top: 4px solid #1565c0;
 box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.1), 0 4px 10px -2px rgba(15, 23, 42, 0.05);
-display: flex;
-align-items: flex-start;
-gap: 14px;
+display: flex; align-items: flex-start; gap: 14px;
 transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 .teacher-card:hover {
@@ -154,73 +75,29 @@ border-top: 4px solid #0d47a1;
 background: linear-gradient(to bottom, #ffffff, #f8fafc);
 }
 .avatar-circle {
-width: 48px;
-height: 48px;
-border-radius: 50%;
-background-color: #e0f2fe;
-color: #0369a1;
-font-weight: 700;
-font-size: 15px;
-display: flex;
-align-items: center;
-justify-content: center;
-flex-shrink: 0;
+width: 48px; height: 48px; border-radius: 50%; background-color: #e0f2fe;
+color: #0369a1; font-weight: 700; font-size: 15px;
+display: flex; align-items: center; justify-content: center; flex-shrink: 0;
 box-shadow: 0 2px 6px rgba(3, 105, 161, 0.12);
 }
-.teacher-info {
-flex: 1;
-}
-.teacher-info h3 {
-margin: 0 0 6px 0;
-font-size: 17px;
-color: #0f172a;
-}
-.teacher-subjects {
-font-size: 13.5px;
-color: #334155;
-margin: 0 0 8px 0;
-line-height: 1.4;
-}
+.teacher-info { flex: 1; }
+.teacher-info h3 { margin: 0 0 6px 0; font-size: 17px; color: #0f172a; }
+.teacher-subjects { font-size: 13.5px; color: #334155; margin: 0 0 8px 0; line-height: 1.4; }
 .teacher-role {
-display: inline-block;
-font-size: 12px;
-background: #f1f5f9;
-color: #475569;
-padding: 4px 10px;
-border-radius: 6px;
-font-weight: 600;
+display: inline-block; font-size: 12px; background: #f1f5f9; color: #475569;
+padding: 4px 10px; border-radius: 6px; font-weight: 600;
 }
-.leadership-role {
-background: #dbeafe;
-color: #1e40af;
-}
+.leadership-role { background: #dbeafe; color: #1e40af; }
 .contact-links {
-margin-top: 10px;
-padding-top: 10px;
-border-top: 1px solid #e2e8f0;
-display: flex;
-flex-direction: column;
-gap: 6px;
-font-size: 13px;
+margin-top: 10px; padding-top: 10px; border-top: 1px solid #e2e8f0;
+display: flex; flex-direction: column; gap: 6px; font-size: 13px;
 }
 .contact-link-item {
-display: inline-flex;
-align-items: center;
-gap: 8px;
-color: #1565c0;
-text-decoration: none;
-font-weight: 500;
-transition: color 0.2s;
+display: inline-flex; align-items: center; gap: 8px;
+color: #1565c0; text-decoration: none; font-weight: 500;
 }
-.contact-link-item:hover {
-color: #0d47a1;
-text-decoration: underline;
-}
-.contact-link-item i {
-width: 16px;
-text-align: center;
-color: #0284c7;
-}
+.contact-link-item:hover { color: #0d47a1; text-decoration: underline; }
+.contact-link-item i { width: 16px; text-align: center; color: #0284c7; }
 </style>
 </head>
 <body>
@@ -235,7 +112,6 @@ color: #0284c7;
 </div>
 
 <div class="controls-wrapper">
-<!-- دکمه‌های دسته‌بندی -->
 <div class="category-tabs">
 <button class="cat-btn active" onclick="setCategory('all', this)">Alle Bereiche</button>
 <button class="cat-btn" onclick="setCategory('schulleitung', this)">Schulleitung (Rektor & Konrektoren)</button>
@@ -245,7 +121,6 @@ color: #0284c7;
 <button class="cat-btn" onclick="setCategory('sekretariat', this)">Sekretariat & Verwaltung</button>
 </div>
 
-<!-- منوی کشویی و کادر جستجو -->
 <div class="filter-bar">
 <select id="categoryDropdown" class="category-select" onchange="setCategoryFromDropdown(this.value)">
 <option value="all">📂 Alle Bereiche anzeigen</option>
@@ -262,7 +137,7 @@ color: #0284c7;
 
 <div class="kollegium-grid" id="kollegiumGrid">
 
-<!-- ۱. مدیریت مدرسه (Schulleitung) -->
+<!-- Schulleitung -->
 <div class="teacher-card leadership-card" data-category="schulleitung">
 <div class="avatar-circle" style="background:#dbeafe; color:#1e40af;">MK</div>
 <div class="teacher-info">
@@ -302,7 +177,7 @@ color: #0284c7;
 </div>
 </div>
 
-<!-- ۲. دفتر مدرسه (Sekretariat) -->
+<!-- Sekretariat -->
 <div class="teacher-card" data-category="sekretariat">
 <div class="avatar-circle" style="background:#e0e7ff; color:#3730a3;"><i class="fas fa-building"></i></div>
 <div class="teacher-info">
@@ -310,4 +185,94 @@ color: #0284c7;
 <p class="teacher-subjects"><strong>Verwaltung & Anmeldungen</strong></p>
 <span class="teacher-role">Mo–Fr: 07:30 – 13:00 Uhr</span>
 <div class="contact-links">
+<a href="tel:+495492981215" class="contact-link-item"><i class="fas fa-phone-alt"></i> 05492 - 981215</a>
+<a href="mailto:dbs-steinfeld@t-online.de" class="contact-link-item"><i class="fas fa-envelope"></i> dbs-steinfeld@t-online.de</a>
+</div>
+</div>
+</div>
+
+<!-- Lehrkräfte -->
+<div class="teacher-card" data-category="lehrkraefte"><div class="avatar-circle">MA</div><div class="teacher-info"><h3>M. Apke</h3><p class="teacher-subjects"><strong>Fächer:</strong> Englisch, Erdkunde</p></div></div>
+<div class="teacher-card" data-category="lehrkraefte it-medien"><div class="avatar-circle">MA</div><div class="teacher-info"><h3>M. Austing</h3><p class="teacher-subjects"><strong>Fächer:</strong> Wirtschaft, Kunst, Technik</p><span class="teacher-role">Datenschutz</span></div></div>
+<!-- Lehrkräfte -->
+<div class="teacher-card" data-category="lehrkraefte"><div class="avatar-circle">MA</div><div class="teacher-info"><h3>M. Apke</h3><p class="teacher-subjects"><strong>Fächer:</strong> Englisch, Erdkunde</p></div></div>
+<div class="teacher-card" data-category="lehrkraefte it-medien"><div class="avatar-circle">MA</div><div class="teacher-info"><h3>M. Austing</h3><p class="teacher-subjects"><strong>Fächer:</strong> Wirtschaft, Kunst, Technik</p><span class="teacher-role">Datenschutz</span></div></div>
+<div class="teacher-card" data-category="lehrkraefte"><div class="avatar-circle">SB</div><div class="teacher-info"><h3>S. Blömer</h3><p class="teacher-subjects"><strong>Fächer:</strong> Wirtschaft, Sport</p><span class="teacher-role">Fachbereichsleitung AWT</span></div></div>
+<div class="teacher-card" data-category="lehrkraefte"><div class="avatar-circle">RB</div><div class="teacher-info"><h3>R. Brinkschulte</h3><p class="teacher-subjects"><strong>Fächer:</strong> Deutsch, Religion</p><span class="teacher-role">Fachleitung kath. Religion, Soziales Projekt</span></div></div>
+<div class="teacher-card" data-category="lehrkraefte"><div class="avatar-circle">KB</div><div class="teacher-info"><h3>K. Brok</h3><p class="teacher-subjects"><strong>Fächer:</strong> Deutsch, Kunst, Werken, GSW</p><span class="teacher-role">Fachleitung Kunst</span></div></div>
+<div class="teacher-card" data-category="lehrkraefte"><div class="avatar-circle">VD</div><div class="teacher-info"><h3>V. Dingel</h3><p class="teacher-subjects"><strong>Fächer:</strong> Englisch, GSW, Sport</p></div></div>
+<div class="teacher-card" data-category="lehrkraefte"><div class="avatar-circle">LE</div><div class="teacher-info"><h3>L. Egert</h3><p class="teacher-subjects"><strong>Fächer:</strong> Deutsch, GSW, Informatik</p><span class="teacher-role">Fachleitung Deutsch, Soziales Projekt</span></div></div>
+<div class="teacher-card" data-category="lehrkraefte"><div class="avatar-circle">VE</div><div class="teacher-info"><h3>V. Eirich</h3><p class="teacher-subjects"><strong>Fächer:</strong> Englisch, Sport</p></div></div>
+<div class="teacher-card" data-category="lehrkraefte"><div class="avatar-circle">NF</div><div class="teacher-info"><h3>N. Feller</h3><p class="teacher-subjects"><strong>Fächer:</strong> Mathematik, Biologie, Informatik</p><span class="teacher-role">Personalrat</span></div></div>
+<div class="teacher-card" data-category="lehrkraefte"><div class="avatar-circle">SG</div><div class="teacher-info"><h3>S. Gude</h3><p class="teacher-subjects"><strong>Fächer:</strong> Sport, Mathematik, Deutsch</p><span class="teacher-role">Jahrgangsleitung 7/8, Fachleitung Sport, Personalrat</span></div></div>
+<div class="teacher-card" data-category="lehrkraefte"><div class="avatar-circle">SH</div><div class="teacher-info"><h3>S. Haverkamp</h3><p class="teacher-subjects"><strong>Fächer:</strong> Textiles Gestalten, Mathematik, Religion</p></div></div>
+<div class="teacher-card" data-category="lehrkraefte"><div class="avatar-circle">MH</div><div class="teacher-info"><h3>M. Hubert</h3><p class="teacher-subjects"><strong>Fächer:</strong> Englisch, Biologie</p></div></div>
+<div class="teacher-card" data-category="lehrkraefte"><div class="avatar-circle">MI</div><div class="teacher-info"><h3>M.-L. Imwalle</h3><p class="teacher-subjects"><strong>Fächer:</strong> Französisch, Deutsch</p></div></div>
+<div class="teacher-card" data-category="lehrkraefte"><div class="avatar-circle">LJ</div><div class="teacher-info"><h3>L. Jungmann</h3><p class="teacher-subjects"><strong>Fächer:</strong> Chemie, Physik, Biologie</p></div></div>
+<div class="teacher-card" data-category="lehrkraefte"><div class="avatar-circle">CK</div><div class="teacher-info"><h3>C. Keil</h3><p class="teacher-subjects"><strong>Fächer:</strong> Gesundheit u. Soziales, Deutsch, Religion, Hauswirtschaft</p></div></div>
+<div class="teacher-card" data-category="lehrkraefte"><div class="avatar-circle">SK</div><div class="teacher-info"><h3>S. Kern</h3><p class="teacher-subjects"><strong>Fächer:</strong> Wirtschaft, Deutsch, DaZ</p></div></div>
+<div class="teacher-card" data-category="lehrkraefte"><div class="avatar-circle">ML</div><div class="teacher-info"><h3>M. Lesch</h3><p class="teacher-subjects"><strong>Fächer:</strong> Deutsch, Sport, DaZ</p></div></div>
+<div class="teacher-card" data-category="lehrkraefte"><div class="avatar-circle">AL</div><div class="teacher-info"><h3>A. Lorchheim</h3><p class="teacher-subjects"><strong>Fächer:</strong> Englisch</p></div></div>
+<div class="teacher-card" data-category="lehrkraefte assistenz"><div class="avatar-circle">SL</div><div class="teacher-info"><h3>S. Lübbehusen</h3><p class="teacher-subjects"><strong>Fächer:</strong> Mathematik, Biologie</p><span class="teacher-role">Beratungslehrkraft, Betreuung Schulhund</span></div></div>
+<div class="teacher-card" data-category="lehrkraefte"><div class="avatar-circle">SM</div><div class="teacher-info"><h3>S. Maaßmann</h3><p class="teacher-subjects"><strong>Fächer:</strong> Mathematik, Kunst, Werken</p></div></div>
+<div class="teacher-card" data-category="lehrkraefte it-medien"><div class="avatar-circle">BM</div><div class="teacher-info"><h3>B. Märten</h3><p class="teacher-subjects"><strong>Fächer:</strong> GSW, Deutsch, Sport</p><span class="teacher-role">Öffentlichkeitsarbeit, Social Media</span></div></div>
+<div class="teacher-card" data-category="lehrkraefte"><div class="avatar-circle">GM</div><div class="teacher-info"><h3>G. Martin</h3><p class="teacher-subjects"><strong>Fächer:</strong> Deutsch, GSW</p></div></div>
+<div class="teacher-card" data-category="lehrkraefte"><div class="avatar-circle">LM</div><div class="teacher-info"><h3>L. Meyer</h3><p class="teacher-subjects"><strong>Fächer:</strong> Mathematik, Biologie</p></div></div>
+<div class="teacher-card" data-category="lehrkraefte assistenz"><div class="avatar-circle">HR</div><div class="teacher-info"><h3>H. Rohe</h3><p class="teacher-subjects"><strong>Tätigkeit:</strong> Förderschullehrkraft</p><span class="teacher-role">Inklusion</span></div></div>
+<div class="teacher-card" data-category="lehrkraefte"><div class="avatar-circle">AS</div><div class="teacher-info"><h3>A. Schmidt</h3><p class="teacher-subjects"><strong>Fächer:</strong> Chemie, Mathematik, Musik</p><span class="teacher-role">Fachbereichsleitung Naturwissenschaften, Personalrat</span></div></div>
+<div class="teacher-card" data-category="lehrkraefte"><div class="avatar-circle">JS</div><div class="teacher-info"><h3>J. Schurr</h3><p class="teacher-subjects"><strong>Fächer:</strong> Mathematik, GSW, Kunst</p></div></div>
+<div class="teacher-card" data-category="lehrkraefte"><div class="avatar-circle">PS</div><div class="teacher-info"><h3>P. Sieverding</h3><p class="teacher-subjects"><strong>Fächer:</strong> Englisch, Geschichte</p></div></div>
+<div class="teacher-card" data-category="lehrkraefte"><div class="avatar-circle">AS</div><div class="teacher-info"><h3>A. Sobtzick</h3><p class="teacher-subjects"><strong>Fächer:</strong> GSW, Religion</p></div></div>
+<div class="teacher-card" data-category="lehrkraefte it-medien"><div class="avatar-circle">ST</div><div class="teacher-info"><h3>S. Tepe</h3><p class="teacher-subjects"><strong>Fächer:</strong> Mathematik, Sport</p><span class="teacher-role">Social Media</span></div></div>
+<div class="teacher-card" data-category="lehrkraefte"><div class="avatar-circle">KT</div><div class="teacher-info"><h3>K. Themann</h3><p class="teacher-subjects"><strong>Fächer:</strong> Deutsch, Sport</p></div></div>
+<div class="teacher-card" data-category="lehrkraefte"><div class="avatar-circle">ET</div><div class="teacher-info"><h3>E. Thieleke</h3><p class="teacher-subjects"><strong>Fächer:</strong> Französisch, Deutsch, Religion</p><span class="teacher-role">Jahrgangsleitung 5/6</span></div></div>
+<div class="teacher-card" data-category="lehrkraefte"><div class="avatar-circle">DT</div><div class="teacher-info"><h3>D. Tönjes</h3><p class="teacher-subjects"><strong>Fächer:</strong> Englisch, Deutsch</p><span class="teacher-role">Soziales Projekt</span></div></div>
+<div class="teacher-card" data-category="lehrkraefte it-medien"><div class="avatar-circle">JW</div><div class="teacher-info"><h3>J. Wehry</h3><p class="teacher-subjects"><strong>Fächer:</strong> Mathematik, Physik / Werken</p><span class="teacher-role">Fachbereichsleitung Mat./Nat. & MuKuBi, Medien, Personalrat</span></div></div>
+<div class="teacher-card" data-category="lehrkraefte"><div class="avatar-circle">SW</div><div class="teacher-info"><h3>S. Weiland</h3><p class="teacher-subjects"><strong>Fächer:</strong> LE, Sprache, Mathematik</p><span class="teacher-role">Lehramtsanwärterin</span></div></div>
+<div class="teacher-card" data-category="lehrkraefte assistenz"><div class="avatar-circle">PW</div><div class="teacher-info"><h3>P. Winkler</h3><p class="teacher-subjects"><strong>Tätigkeit:</strong> Förderschullehrkraft</p><span class="teacher-role">Inklusion</span></div></div>
+<div class="teacher-card" data-category="lehrkraefte"><div class="avatar-circle">HW</div><div class="teacher-info"><h3>H. Wöhrmann</h3><p class="teacher-subjects"><strong>Fächer:</strong> Deutsch, Geschichte</p><span class="teacher-role">Lehramtsanwärter</span></div></div>
+<div class="teacher-card" data-category="lehrkraefte"><div class="avatar-circle">AZ</div><div class="teacher-info"><h3>A. Zurlage</h3><p class="teacher-subjects"><strong>Fächer:</strong> Musik, Biologie, Werte/Normen</p><span class="teacher-role">Fachleitung Musik, Schulbuchausleihe</span></div></div>
+<div class="teacher-card" data-category="it-medien assistenz"><div class="avatar-circle" style="background:#e0e7ff; color:#3730a3;">GS</div><div class="teacher-info"><h3>Gholamreza Salahshoor</h3><p class="teacher-subjects"><strong>Tätigkeit:</strong> Schulbegleitung, IT & Web-Administration</p><span class="teacher-role">Schülerassistent & IT-Support</span></div></div>
+<div class="teacher-card" data-category="assistenz" style="border-top-color: #0284c7;"><div class="avatar-circle" style="background:#fef3c7; color:#b45309;"><i class="fas fa-paw"></i></div><div class="teacher-info"><h3>Fine (Schulhund)</h3><p class="teacher-subjects">Health & Office Management, Feelgood-Managerin</p><span class="teacher-role">Personal Trainer</span></div></div>
+</div>
+
+<script>
+let currentCategory = 'all';
+
+function setCategory(category, btnElement) {
+currentCategory = category;
+document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
+if (btnElement) btnElement.classList.add('active');
+const dropdown = document.getElementById('categoryDropdown');
+if (dropdown) dropdown.value = category;
+filterTeachers();
+}
+
+function setCategoryFromDropdown(category) {
+currentCategory = category;
+document.querySelectorAll('.cat-btn').forEach(btn => {
+btn.classList.remove('active');
+if (btn.getAttribute('onclick').includes(`'${category}'`)) {
+btn.classList.add('active');
+}
+});
+filterTeachers();
+}
+
+function filterTeachers() {
+const query = document.getElementById("teacherSearch").value.toLowerCase();
+const cards = document.querySelectorAll(".teacher-card");
+cards.forEach(card => {
+const text = card.innerText.toLowerCase();
+const categories = card.getAttribute("data-category");
+const matchesCategory = (currentCategory === 'all') || categories.includes(currentCategory);
+const matchesSearch = text.includes(query);
+card.style.display = (matchesCategory && matchesSearch) ? "flex" : "none";
+});
+}
+</script>
+
+</body>
+</html>
+
 
