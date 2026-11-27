@@ -128,3 +128,29 @@ content:
             type: image
 
             list: true
+             - name: termine
+label: Terminkalender & Schuljahrestermine
+type: file
+path: data/termine.json
+fields:
+- name: termine
+label: Termine im Schuljahr
+type: object
+list: true
+fields:
+- name: date
+label: Datum oder Zeitraum
+type: string
+- name: title
+label: Termin oder Veranstaltung
+type: string
+- name: category
+label: Kategorie (Ferien, Eltern, Prüfung, Fest)
+type: string
+- name: info
+label: Zusätzliche Informationen
+type: string
+
+
+
+            
