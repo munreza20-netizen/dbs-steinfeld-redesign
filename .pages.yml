@@ -44,33 +44,43 @@ content:
 
     label: اخبار و اطلاعیه‌ها (Aktuelles)
 
-    type: collection
+    type: file
 
-    path: data/news
+    path: data/news.json
 
     fields:
 
-      - name: title
+      - name: items
 
-        label: تیتر خبر
+        label: لیست خبرها
 
-        type: string
+        type: object
 
-      - name: date
+        list: true
 
-        label: تاریخ انتشار
+        fields:
 
-        type: date
+          - name: date
 
-      - name: body
+            label: تاریخ انتشار (مثلاً 27.11.2026)
 
-        label: متن کامل خبر
+            type: string
 
-        type: rich-text
+          - name: title
 
+            label: تیتر خبر
 
+            type: string
 
+          - name: summary
 
+            label: خلاصه کوتاه خبر (نمایش در کارت)
 
+            type: text
 
+          - name: details
+
+            label: متن کامل خبر (نمایش در پنجره بازشو)
+
+            type: text
 
