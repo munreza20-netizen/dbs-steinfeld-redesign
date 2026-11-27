@@ -1,13 +1,15 @@
 function toggleSearch(event) {
 if (event) event.preventDefault();
 const searchOverlay = document.getElementById("search-overlay");
-const searchInput = searchOverlay.querySelector("input");
+const searchInput = searchOverlay ? searchOverlay.querySelector("input") : null;
+
+if (!searchOverlay) return;
 
 if (searchOverlay.style.display === "flex") {
 searchOverlay.style.display = "none";
 } else {
 searchOverlay.style.display = "flex";
-searchInput.focus();
+if (searchInput) searchInput.focus();
 }
 }
 
@@ -23,7 +25,8 @@ searchOverlay.style.display = "none";
 
 // ۲. اسلایدر عکس‌ها به همراه پخش خودکار
 const images = [
-" ./imag/schule-aussen.JPG"
+"./imag/schule-aussen.JPG"
+// در صورت داشتن عکس‌های بیشتر، مسیر آن‌ها را با ویرگول اینجا اضافه کنید
 ];
 
 let currentIndex = 0;
@@ -47,8 +50,11 @@ changeSlide(1);
 
 // ۳. جستجوی زنده (Live Search)
 function liveSearch() {
-const input = document.getElementById("search-input").value.toLowerCase();
+const searchInput = document.getElementById("search-input");
 const resultsList = document.getElementById("search-results");
+if (!searchInput || !resultsList) return;
+
+const input = searchInput.value.toLowerCase();
 resultsList.innerHTML = "";
 
 if (input.trim() === "") return;
@@ -84,7 +90,7 @@ const cookieBanner = document.getElementById("cookie-banner");
 const isAccepted = localStorage.getItem("dbs_cookies_accepted");
 if (cookieBanner && !isAccepted) {
 cookieBanner.style.display = "block";
-} 
+}
 });
 
 function acceptCookies() {
@@ -105,7 +111,7 @@ const summary = card.querySelector("p").textContent;
 
 document.getElementById("modal-date").textContent = date;
 document.getElementById("modal-title").textContent = title;
-document.getElementById("modal-text").textContent = summary + " Weitere Details und Anmeldeformulare finden Sie im Sekretariat oder über unser ISERV-Portal.";
+document.getElementById("modal-text").textContent = summary + " Weitere Details und Anmeldeformulare finden Sie im Sekretariat oder über unser IServ-Portal.";
 document.getElementById("news-modal").style.display = "flex";
 });
 });
@@ -120,13 +126,17 @@ document.getElementById("news-modal").style.display = "none";
 function toggleMobileMenu() {
 const menu = document.querySelector(".header-ünten__menu");
 const icon = document.querySelector(".header__icon i");
+if (!menu) return;
+
 menu.classList.toggle("active");
+if (icon) {
 if (menu.classList.contains("active")) {
 icon.classList.remove("fa-bars");
 icon.classList.add("fa-times");
 } else {
 icon.classList.remove("fa-times");
 icon.classList.add("fa-bars");
+}
 }
 }
 
@@ -172,7 +182,6 @@ const formData = new FormData(form);
 
 try {
 const response = await fetch("https://api.web3forms.com/submit", {
-
 method: "POST",
 body: formData
 });
@@ -201,9 +210,7 @@ feedback.style.display = "none";
 }
 }
 
-// ۸. منو و مودال اعلام غیبت / بیماری (دو حالته با قفل همکاران)
-const KOLLEGIUM_CODE = "DBS2026"; // رمز عبور همکاران
-
+// ۸. منو و مودال اعلام غیبت / بیماری (امن‌سازی شده با اتصال مستقیم به IServ برای همکاران)
 function toggleKrankDropdown(event) {
 if (event) {
 event.preventDefault();
@@ -220,7 +227,14 @@ const dropdown = document.getElementById('krankDropdown');
 if (dropdown) {
 dropdown.classList.remove('active');
 }
-openKrankModal(type);
+
+// برای همکاران: انتقال مستقیم و امن به پورتال IServ به جای رمز ناامن در سایت
+if (type === 'kollegium') {
+window.open('https://dbs-iserv.de', '_blank', 'noopener,noreferrer');
+return;
+}
+
+openKrankModal('schueler');
 }
 
 function openKrankModal(type) {
@@ -239,88 +253,41 @@ modal.classList.remove('active');
 }
 
 function switchKrankTab(type) {
+if (type === 'kollegium') {
+closeKrankModal();
+window.open('https://dbs-iserv.de', '_blank', 'noopener,noreferrer');
+return;
+}
+
 const formSchueler = document.getElementById('krankmeldung-form');
 const formKollegium = document.getElementById('krankmeldung-kollegium-form');
 const lockBox = document.getElementById('kollegium-lock-box');
 const tabSchueler = document.getElementById('tab-krank-schueler');
 const tabKollegium = document.getElementById('tab-krank-kollegium');
 
-if (!formSchueler || !formKollegium) return;
-
-if (type === 'kollegium') {
-formSchueler.style.display = 'none';
-if (tabKollegium) tabKollegium.classList.add('active');
-if (tabSchueler) tabSchueler.classList.remove('active');
-
-const savedCode = localStorage.getItem('dbs_kollegium_saved_code');
-if (savedCode === KOLLEGIUM_CODE) {
 if (lockBox) lockBox.style.display = 'none';
-formKollegium.style.display = 'block';
-} else {
-formKollegium.style.display = 'none';
-if (lockBox) lockBox.style.display = 'block';
-}
-} else {
-if (lockBox) lockBox.style.display = 'none';
-formKollegium.style.display = 'none';
-formSchueler.style.display = 'block';
+if (formKollegium) formKollegium.style.display = 'none';
+if (formSchueler) formSchueler.style.display = 'block';
 if (tabSchueler) tabSchueler.classList.add('active');
 if (tabKollegium) tabKollegium.classList.remove('active');
 }
+
+// ۹. بارگذاری خودکار نوار هشدار قرمز از پنل مدیریت (Pages CMS)
+document.addEventListener("DOMContentLoaded", function() {
+fetch('data/hinweis.json?t=' + new Date().getTime())
+.then(response => response.json())
+.then(data => {
+const banner = document.getElementById('emergencyBanner');
+const textSpan = document.getElementById('emergencyText');
+if (banner && textSpan) {
+if (data.active) {
+banner.style.display = 'flex';
+textSpan.textContent = data.text;
+} else {
+banner.style.display = 'none';
 }
-
-function checkKollegiumPassword() {
-  const input = document.getElementById('kollegium-pass-input');
-  const errorMsg = document.getElementById('kollegium-pass-error');
-  const lockBox = document.getElementById('kollegium-lock-box');
-  const formKollegium = document.getElementById('krankmeldung-kollegium-form');
-
-  if (input && input.value === KOLLEGIUM_CODE) {
-    localStorage.setItem('dbs_kollegium_saved_code', KOLLEGIUM_CODE);
-    if (errorMsg) errorMsg.style.display = 'none';
-    if (lockBox) lockBox.style.display = 'none';
-    if (formKollegium) formKollegium.style.display = 'block';
-  } else {
-    if (errorMsg) errorMsg.style.display = 'block';
-  }
 }
-
-function lockKollegiumForm() {
-  localStorage.removeItem('dbs_kollegium_saved_code');
-  switchKrankTab('kollegium');
-}
-
-// ۹. هایلایت خودکار غذای امروز و تاریخ خودکار در فرم غیبت
-window.addEventListener("load", function () {
-  const jetzt = new Date();
-
-  // الف) هایلایت غذای امروز در جدول Mensa
-  const tage = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
-  const heuteName = tage[jetzt.getDay()];
-
-  document.querySelectorAll(".mensa-table tr").forEach(function (zeile) {
-    const tagZelle = zeile.querySelector(".mensa-day");
-    if (tagZelle && tagZelle.textContent.indexOf(heuteName) !== -1) {
-      zeile.style.backgroundColor = "#eef6ff";
-      zeile.style.borderLeft = "4px solid #0056b3";
-      tagZelle.innerHTML += ' <span style="background:#0056b3; color:#fff; font-size:0.75em; padding:2px 6px; border-radius:4px; margin-left:5px;">Heute</span>';
-    }
-  });
-
-  // ب) پر کردن خودکار تاریخ امروز در فیلدهای تاریخ فرم غیبت
-  const tag = String(jetzt.getDate()).padStart(2, '0');
-  const monat = String(jetzt.getMonth() + 1).padStart(2, '0');
-  const jahr = jetzt.getFullYear();
-  const deutschesDatum = "Heute, " + tag + "." + monat + "." + jahr;
-
-  document.querySelectorAll('input[name="zeitraum"]').forEach(function (input) {
-    if (!input.value) {
-      input.value = deutschesDatum;
-    }
-  });
+})
+.catch(err => console.error('Hinweis error:', err));
 });
-window.addEventListener("pageshow", function(event) {
-document.querySelectorAll("form").forEach(function(form) {
-form.reset();
-});
-});
+
