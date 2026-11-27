@@ -149,7 +149,7 @@ label: Kategorie (Ferien, Eltern, Prüfung, Fest)
 type: string
 - name: info
 label: Zusätzliche Informationen
-type: string
+type: string 
 
 
 
