@@ -1,22 +1,25 @@
 {
-"items": [
-{
-"date": "20. November 2026",
-"title": "Tag der offenen Tür",
-"summary": "Wir laden alle interessierten Eltern und Viertklässler herzlich ein, unsere Schule kennenzulernen.",
-"details": "Besuchen Sie unsere Klassenräume, lernen Sie das Kollegium kennen und informieren Sie sich über unser pädagogisches Konzept."
-},
-{
-"date": "12. November 2026",
-"title": "Berufsorientierung & Praktikum",
-"summary": "Wichtige Informationen und Termine für das bevorstehende Schülerbetriebspraktikum im Jahrgang 9.",
-"details": "Alle Unterlagen und Fristen zur Praktikumsplatzsuche finden Sie im Sekretariat oder über unser IServ-Portal."
-},
-{
-"date": "05. November 2026",
-"title": "Digitales Lernen mit ISERV",
-"summary": "Hinweise zur Nutzung unserer Schulplattform und neue Zugangsdaten für die neuen Klassen.",
-"details": "Die Zugangsdaten werden über die Klassenlehrkräfte verteilt. Bei Fragen wenden Sie sich bitte an den Support."
-}
-]
+  "items": [
+    {
+      "date": "20. November 2026",
+      "title": "Tag der offenen Tür",
+      "summary": "Wir laden alle interessierten Eltern und Viertklässler herzlich ein, unsere Schule kennenzulernen.",
+      "details": "Besuchen Sie unsere Klassenräume, lernen Sie das Kollegium kennen und informieren Sie sich über unser pädagogisches Konzept."
+    },
+    {
+      "date": "12. November 2026",
+      "title": "Berufsorientierung & Praktikum",
+      "summary": "Wichtige Informationen und Termine für das bevorstehende Schülerbetriebspraktikum im Jahrgang 9.",
+      "details": "Alle Unterlagen und Fristen zur Praktikumsplatzsuche finden Sie im Sekretariat oder über unser IServ-Portal."
+    },
+    {
+      "date": "05. November 2026",
+      "title": "Digitales Lernen mit ISERV",
+      "summary": "Hinweise zur Nutzung unserer Schulplattform und neue Zugangsdaten für die neuen Klassen.",
+      "details": "Die Zugangsdaten werden über die Klassenlehrkräfte verteilt. Bei Fragen wenden Sie sich bitte an den Support."
+    },
+    {
+      "date": "Im Laufe des Jahres haben sich unsere Schülerinnen und Schüler – unterstützt von Georg Bruns – schon mit viel Einsatz für diese tolle ökologische Fläche engagiert. Am Montagnachmittag den 09.11.2026 ging’s gemeinsam weiter: Schülerinnen und Schüler, Eltern und Lehrkräfte schnitten Hecken zurück, entfernten Totholz und erledigten die letzten Pflegemaßnahmen des Jahres. In nur vier Stunden haben wir richtig viel geschafft.  Und das ist erst der Anfang: Im nächsten Frühjahr sollen Obstbäume gepflanzt werden. Außerdem sind eine Trockenmauer und ein grünes Klassenzimmer geplant. So wird Wissen ganz praktisch erlebbar – und unsere Schülerinnen und Schüler können mit den eigenen Händen etwas gestalten.   Ein herzliches Dankeschön an alle, die mit angepackt haben!"
+    }
+  ]
 }
