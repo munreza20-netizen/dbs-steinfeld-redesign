@@ -295,4 +295,38 @@ banner.style.display = 'none';
 })
 .catch(err => console.error('Hinweis error:', err));
 });
+document.addEventListener("DOMContentLoaded", function() {
+const newsContainer = document.getElementById("news-grid-container");
+if (!newsContainer) return;
+
+fetch('data/news.json?t=' + new Date().getTime())
+.then(response => response.json())
+.then(data => {
+if (data.items && data.items.length > 0) {
+newsContainer.innerHTML = "";
+data.items.forEach(item => {
+const article = document.createElement("article");
+article.className = "news-card";
+article.innerHTML = `
+<div class="news-date">${item.date}</div>
+<h3>${item.title}</h3>
+<p>${item.summary}</p>
+<a href="#" class="news-link">Weiterlesen →</a>
+`;
+
+const link = article.querySelector(".news-link");
+link.addEventListener("click", function(event) {
+event.preventDefault();
+document.getElementById("modal-date").textContent = item.date;
+document.getElementById("modal-title").textContent = item.title;
+document.getElementById("modal-text").textContent = item.details || item.summary;
+document.getElementById("news-modal").style.display = "flex";
+});
+
+newsContainer.appendChild(article);
+});
+}
+})
+.catch(err => console.error('News error:', err));
+});
 
