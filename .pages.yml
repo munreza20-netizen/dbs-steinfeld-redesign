@@ -9,7 +9,7 @@ content:
 
   - name: hinweis
 
-    label: نوار هشدار قرمز (Wichtiger Hinweis)
+    label: Wichtiger Hinweis (Roter Banner)
 
     type: file
 
@@ -19,7 +19,7 @@ content:
 
       - name: active
 
-        label: نمایش نوار هشدار در سایت
+        label: Hinweis-Banner auf der Website anzeigen
 
         type: boolean
 
@@ -27,20 +27,20 @@ content:
 
       - name: text
 
-        label: متن هشدار (آلمانی)
+        label: Hinweistext
 
         type: string
 
       - name: link
 
-        label: لینک جزئیات بیشتر (اختیاری)
+        label: Link für weitere Details (optional)
 
         type: string
 
 
   - name: aktuelles
 
-    label: اخبار و اطلاعیه‌ها (Aktuelles)
+    label: Aktuelles & Neuigkeiten
 
     type: file
 
@@ -50,7 +50,7 @@ content:
 
       - name: items
 
-        label: لیست خبرها
+        label: Beitragsliste
 
         type: object
 
@@ -60,32 +60,32 @@ content:
 
           - name: date
 
-            label: تاریخ انتشار (مثلاً 27.11.2026)
+            label: Datum (z. B. 27. November 2026)
 
             type: string
 
           - name: title
 
-            label: تیتر خبر
+            label: Überschrift
 
             type: string
 
           - name: summary
 
-            label: خلاصه کوتاه خبر (نمایش در کارت)
+            label: Kurzfassung (Vorschau auf der Startseite)
 
             type: text
 
           - name: details
 
-            label: متن کامل خبر (نمایش در پنجره بازشو)
+            label: Vollständiger Text (im Pop-up-Fenster)
 
             type: text
 
 
   - name: galerie
 
-    label: گالری تصاویر و رویدادها (Bildergalerie)
+    label: Bildergalerie & Veranstaltungen
 
     type: file
 
@@ -95,7 +95,7 @@ content:
 
       - name: events
 
-        label: لیست جشن‌ها و رویدادها (DSGVO-Hinweis: Bitte nur Fotos mit vorliegender Einwilligungserklärung hochladen!)
+        label: Veranstaltungen & Feste (DSGVO-Hinweis: Bitte nur Fotos mit vorliegender Einwilligungserklärung hochladen!)
 
         type: object
 
@@ -105,25 +105,25 @@ content:
 
           - name: date
 
-            label: تاریخ یا سال رویداد (مثلاً Juli 2026)
+            label: Datum oder Zeitraum (z. B. Juli 2026)
 
             type: string
 
           - name: title
 
-            label: عنوان رویداد (مثلاً Entlassfeier / Abschlussfeier)
+            label: Titel der Veranstaltung (z. B. Entlassfeier)
 
             type: string
 
           - name: description
 
-            label: توضیح کوتاه درباره رویداد
+            label: Kurze Beschreibung
 
             type: text
 
           - name: photos
 
-            label: عکس‌های رویداد (انتخاب و آپلود از دستگاه)
+            label: Fotos auswählen & hochladen
 
             type: image
 
