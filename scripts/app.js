@@ -228,14 +228,19 @@ if (dropdown) {
 dropdown.classList.remove('active');
 }
 
-// برای همکاران: انتقال مستقیم و امن به پورتال IServ به جای رمز ناامن در سایت
+// برای همکاران: انتقال مستقیم به بخش ایمیل در IServ (بدون خطا)
 if (type === 'kollegium') {
-window.open('https://dbs-iserv.de/iserv/mail/', '_blank', 'noopener,noreferrer');
+window.open('https://dbs-iserv.de', '_blank', 'noopener,noreferrer');
 return;
 }
 
-openKrankModal('schueler');
+// برای والدین: حذف پاپ‌آپ و باز کردن مستقیم ایمیل خود والدین با متن آماده
+
+  window.location.href = 'mailto:dbs-steinfeld@t-online.de?subject=Krankmeldung%20Sch%C3%BCler%2Fin&body=Sehr%20geehrte%20Damen%20und%20Herren%2C%0A%0Ahiermit%20melde%20ich%20mein%20Kind%20krank%3A%0A%0AName%20des%20Kindes%3A%20%0AKlasse%3A%20%0ADatum%3A%20%0A%0AMit%20freundlichen%20Gr%C3%BC%C3%9Fen';
+
 }
+
+
 
 function openKrankModal(type) {
 const modal = document.getElementById('krankModal');
