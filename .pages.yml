@@ -83,7 +83,7 @@ content:
             type: text
 
 
-  - name: galerie
+  - name: galerie 
 
     label: Bildergalerie & Veranstaltungen
 
