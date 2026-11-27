@@ -281,7 +281,7 @@ left: 0;
 
     <div class="emergency-banner" id="emergencyBanner">
         <i class="fas fa-exclamation-triangle"></i>
-        <span>Hinweis: Am Montag findet der Unterricht regulär statt. Aktuelle Infos zu Witterungsbedingungen finden Sie hier.</span>
+        <span id="emergencyText">Hinweis: Am Montag findet der Unterricht regulär statt. Aktuelle Infos zu Witterungsbedingungen finden Sie hier.</span>
         <button class="emergency-close" onclick="document.getElementById('emergencyBanner').style.display='none'">✕</button>
     </div>
 
@@ -411,7 +411,7 @@ left: 0;
 <li class="menu-link__akt1"><a href="https://dbs-iserv.de" target="_blank" rel="noopener noreferrer">IServ Portal</a></li>
 <li class="menu-link__akt1"><a href="https://webuntis.com" target="_blank" rel="noopener noreferrer">WebUntis (Stundenplan)</a></li>
 <li class="menu-link__akt1"><a href="https://diler.dbs-iserv.de" target="_blank" rel="noopener noreferrer">DiLer Lernplattform</a></li>
-<li class="menu-link__akt1"><a href="#" onclick="openAdminModal(event)">Admin-Bereich</a></li>
+<li class="menu-link__akt1"><a href="https://pagescms.org" target="_blank" rel="noopener noreferrer">Admin-Bereich</a></li>
 </ul>
 </div>
 </li>
@@ -1161,7 +1161,23 @@ document.getElementById("teacherErrorMsg").style.display = "block";
 }
 </script>
 
-
+<script>
+fetch('data/hinweis.json?t=' + new Date().getTime())
+.then(response => response.json())
+.then(data => {
+const banner = document.getElementById('emergencyBanner');
+const textSpan = document.getElementById('emergencyText');
+if (banner && textSpan) {
+if (data.active) {
+banner.style.display = 'flex';
+textSpan.textContent = data.text;
+} else {
+banner.style.display = 'none';
+}
+}
+})
+.catch(err => console.error('Hinweis error:', err));
+</script>
 
 </body>
 
