@@ -1,0 +1,22 @@
+{
+"termine": [
+{
+"date": "23.12.2026 – 06.01.2027",
+"title": "Weihnachtsferien",
+"category": "Ferien",
+"info": "Unterrichtsfreie Zeit über Weihnachten und Neujahr."
+},
+{
+"date": "01.02.2027",
+"title": "Zeugnisausgabe (1. Halbjahr)",
+"category": "Schulbetrieb",
+"info": "Unterrichtsende nach der 3. Stunde."
+},
+{
+"date": "15.02.2027",
+"title": "Elternsprechtag",
+"category": "Eltern",
+"info": "Terminvergabe erfolgt über die Klassenlehrkräfte bzw. IServ."
+}
+]
+}
