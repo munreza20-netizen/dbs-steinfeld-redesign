@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bildergalerie & Events – Don-Bosco-Schule Steinfeld</title>
+<link rel="stylesheet" href="./styles/all.min.css" />
+<style>
+* { box-sizing: border-box; }
+body {
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+background-color: #f1f5f9;
+color: #1e293b;
+margin: 0;
+padding: 0;
+}
+.galerie-header {
+background: linear-gradient(135deg, #0d47a1, #1565c0);
+color: #ffffff;
+padding: 36px 20px;
+text-align: center;
+box-shadow: 0 4px 12px rgba(13, 71, 161, 0.15);
+}
+.galerie-header h1 { margin: 0 0 8px 0; font-size: 28px; }
+.galerie-header p { margin: 0; font-size: 15px; opacity: 0.9; }
+.top-nav-back { max-width: 1100px; margin: 20px auto; padding: 0 20px; }
+.back-btn {
+display: inline-flex; align-items: center; gap: 8px;
+text-decoration: none; color: #1565c0; font-weight: 600; font-size: 14px;
+background: #ffffff; padding: 8px 16px; border-radius: 8px;
+border: 1px solid #cbd5e1; box-shadow: 0 2px 6px rgba(0,0,0,0.05); transition: 0.2s;
+}
+.back-btn:hover { background: #f8fafc; }
+.events-container {
+max-width: 1100px;
+margin: 0 auto 60px auto;
+padding: 0 20px;
+display: flex;
+flex-direction: column;
+gap: 32px;
+}
+.event-card {
+background: #ffffff;
+border-radius: 16px;
+padding: 24px;
+border: 1px solid #e2e8f0;
+border-top: 4px solid #1565c0;
+box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.1), 0 4px 10px -2px rgba(15, 23, 42, 0.05);
+}
+.event-date {
+display: inline-block;
+background: #dbeafe;
+color: #1e40af;
+font-size: 12.5px;
+font-weight: 700;
+padding: 4px 12px;
+border-radius: 20px;
+margin-bottom: 8px;
+}
+.event-card h2 {
+margin: 0 0 8px 0;
+font-size: 22px;
+color: #0f172a;
+}
+.event-desc {
+margin: 0 0 20px 0;
+font-size: 15px;
+color: #475569;
+line-height: 1.5;
+}
+.photos-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+gap: 14px;
+}
+.photo-item {
+border-radius: 10px;
+overflow: hidden;
+aspect-ratio: 4 / 3;
+cursor: pointer;
+box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+transition: transform 0.25s ease;
+}
+.photo-item:hover {
+transform: scale(1.03);
+}
+.photo-item img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+display: block;
+}
+/* پنجره بزرگ‌نمایی عکس (Lightbox) */
+.lightbox {
+display: none;
+position: fixed;
+inset: 0;
+background: rgba(15, 23, 42, 0.9);
+z-index: 9999;
+align-items: center;
+justify-content: center;
+padding: 20px;
+}
+.lightbox.active { display: flex; }
+.lightbox img {
+max-width: 92%;
+max-height: 88vh;
+border-radius: 10px;
+box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+.lightbox-close {
+position: absolute;
+top: 20px;
+right: 28px;
+color: #ffffff;
+font-size: 32px;
+cursor: pointer;
+background: none;
+border: none;
+}
+</style>
+</head>
+<body>
+
+<div class="galerie-header">
+<h1>Bildergalerie & Veranstaltungen</h1>
+<p>Einblicke in Feste, Projekte und das Schulleben der Don-Bosco-Schule Steinfeld</p>
+</div>
+
+<div class="top-nav-back">
+<a href="./index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Zurück zur Startseite</a>
+</div>
+
+<div class="events-container" id="eventsContainer">
+<p style="text-align:center; color:#64748b;">Galerie wird geladen...</p>
+</div>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+<button class="lightbox-close" aria-label="Schließen">&times;</button>
+<img id="lightboxImg" src="" alt="Vergrößerte Ansicht" />
+</div>
+
+<script>
+function openLightbox(src) {
+document.getElementById('lightboxImg').src = src;
+document.getElementById('lightbox').classList.add('active');
+}
+function closeLightbox() {
+document.getElementById('lightbox').classList.remove('active');
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+const container = document.getElementById("eventsContainer");
+fetch('data/galerie.json?t=' + new Date().getTime())
+.then(res => res.json())
+.then(data => {
+if (!data.events || data.events.length === 0) {
+container.innerHTML = '<p style="text-align:center;">Aktuell sind noch keine Bilder hinterlegt.</p>';
+return;
+}
+container.innerHTML = "";
+data.events.forEach(ev => {
+const card = document.createElement("div");
+card.className = "event-card";
+
+let photosHtml = '';
+if (ev.photos && ev.photos.length > 0) {
+photosHtml = '<div class="photos-grid">';
+ev.photos.forEach(photoPath => {
+const cleanPath = photoPath.startsWith('/') ? '.' + photoPath : photoPath;
+photosHtml += `
+<div class="photo-item" onclick="openLightbox('${cleanPath}')">
+<img src="${cleanPath}" alt="${ev.title}" loading="lazy" />
+</div>
+`;
+});
+photosHtml += '</div>';
+}
+
+card.innerHTML = `
+<span class="event-date">${ev.date || ''}</span>
+<h2>${ev.title || ''}</h2>
+<p class="event-desc">${ev.description || ''}</p>
+${photosHtml}
+`;
+container.appendChild(card);
+});
+})
+.catch(err => {
+console.error(err);
+container.innerHTML = '<p style="text-align:center;">Fehler beim Laden der Galerie.</p>';
+});
+});
+</script>
+
+</body>
+</html>
+
