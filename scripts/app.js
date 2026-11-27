@@ -230,7 +230,7 @@ dropdown.classList.remove('active');
 
 // برای همکاران: انتقال مستقیم و امن به پورتال IServ به جای رمز ناامن در سایت
 if (type === 'kollegium') {
-window.open('https://dbs-iserv.de', '_blank', 'noopener,noreferrer');
+window.open('https://dbs-iserv.de/iserv/mail/', '_blank', 'noopener,noreferrer');
 return;
 }
 
@@ -255,7 +255,7 @@ modal.classList.remove('active');
 function switchKrankTab(type) {
 if (type === 'kollegium') {
 closeKrankModal();
-window.open('https://dbs-iserv.de', '_blank', 'noopener,noreferrer');
+window.open('https://dbs-iserv.de/iserv/mail/', '_blank', 'noopener,noreferrer');
 return;
 }
 
