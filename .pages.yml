@@ -95,7 +95,7 @@ content:
 
       - name: events
 
-        label: Veranstaltungen & Feste (DSGVO-Hinweis: Bitte nur Fotos mit vorliegender Einwilligungserklärung hochladen!)
+        label: Veranstaltungen & Feste (Bitte DSGVO-Einwilligung beachten)
 
         type: object
 
@@ -105,13 +105,13 @@ content:
 
           - name: date
 
-            label: Datum oder Zeitraum (z. B. Juli 2026)
+            label: Datum oder Zeitraum
 
             type: string
 
           - name: title
 
-            label: Titel der Veranstaltung (z. B. Entlassfeier)
+            label: Titel der Veranstaltung
 
             type: string
 
@@ -127,4 +127,4 @@ content:
 
             type: image
 
-            list: true 
+            list: true
