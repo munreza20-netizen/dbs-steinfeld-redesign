@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Terminkalender – Don-Bosco-Schule Steinfeld</title>
+<link rel="stylesheet" href="./styles/all.min.css" />
+<style>
+* { box-sizing: border-box; }
+body {
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+background-color: #f1f5f9;
+color: #1e293b;
+margin: 0;
+padding: 0;
+}
+.termine-header {
+background: linear-gradient(135deg, #0d47a1, #1565c0);
+color: #ffffff;
+padding: 36px 20px;
+text-align: center;
+box-shadow: 0 4px 12px rgba(13, 71, 161, 0.15);
+}
+.termine-header h1 { margin: 0 0 8px 0; font-size: 28px; }
+.termine-header p { margin: 0; font-size: 15px; opacity: 0.9; }
+.top-nav-back { max-width: 950px; margin: 20px auto; padding: 0 20px; }
+.back-btn {
+display: inline-flex; align-items: center; gap: 8px;
+text-decoration: none; color: #1565c0; font-weight: 600; font-size: 14px;
+background: #ffffff; padding: 8px 16px; border-radius: 8px;
+border: 1px solid #cbd5e1; box-shadow: 0 2px 6px rgba(0,0,0,0.05); transition: 0.2s;
+}
+.back-btn:hover { background: #f8fafc; }
+.termine-list {
+max-width: 950px;
+margin: 0 auto 60px auto;
+padding: 0 20px;
+display: flex;
+flex-direction: column;
+gap: 16px;
+}
+.termin-card {
+background: #ffffff;
+border-radius: 14px;
+padding: 20px 24px;
+border: 1px solid #e2e8f0;
+border-left: 5px solid #1565c0;
+box-shadow: 0 8px 20px -5px rgba(15, 23, 42, 0.08), 0 4px 10px -2px rgba(15, 23, 42, 0.04);
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+justify-content: space-between;
+gap: 16px;
+transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.termin-card:hover {
+transform: translateY(-2px);
+box-shadow: 0 12px 26px -5px rgba(15, 23, 42, 0.13);
+}
+.termin-date-box {
+background: #eff6ff;
+color: #1e40af;
+font-weight: 700;
+font-size: 14px;
+padding: 10px 16px;
+border-radius: 10px;
+min-width: 190px;
+text-align: center;
+border: 1px solid #bfdbfe;
+}
+.termin-details {
+flex: 1;
+min-width: 240px;
+}
+.termin-details h3 {
+margin: 0 0 6px 0;
+font-size: 18px;
+color: #0f172a;
+}
+.termin-details p {
+margin: 0;
+font-size: 14px;
+color: #475569;
+}
+.termin-badge {
+background: #f1f5f9;
+color: #334155;
+font-size: 12.5px;
+font-weight: 600;
+padding: 6px 12px;
+border-radius: 20px;
+}
+</style>
+</head>
+<body>
+
+<div class="termine-header">
+<h1>Terminkalender & Schuljahrestermine</h1>
+<p>Wichtige Termine, Ferien und Veranstaltungen der Don-Bosco-Schule Steinfeld</p>
+</div>
+
+<div class="top-nav-back">
+<a href="./index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Zurück zur Startseite</a>
+</div>
+
+<div class="termine-list" id="termineList">
+<p style="text-align:center; color:#64748b;">Termine werden geladen...</p>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+const listContainer = document.getElementById("termineList");
+fetch('data/termine.json?t=' + new Date().getTime())
+.then(res => res.json())
+.then(data => {
+if (!data.termine || data.termine.length === 0) {
+listContainer.innerHTML = '<p style="text-align:center;">Aktuell sind keine Termine eingetragen.</p>';
+return;
+}
+listContainer.innerHTML = "";
+data.termine.forEach(item => {
+const card = document.createElement("div");
+card.className = "termin-card";
+card.innerHTML = `
+<div class="termin-date-box"><i class="far fa-calendar-alt"></i> ${item.date || ''}</div>
+<div class="termin-details">
+<h3>${item.title || ''}</h3>
+<p>${item.info || ''}</p>
+</div>
+${item.category ? `<span class="termin-badge">${item.category}</span>` : ''}
+`;
+listContainer.appendChild(card);
+});
+})
+.catch(err => {
+console.error(err);
+listContainer.innerHTML = '<p style="text-align:center;">Fehler beim Laden der Termine.</p>';
+});
+});
+</script>
+
+</body>
+</html>
+
