@@ -5,7 +5,6 @@ media:
   output: /imag
 
 
-
 content:
 
   - name: hinweis
@@ -37,7 +36,6 @@ content:
         label: لینک جزئیات بیشتر (اختیاری)
 
         type: string
-
 
 
   - name: aktuelles
@@ -84,3 +82,49 @@ content:
 
             type: text
 
+
+  - name: galerie
+
+    label: گالری تصاویر و رویدادها (Bildergalerie)
+
+    type: file
+
+    path: data/galerie.json
+
+    fields:
+
+      - name: events
+
+        label: لیست جشن‌ها و رویدادها (DSGVO-Hinweis: Bitte nur Fotos mit vorliegender Einwilligungserklärung hochladen!)
+
+        type: object
+
+        list: true
+
+        fields:
+
+          - name: date
+
+            label: تاریخ یا سال رویداد (مثلاً Juli 2026)
+
+            type: string
+
+          - name: title
+
+            label: عنوان رویداد (مثلاً Entlassfeier / Abschlussfeier)
+
+            type: string
+
+          - name: description
+
+            label: توضیح کوتاه درباره رویداد
+
+            type: text
+
+          - name: photos
+
+            label: عکس‌های رویداد (انتخاب و آپلود از دستگاه)
+
+            type: image
+
+            list: true
