@@ -1,0 +1,76 @@
+media:
+
+  input: imag
+
+  output: /imag
+
+
+
+content:
+
+  - name: hinweis
+
+    label: نوار هشدار قرمز (Wichtiger Hinweis)
+
+    type: file
+
+    path: data/hinweis.json
+
+    fields:
+
+      - name: active
+
+        label: نمایش نوار هشدار در سایت
+
+        type: boolean
+
+        default: true
+
+      - name: text
+
+        label: متن هشدار (آلمانی)
+
+        type: string
+
+      - name: link
+
+        label: لینک جزئیات بیشتر (اختیاری)
+
+        type: string
+
+
+
+  - name: aktuelles
+
+    label: اخبار و اطلاعیه‌ها (Aktuelles)
+
+    type: collection
+
+    path: data/news
+
+    fields:
+
+      - name: title
+
+        label: تیتر خبر
+
+        type: string
+
+      - name: date
+
+        label: تاریخ انتشار
+
+        type: date
+
+      - name: body
+
+        label: متن کامل خبر
+
+        type: rich-text
+
+
+
+
+
+
+
