@@ -882,7 +882,7 @@ left: 0;
     <i class="fas fa-calendar-alt"></i>
     <span>WebUntis</span>
   </a>
-  <button onclick="selectKrankType('schueler')" class="mobile-nav-item urgent">
+  <button onclick="openKrankModal()" class="mobile-nav-item urgent">
     <i class="fas fa-notes-medical"></i>
     <span>Krankmelden</span>
   </button>
@@ -910,13 +910,13 @@ left: 0;
       </button>
     </div>
 
-   <!-- بخش 1: هدایت والدین به DiLer -->
+   <!-- بخش 1: هدایت والدین به  -->
 <div id="krankmeldung-form" style="text-align: center; padding: 15px 10px;">
 <div style="background: #f0f7ff; border: 1px solid #cce3ff; border-radius: 10px; padding: 18px; margin-bottom: 18px;">
-<i class="fas fa-shield-alt" style="font-size: 28px; color: #005a9c; margin-bottom: 10px;"></i>
-<h3 style="margin: 0 0 8px 0; color: #005a9c; font-size: 16px;">Krankmeldung über DiLer</h3>
+<i class="fas fa-envelope-open-text" style="font-size: 28px; color: #005a9c; margin-bottom: 10px;"></i>
+<h3 style="margin: 0 0 8px 0; color: #005a9c; font-size: 16px;">Krankmeldung per E-Mail</h3>
 <p style="font-size: 13.5px; color: #334155; line-height: 1.5; margin: 0;">
-Um Missbrauch vorzubeugen und den Datenschutz zu gewährleisten, erfolgen Krankmeldungen für Schülerinnen und Schüler ab sofort ausschließlich über das verifizierte Eltern-Konto in <strong>DiLer</strong>.
+Bitte melden Sie Ihr Kind bequem per E-Mail über unser vorbereitetes Formular krank.
 </p>
 </div>
 
@@ -924,10 +924,13 @@ Um Missbrauch vorzubeugen und den Datenschutz zu gewährleisten, erfolgen Krankm
 Bitte melden Sie Ihr Kind dort bis spätestens <strong>07:45 Uhr</strong> krank.
 </p>
 
-<a href="https://dbs-iserv.de/iserv/mail/" target="_blank" rel="noopener noreferrer" class="dbs-submit-btn" style="display: inline-block; text-decoration: none; text-align: center; box-sizing: border-box;">
-   <i class="fas fa-external-link-alt"></i> Jetzt bei DiLer anmelden
-</a>
-</div>d    <!-- بخش قفل رمز عبور ویژه همکاران -->
+<button type="button" onclick="selectKrankType('schueler')" class="dbs-submit-btn" style="width: 100%; border: none; cursor: pointer;">
+<i class="fas fa-paper-plane"></i> E-Mail-Vorlage öffnen
+</button>
+</div> <!-- بخش قفل رمز عبور ویژه همکاران -->
+
+
+      <!-- بخش قفل رمز عبور ویژه همکاران -->
     <div id="kollegium-lock-box" style="display: none; text-align: center; padding: 10px 0;"> 
       <p style="font-size: 13px; color: #475569; margin-bottom: 12px;">
         <i class="fas fa-lock" style="color: #f59e0b;"></i> Geschützter Bereich: Bitte geben Sie den Zugangscode für das Kollegium ein.
