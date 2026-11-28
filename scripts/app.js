@@ -3,7 +3,7 @@ if (event) event.preventDefault();
 const searchOverlay = document.getElementById("search-overlay");
 const searchInput = searchOverlay ? searchOverlay.querySelector("input") : null;
 
-if (!searchOverlay) return;
+if (!searchOverlay) return; 
 
 if (searchOverlay.style.display === "flex") {
 searchOverlay.style.display = "none";
