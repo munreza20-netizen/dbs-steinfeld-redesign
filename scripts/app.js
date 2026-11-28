@@ -230,7 +230,7 @@ dropdown.classList.remove('active');
 
 // برای همکاران: انتقال مستقیم به بخش ایمیل در IServ (بدون خطا)
 if (type === 'kollegium') {
-window.open('https://dbs-iserv.de', '_blank', 'noopener,noreferrer');
+window.open('https://dbs-iserv.de/iserv/mail/compose/', '_blank', 'noopener,noreferrer');
 return;
 }
 
