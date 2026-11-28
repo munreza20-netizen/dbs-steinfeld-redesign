@@ -247,7 +247,7 @@ const modal = document.getElementById('krankModal');
 if (modal) {
 modal.classList.add('active');
 switchKrankTab(type || 'schueler');
-}
+} 
 }
 
 function closeKrankModal() {
