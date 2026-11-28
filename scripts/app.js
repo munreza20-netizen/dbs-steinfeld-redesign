@@ -236,7 +236,7 @@ return;
 
 // برای والدین: حذف پاپ‌آپ و باز کردن مستقیم ایمیل خود والدین با متن آماده
 
-  window.location.href = 'mailto:dbs-steinfeld@t-online.de?subject=Krankmeldung%20Sch%C3%BCler%2Fin&body=Sehr%20geehrte%20Damen%20und%20Herren%2C%0A%0Ahiermit%20melde%20ich%20mein%20Kind%20krank%3A%0A%0AName%20des%20Kindes%3A%20%0AKlasse%3A%20%0ADatum%3A%20%0A%0AMit%20freundlichen%20Gr%C3%BC%C3%9Fen';
+ window.location.href = 'mailto:dbs-steinfeld@t-online.de?subject=Krankmeldung%20Sch%C3%BCler%2Fin&body=Sehr%20geehrte%20Damen%20und%20Herren%2C%0A%0Ahiermit%20melde%20ich%20mein%20Kind%20krank%3A%0A%0AName%20des%20Kindes%3A%20%0AKlasse%3A%20%0ADatum%3A%20%0A%0AMit%20freundlichen%20Gr%C3%BC%C3%9Fen%0A%0A---%0AHinweis%3A%20Diese%20Krankmeldung%20erfolgt%20ausschlie%C3%9Flich%20%C3%BCber%20die%20bei%20der%20Schule%20hinterlegte%20Eltern-E-Mail-Adresse.';
 
 }
 
